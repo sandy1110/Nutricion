@@ -73,7 +73,7 @@ const fileInput = (e) => setFileTarget(e.target.files[0]);
                 />
             </Box>
             <div className='Button'>
-                <Button onClick={submit} variant="contained" >Subimt</Button>
+                <Button onClick={submit} variant="contained" >Submit</Button>
             </div>
         </form>
   )

@@ -10,10 +10,30 @@ export const Apply = () => {
 
 
     const [form, setForm, handleChange] = useForm({ email: "", })
+    
+    const header = new Headers({ "Access-Control-Allow-Origin": "*" });
 
     const submit = (e) => {
-        e.preventDefault()
-        console.log(form)
+        e.preventDefault();
+        console.log("email: ", form.email);
+
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({
+                "email": form.email
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        try{
+            fetch("http://localhost:3010/api/v1/email/sendEmail", requestOptions).then( console.log("email sent."));
+                
+        }
+        catch{
+            alert("Error");
+        }       
     }
 
     return (
@@ -29,7 +49,7 @@ export const Apply = () => {
                 />
             </Box>
             <div className='Button'>
-                <Button onClick={submit} variant="contained" >Subimt</Button>
+                <Button onClick={submit} variant="contained" >Submit</Button>
             </div>
         </form>
     )
