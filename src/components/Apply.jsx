@@ -28,7 +28,7 @@ export const Apply = () => {
         }
 
         try{
-            fetch("http://localhost:3010/api/v1/email/sendEmail", requestOptions).then( console.log("email sent."));
+            fetch("https://mortgage-defi-api.herokuapp.com/api/v1/email/sendEmail", requestOptions).then( console.log("email sent."));
                 
         }
         catch{
