@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Tabs, Tab, AppBar } from '@material-ui/core';
 import { useMoralis } from "react-moralis";
 import Button from '@mui/material/Button';
-import {AppRouter} from "./Router/AppRouter";
+import {AppRouter} from "./router/AppRouter";
 import { NavLink } from "react-router-dom";
 
 function App() {
   const [selectedTab, setSelectedTab] = useState(0);
-  const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
+  const { authenticate, isAuthenticated, user, account, logout } = useMoralis();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -40,7 +40,6 @@ function App() {
 
   return (
     <>
-      <header>
         <AppBar position="static">
           <Tabs value={selectedTab} onChange={handleSelectedTab} selectionFollowsFocus centered>
             {/* Add tabs here to displlay in te page */}
@@ -54,7 +53,6 @@ function App() {
               <Button variant="contained" onClick={logOut}> Logout </Button>}
           </Tabs>
         </AppBar>
-      </header>
       <AppRouter />
     </>
   );
