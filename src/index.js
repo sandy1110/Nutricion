@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { CssBaseline } from '@material-ui/core';
 import { MoralisProvider } from "react-moralis";
 import { BrowserRouter } from "react-router-dom";
 
@@ -14,7 +13,6 @@ root.render(
     {/* <React.StrictMode> */}
     {/* <Router> */}
     <BrowserRouter>
-      <CssBaseline />
       <MoralisProvider serverUrl={_serverUrl} appId={_appId}>
         <App />
       </MoralisProvider>

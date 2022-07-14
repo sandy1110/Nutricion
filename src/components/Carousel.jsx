@@ -1,11 +1,9 @@
 
 import "./Carousel.css"
-import { images } from '../Helpers/CarouselData'
+import { images } from '../helpers/CarouselData'
 import { useState } from "react"
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos"
-import { Rotate90DegreesCcw } from "@material-ui/icons"
-
 
 export const Carousel = () => {
 
