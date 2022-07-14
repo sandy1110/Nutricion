@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import useForm from '../hooks/useForm'
-import "./Forms.css"
+import useForm from '../../Hooks/useForm'
+import "../Forms.css"
 
 
 export const Apply = () => {

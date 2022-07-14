@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Tabs, Tab, AppBar } from '@material-ui/core';
 import { useMoralis } from "react-moralis";
 import Button from '@mui/material/Button';
+import {AppRouter} from "./Router/AppRouter";
+import { NavLink } from "react-router-dom";
 
 function App() {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -13,10 +15,10 @@ function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated]);
-  
+
   const handleSelectedTab = (event, newTabValue) => {
-    setSelectedTab(newTabValue);
-  }
+    setSelectedTab(newTabValue)
+}
 
   const login = async () => {
     if (!isAuthenticated) {
@@ -40,12 +42,12 @@ function App() {
     <>
       <header>
         <AppBar position="static">
-          <Tabs value={selectedTab} onChange={handleSelectedTab} centered>
+          <Tabs value={selectedTab} onChange={handleSelectedTab} selectionFollowsFocus centered>
             {/* Add tabs here to displlay in te page */}
-            <Tab label="About" />
-            <Tab label="Apply" />
-            <Tab label="Invest" />
-            <Tab label="Contact" />
+            <NavLink to="/" style={isActive => ({color: isActive ? "white" : "white"})}><Tab label="About" /></NavLink>
+            <NavLink to="/apply" style={isActive => ({color: isActive ? "white" : "white"})}><Tab label="Apply" /></NavLink>
+            <NavLink to="/invest" style={isActive => ({color: isActive ? "white" : "white"})}><Tab label="Invest" /></NavLink>
+            <NavLink to="/contact" style={isActive => ({color: isActive ? "white" : "white"})}><Tab label="Contact" /></NavLink>
             {!isAuthenticated &&
               <Button variant="contained" onClick={login}> Metamask Login </Button>}
             {isAuthenticated &&
@@ -53,6 +55,7 @@ function App() {
           </Tabs>
         </AppBar>
       </header>
+      <AppRouter />
     </>
   );
 }
