@@ -1,7 +1,7 @@
 import { Container } from "@mui/material"
-import { InvestForm } from "./InvestForm"
-import { InvestProperties } from "./InvestProperties"
-import "./Invest.css"
+import { InvestForm } from "../InvestForm"
+import { InvestProperties } from "../InvestProperties"
+import "../Invest.css"
 
 
 export const Invest = () => {
