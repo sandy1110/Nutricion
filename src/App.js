@@ -4,6 +4,7 @@ import { useMoralis } from "react-moralis";
 import Button from '@mui/material/Button';
 import {AppRouter} from "./router/AppRouter";
 import { NavLink } from "react-router-dom";
+import { Layout } from "./components/pages/Layout";
 
 function App() {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -40,20 +41,21 @@ function App() {
 
   return (
     <>
-        <AppBar position="static">
-          <Tabs value={selectedTab} onChange={handleSelectedTab} selectionFollowsFocus centered>
-            {/* Add tabs here to displlay in te page */}
-            <NavLink to="/" style={isActive => ({color: isActive ? "white" : "white"})}><Tab label="About" /></NavLink>
-            <NavLink to="/apply" style={isActive => ({color: isActive ? "white" : "white"})}><Tab label="Apply" /></NavLink>
-            <NavLink to="/invest" style={isActive => ({color: isActive ? "white" : "white"})}><Tab label="Invest" /></NavLink>
-            <NavLink to="/contact" style={isActive => ({color: isActive ? "white" : "white"})}><Tab label="Contact" /></NavLink>
-            {!isAuthenticated &&
-              <Button variant="contained" onClick={login}> Metamask Login </Button>}
-            {isAuthenticated &&
-              <Button variant="contained" onClick={logOut}> Logout </Button>}
-          </Tabs>
-        </AppBar>
+      <AppBar position="static">
+        <Tabs value={selectedTab} onChange={handleSelectedTab} selectionFollowsFocus centered>
+          {/* Add tabs here to displlay in te page */}
+          <NavLink to="/" style={isActive => ({color: isActive ? "white" : "white"})}><Tab label="About" /></NavLink>
+          <NavLink to="/apply" style={isActive => ({color: isActive ? "white" : "white"})}><Tab label="Apply" /></NavLink>
+          <NavLink to="/invest" style={isActive => ({color: isActive ? "white" : "white"})}><Tab label="Invest" /></NavLink>
+          <NavLink to="/contact" style={isActive => ({color: isActive ? "white" : "white"})}><Tab label="Contact" /></NavLink>
+          {!isAuthenticated &&
+            <Button variant="contained" onClick={login}> Metamask Login </Button>}
+          {isAuthenticated &&
+            <Button variant="contained" onClick={logOut}> Logout </Button>}
+        </Tabs>
+      </AppBar>
       <AppRouter />
+      <Layout />
     </>
   );
 }

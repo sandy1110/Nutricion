@@ -1,8 +1,8 @@
 import {Route, Routes} from "react-router-dom";
-import { About } from "../components/Pages/About";
-import { Apply } from "../components/Pages/Apply";
-import { Contact } from "../components/Pages/Contact";
-import { Invest } from "../components/Pages/Invest";
+import { About } from "../components/pages/About";
+import { Apply } from "../components/pages/Apply";
+import { Contact } from "../components/pages/Contact";
+import { Invest } from "../components/pages/Invest";
 
 export const AppRouter = () =>{
     return (
