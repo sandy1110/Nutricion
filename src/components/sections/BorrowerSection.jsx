@@ -1,11 +1,10 @@
 import { useState } from "react"
-import { Box, Tabs, Tab } from '@material-ui/core';
+import { Box, Tabs, Tab, Typography } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 import { PersonalInformation } from "../forms/PersonalInformation";
 import { Apply } from "../pages/Apply";
 
 const AntTabs = styled(Tabs)({
-  width:700,
   borderBottom: '1px solid #e8e8e8',
   '& .MuiTabs-indicator': {
     backgroundColor: 'orange',
@@ -52,7 +51,17 @@ export const BorrowerSection = () => {
   }
 
   return (
-    <Box  sx={{width:700}}>
+    <Box  sx={{width:"100%"}}>
+      <Box sx={{paddingBottom:15}}>
+        <Typography variant='h6'>
+            Section 1: Borrower Information
+        </Typography>
+        <Typography variant='subtitle'>
+            This section asks about personal information and your income from
+            employment and other sources such as retirement, that you want 
+            considered to qualify for this loan
+        </Typography>
+      </Box>
       <AntTabs value={selectedTab} onChange={handleSelectedTab}>
         <AntTab label="Personal Information" />
         <AntTab label="Employment and Income" />
