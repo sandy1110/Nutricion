@@ -5,9 +5,9 @@ import { PersonalInformation } from "../forms/PersonalInformation";
 import { Apply } from "../Pages/Apply";
 
 const AntTabs = styled(Tabs)({
-  borderBottom: '1px solid #e8e8e8',
+  borderBottom: '1px solid #ff914d',
   '& .MuiTabs-indicator': {
-    backgroundColor: 'orange',
+    backgroundColor: '#ff914d',
   },
 });
 
@@ -37,7 +37,7 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) =
     opacity: 1,
   },
   '&.Mui-selected': {
-    color: 'orange',
+    color: '#ff914d',
   },
   '&.Mui-focusVisible': {
     backgroundColor: '#d1eaff',

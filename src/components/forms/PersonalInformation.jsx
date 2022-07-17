@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, InputLabel, MenuItem, Paper, Radio, Select, TextField, Typography } from '@material-ui/core';
-import { ControlPointDuplicate } from '@material-ui/icons';
 
 const initialValues ={
     name:'',
