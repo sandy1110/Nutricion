@@ -1,13 +1,35 @@
 import { useState } from 'react';
 import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, InputLabel, MenuItem, Paper, Radio, Select, TextField, Typography } from '@material-ui/core';
+import { ControlPointDuplicate } from '@material-ui/icons';
 
+const initialValues ={
+    name:'',
+    alternateNames:'',
+    age:'',
+    sss:'',
+    citizenship:'',
+    credit:'',
+    maritalStatus:'',
+    otherBorrowes:'',
+    dependents:'',
+    street:'',
+    unit:'',
+    city:'',
+    state:'',
+    zip:'',
+    country:'',
+
+}
 export const PersonalInformation = () => {
-    const [citizenship, setCitizenship] = useState('');
+    const [values, setValues] =useState(initialValues);
 
-    const handleChange = (event) => {
-        setCitizenship(event.target.value);
-    };
+    const handleInputChange = event =>{
+        const [name, value] = event.target;
+        setValues([...values,
+            [name].value
+        ]);
+    }
     return (
         <Box display="flex" flexDirection="column" gridRowGap={10}>
         <Paper sx={{backgroundColor:"black"}}>
@@ -15,24 +37,26 @@ export const PersonalInformation = () => {
                 <Box sx={{p:2, margin:2, width:"60%"}}>
                     <TextField
                         fullWidth
-                        label="Name"
-                        placeholder="(First, Middle, Last)"
-                        multiline
                         variant="standard"
-                        color="warning"
+                        label="Name"
+                        name='name'
+                        onChange={handleInputChange}
+                        placeholder="(First, Middle, Last)"
                     />
                     <TextField
                         fullWidth
                         label="Alternate Names"
+                        name='alternateNames'
+                        onChange={handleInputChange}
                         placeholder="Any names under which credit was previously received"
-                        multiline
                         variant="standard"
                     />
                     <TextField
                         fullWidth
                         label="Social Security Number"
+                        name='sss'
+                        onChange={handleInputChange}
                         placeholder="or Individual Taxpayer Identification Number"
-                        multiline
                         variant="standard"
                     />
                 </Box>
@@ -40,13 +64,13 @@ export const PersonalInformation = () => {
                     <FormControl variant="standard" sx={{ m: 1, minWidth: 200 }} fullWidth>
                         <InputLabel>Citizenship</InputLabel>
                         <Select
-                        value={citizenship}
-                        onChange={handleChange}
                         label="citizenship"
+                        name='citizenship'
+                        onChange={handleInputChange}
                         >
-                        <MenuItem value={10}>U.S Citizen</MenuItem>
-                        <MenuItem value={20}>Permanent Resident Alien</MenuItem>
-                        <MenuItem value={30}>Non-Permanent Resident Alien</MenuItem>
+                        <MenuItem value={1}>U.S Citizen</MenuItem>
+                        <MenuItem value={2}>Permanent Resident Alien</MenuItem>
+                        <MenuItem value={3}>Non-Permanent Resident Alien</MenuItem>
                         </Select>
                     </FormControl>
                 </Box>
@@ -57,7 +81,10 @@ export const PersonalInformation = () => {
                 <Box sx={{p:2, margin:2, width:"50%"}}>
                     <FormControl>
                         <FormLabel>Type of Credit</FormLabel>
-                        <RadioGroup>
+                        <RadioGroup 
+                            name='credit'
+                            onChange={handleInputChange}
+                        >
                             <FormControlLabel value="individual" control={<Radio size='small'/>} label="I'm applying for individual credit." />
                             <FormControlLabel value="joint" control={<Radio size='small'/>} label="I'm applying for joint credit" />
                         </RadioGroup>
@@ -68,8 +95,9 @@ export const PersonalInformation = () => {
                         fullWidth
                         label="Names of Other Borrower(s)"
                         placeholder="(First, Middle, Last, Suffix)"
-                        multiline
                         variant="standard"
+                        name='otherBorrowers'
+                        onChange={handleInputChange}
                     />
                 </Box>
             </Box>
@@ -79,7 +107,10 @@ export const PersonalInformation = () => {
                 <Box sx={{p:2, margin:2, width:"70%"}}>
                     <FormControl>
                         <FormLabel>Marital Status</FormLabel>
-                        <RadioGroup>
+                        <RadioGroup
+                            name='maritalStatus'
+                            onChange={handleInputChange}
+                        >
                             <FormControlLabel value="married" control={<Radio size='small'/>} label="Married" />
                             <FormControlLabel value="separated" control={<Radio size='small'/>} label="Separated" />
                             <FormControlLabel value="unmarried" control={<Radio size='small'/>} label="Unmarried" />
@@ -91,8 +122,9 @@ export const PersonalInformation = () => {
                     <InputLabel>Dependents (not listed by another borrower)</InputLabel>
                     <TextField
                         label="Number"
-                        multiline
                         variant="standard"
+                        name='dependents'
+                        onChange={handleInputChange}
                     />
                     <TextField
                         label="Ages"
@@ -103,17 +135,60 @@ export const PersonalInformation = () => {
             </Box>
         </Paper>
         <Paper sx={{backgroundColor:"black", p:10, margin:"auto", flexGrow:1}}>
-            <Box display="flex" flexDirection="row">
-                <Box sx={{p:2, margin:2, width:"60%"}}>
+            <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
+                <FormLabel>Current Address</FormLabel>
+                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
                     <TextField
                         fullWidth
                         label="Street"
+                        name='street'
+                        onChange={handleInputChange}
+                        variant="standard"
+                    />
+                    <TextField
+                        label="Unit #"
+                        name='unit'
+                        onChange={handleInputChange}
+                        variant="standard"
+                    />
+                </Box>
+                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                    <TextField
+                        fullWidth
+                        label="City"
+                        name='city'
+                        onChange={handleInputChange}
+                        variant="standard"
+                    />
+                    <TextField
+                        label="State"
+                        name='state'
+                        onChange={handleInputChange}
+                        variant="standard"
+                    />
+                    <TextField
+                        label="Zip"
+                        name='zip'
+                        onChange={handleInputChange}
+                        variant="standard"
+                        type="number"
+                    />
+                    <TextField
+                        label="Country"
+                        name='country'
+                        onChange={handleInputChange}
+                        variant="standard"
+                    />
+                </Box>
+                <FormLabel>How long at Current Address?</FormLabel>
+                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                    <TextField
+                        label="Years"
                         multiline
                         variant="standard"
                     />
                     <TextField
-                        fullWidth
-                        label="City"
+                        label="Months"
                         multiline
                         variant="standard"
                     />
