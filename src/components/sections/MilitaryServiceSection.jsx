@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Box, Tabs, Tab, Typography } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 import { PersonalInformation } from "../forms/PersonalInformation";
-import { Apply } from "../pages/Apply";
+import { Apply } from "../Pages/Apply";
 
 const AntTabs = styled(Tabs)({
   borderBottom: '1px solid #e8e8e8',
@@ -51,7 +51,7 @@ export const MilitaryServiceSection = () => {
   }
 
   return (
-    <Box  sx={{position:"static"}}>
+    <Box  sx={{width:"800", position:"static"}}>
       <Box sx={{paddingBottom:15}}>
         <Typography variant='h6'>
             Section 7: Military Service
