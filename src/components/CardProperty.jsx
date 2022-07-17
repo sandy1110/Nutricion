@@ -3,37 +3,22 @@ import { Box, Card, CardContent, Typography, CardActions, Button, CardMedia } fr
 import { images } from '../Helpers/CarouselData'
 import "./CardProperties.css"
 
-export const CardProperty = () => {
+export const CardProperty = ({ propertyData }) => {
+
+    const { img, id, value, area, capRate, address } = propertyData
+
     return (
-        // <Box width='300px'>
-        //     <Card>
-        //         <CardMedia
-        //             component='img'
-        //             height='140px'
-        //             image='https://source.unsplash.com/random' />
-        //         <CardContent>
-        //             <Typography gutterBottom variant='h5' component='div'>
-        //                 React
-        //             </Typography>
-        //             <Typography variant='body2' color='text.secondary'>
-        //                 React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.
-        //             </Typography>
-        //         </CardContent>
-        //         <CardActions>
-        //             <Button size='small'>Share</Button>
-        //             <Button size='small'>Learn More</Button>
-        //         </CardActions>
-        //     </Card>
-        // </Box>
         <Box className='box'>
-            <img src={images[0].img}/>
+            <img src={img} />
             <div className='information'>
-                <div className='mortgageId'>Mortgage ID</div>
-                <div className='propertyValue'>Value</div>
-                <div className='area'>Area</div>
-                <div className='capRate'>Cap Rate: </div>
-                <div className='address'>Address:</div>
-                <Button className='buttonInvest'>Invest</Button>
+                <div className='mortgageId'>Mortgage ID {id}</div>
+                <div className='propertyValue'>Value ${value} USD</div>
+                <div className='area'>Area {area}</div>
+                <div className='capRate'>Cap Rate: {capRate}</div>
+                <div className='address'>Address: {address}</div>
+                <div className='centerButton'>
+                    <Button style={{backgroundColor: "orange",borderRadius: 35}} variant='contained' className='buttonInvest'>Invest</Button>
+                </div>
             </div>
         </Box>
     )

@@ -2,9 +2,10 @@
     margin-top: 10px;
     width: 90%;
     height: 200px;
-    background-color: blueviolet;
     display: flex;
     align-items: center;
+    border: outset;
+    border-radius: 10px;
 }
 
 img {
@@ -14,40 +15,39 @@ img {
 .information {
     display: block;
     width: 40%;
-    background-color: brown;
     justify-content: space-between;
 }
 
 .mortgageId {
     display: flex;
-    background-color: aquamarine;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .propertyValue {
     display: flex;
-    background-color: wheat;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .area {
     display: flex;
-    background-color: white;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .capRate {
     display: flex;
-    background-color: yellow;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .address {
     display: flex;
-    background-color: green;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .buttonInvest {
     width: 100px;
+}
+
+.centerButton {
+    display: flex;
+    justify-content: center;
 }

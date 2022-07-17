@@ -4,7 +4,6 @@
     width: 75vw;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 0.5fr 1.5fr 1.2fr .5fr;
-    background-color: aqua;
     grid-template-areas:
         "nav nav nav nav nav"
         "sidebar sidebar main main main"
@@ -14,35 +13,20 @@
 }
 
 nav{
-    background-color: antiquewhite;
     grid-area: nav;
 }
 main{
-    background-color: aquamarine;
     grid-area: main;
 }
 .sidebar{
     display: flex;
     flex-wrap: wrap;
     overflow-y: scroll;
-    background-color: blue;
     grid-area: sidebar;
     justify-content: center;
     align-items: flex-start;
 }
-.content1{
-    background-color: blueviolet;
-    grid-area: content1;
-}
-.content2{
-    background-color: brown;
-    grid-area: content2;
-}
-.content3{
-    background-color: cadetblue;
-    grid-area: content3;
-}
+
 footer{
-    background-color:blueviolet;
     grid-area: footer;
 }
