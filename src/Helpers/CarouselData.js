@@ -1,6 +1,6 @@
-import Austin from "../assets/Austin.jpeg"
-import Orlando from "../assets/Orlando.jpeg"
-import SanDiego from "../assets/SanDiego.jpeg"
+import Austin from "../Assets/Austin.jpeg"
+import Orlando from "../Assets/Orlando.jpeg"
+import SanDiego from "../Assets/SanDiego.jpeg"
 
 export const images = [
     {
