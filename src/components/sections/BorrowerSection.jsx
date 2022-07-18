@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Box, Tabs, Tab, Typography } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 import { PersonalInformation } from "../forms/PersonalInformation";
-import { Apply } from "../Pages/Apply";
+import { EmploymentAndIncome } from "../forms/EmploymentAndIncome";
 
 const AntTabs = styled(Tabs)({
   borderBottom: '1px solid #ff914d',
@@ -67,7 +67,7 @@ export const BorrowerSection = () => {
         <AntTab label="Employment and Income" />
       </AntTabs>
       { selectedTab === 0 && <PersonalInformation/>}
-      { selectedTab === 1 && <Apply/>}
+      { selectedTab === 1 && <EmploymentAndIncome/>}
       </Box>
   )
 }
