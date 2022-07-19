@@ -1,0 +1,157 @@
+import React, { useState } from 'react';
+//import { NumberFormat } from 'react-number-format';
+import { Box, Paper, TextField, Typography } from '@material-ui/core';
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+
+const initialValues ={
+    name:'',
+    alternateNames:'',
+    age:'',
+    sss:'',
+    citizenship:'',
+    credit:'',
+    maritalStatus:'',
+    otherBorrowes:'',
+    dependents:'',
+    street:'',
+    unit:'',
+    city:'',
+    state:'',
+    zip:'',
+    country:'',
+
+}
+
+/*const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(props, ref) {
+    const { onChange, ...other } = props;
+  
+    return (
+      <NumberFormat
+        {...other}
+        getInputRef={ref}
+        onValueChange={(values) => {
+          onChange({
+            target: {
+              name: props.name,
+              value: values.value,
+            },
+          });
+        }}
+        thousandSeparator
+        isNumericString
+        prefix="$"
+      />
+    );
+  });*/
+
+export const Liabilities = () => {
+    const [values, setValues] =useState(initialValues);
+
+    const handleInputChange = event =>{
+        const [name, value] = event.target;
+        setValues([...values,
+            [name].value
+        ]);
+    }
+    return (
+        <Box display="flex" flexDirection="column" gridRowGap={25}>
+            <Paper sx={{backgroundColor:"black"}}>
+                <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
+                    <Box>
+                        <Typography variant ='h6'>
+                            List all liabilities below (except real estate) and include deferred payments. Under Account Type, choose from the types listed here:
+                        </Typography>
+                    </Box>
+                    <Box sx={{width:"35%"}}>
+                        <FormControl variant="standard" fullWidth>
+                            <InputLabel>Select Type</InputLabel>
+                            <Select fullWidth
+                            label="Select Type"
+                            name='type'
+                            onChange={handleInputChange}
+                            >
+                            <MenuItem value={1}>Revolving</MenuItem>
+                            <MenuItem value={2}>Installment</MenuItem>
+                            <MenuItem value={3}>Open 30-Day</MenuItem>
+                            <MenuItem value={4}>Lease</MenuItem>
+                            <MenuItem value={5}>Other</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
+                    <Box display="flex" flexDirection="row" gridColumnGap={20}>
+                        <FormControl variant="standard" fullWidth>
+                        <TextField fullWidth
+                                label="Company Name"
+                                name='companyName'
+                                onChange={handleInputChange}
+                                variant="standard"
+                            />
+                        </FormControl>
+                        <FormControl variant="standard" fullWidth>
+                        <TextField fullWidth
+                                label="Account Number"
+                                name='accountNumber'
+                                onChange={handleInputChange}
+                                variant="standard"
+                            />
+                        </FormControl>
+                    </Box> 
+                    <Box display="flex" flexDirection="row" justifyContent="space-between" gridColumnGap={20}>
+                            <TextField fullWidth
+                                label="Unpaid Balance"
+                                name='unpadeBalance'
+                                onChange={handleInputChange}
+                                variant="standard"
+                                placeholder='$'
+                            />
+                            <TextField fullWidth
+                                label="To be paid off at or before closing"
+                                name='paid'
+                                onChange={handleInputChange}
+                                variant="standard"
+                            />
+                            <TextField fullWidth
+                                label="Monthly Payment"
+                                name='payment'
+                                onChange={handleInputChange}
+                                variant="standard"
+                                placeholder='$'
+                            />
+                    </Box>      
+                </Box>
+            </Paper>
+            <Paper sx={{backgroundColor:"black"}}>
+                <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
+                    <Box>
+                        <Typography variant ='h6'>
+                            Include all other liabilities and expenses below. Choose from the types listed here: 
+                        </Typography>
+                    </Box>
+                    <Box display="flex" flexDirection="row" gridColumnGap={20}>
+                        <FormControl variant="standard" fullWidth>
+                            <InputLabel>Select Type</InputLabel>
+                            <Select fullWidth
+                            label="Select Type"
+                            name='type'
+                            onChange={handleInputChange}
+                            >
+                            <MenuItem value={1}>Alimony</MenuItem>
+                            <MenuItem value={2}>Child Support</MenuItem>
+                            <MenuItem value={2}>Separate Maitenance</MenuItem>
+                            <MenuItem value={2}>Job Related Expenses</MenuItem>
+                            <MenuItem value={2}>Other</MenuItem>
+                            </Select>                            
+                        </FormControl>
+                        <TextField 
+                                label="Monthly Payment"
+                                name='payment'
+                                onChange={handleInputChange}
+                                variant="standard"
+                                placeholder='$'
+                            />
+                    </Box> 
+                </Box>
+            </Paper>
+        </Box>     
+    )
+  }
