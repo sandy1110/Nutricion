@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button } from "@mui/material"
 import "./Home.css";
 import Box from '@mui/material/Box';
+import {Link} from 'react-router-dom'
 
 export const Home = () => {
 
@@ -22,9 +23,11 @@ export const Home = () => {
             <div className="homeTitle">Criptofor Mortgage</div>
             <div className="valueProposition">We connect mortgage companies, consumers and investors, without too much paper work.</div>
             <Box textAlign='center'>
-                <Button variant="contained" sx={boxSX}>
-                    Apply
-                </Button>
+                <Link to="/apply" >
+                    <Button variant="contained" sx={boxSX}>
+                        Apply
+                    </Button>
+                </Link>
                 <Button variant="contained" sx={boxSX}>
                     Invest
                 </Button>
