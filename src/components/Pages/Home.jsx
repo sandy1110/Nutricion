@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Button } from "@mui/material"
 import "./Home.css";
 import Box from '@mui/material/Box';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { makeStyles } from "@material-ui/core";
 
 export const Home = () => {
 
@@ -14,8 +15,34 @@ export const Home = () => {
           backgroundColor: '#ffbd59'
         },
         justifyContent: 'center',
-        m: 4
+        m: 2
       };
+
+      const useStyles = makeStyles((theme) => ({
+        navlinks: {
+          marginLeft: theme.spacing(5),
+          display: "flex",
+        },
+       logo: {
+          flexGrow: "1",
+          cursor: "pointer",
+        },
+        link: {
+          textDecoration: "none",
+          color: "white",
+          fontSize: "20px",
+          marginLeft: theme.spacing(0),
+          "&:hover": {
+            color: "yellow",
+            borderBottom: "1px solid white",
+          },
+          loginButton: {
+              color: "#ffbd59"
+          }
+        },
+      }));
+
+      const classes = useStyles();
 
 
     return (
@@ -23,14 +50,16 @@ export const Home = () => {
             <div className="homeTitle">Criptofor Mortgage</div>
             <div className="valueProposition">We connect mortgage companies, consumers and investors, without too much paper work.</div>
             <Box textAlign='center'>
-                <Link to="/apply" >
+                <Link to="/apply" className={classes.link} >
                     <Button variant="contained" sx={boxSX}>
                         Apply
                     </Button>
                 </Link>
-                <Button variant="contained" sx={boxSX}>
-                    Invest
-                </Button>
+                <Link to="/invest" className={classes.link} >
+                    <Button variant="contained" sx={boxSX}>
+                        Invest
+                    </Button>
+                </Link>
             </Box>
 
         </>
