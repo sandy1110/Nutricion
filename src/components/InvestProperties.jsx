@@ -1,26 +1,33 @@
 import { CardProperty } from "./CardProperty"
-import { Carousel } from "./Carousel"
 import "./InvestProperties.css"
 import { images } from '../Helpers/CarouselData'
+import SearchIcon from '@mui/icons-material/Search';
+import { MapComponent } from "./MapComponent";
+import MapImage from '../Assets/MockMap.png'
+
 
 
 export const InvestProperties = () => {
-    // const { title, subtitle, img, id, value, area, capRate, address } = images;
 
-    const datosPropiedades  = images.map((property) => {
-        // return (<h1>{property.id}</h1>)
-        return(<CardProperty key={property.id} propertyData={property}/>)
+    const datosPropiedades = images.map((property) => {
+        return (<CardProperty key={property.id} propertyData={property} />)
     })
 
     return (
-        // <Carousel/>
         <div className="container">
-            <nav>NavBar</nav>
-            <main>Main</main>
+            <nav></nav>
+            <main>
+                <img className="mapImage" src={MapImage}/>
+            </main>
             <div className="sidebar">
+                <h2>where do you want to invest?</h2>
+                <div className="searchBar">
+                    <input/>
+                    <SearchIcon/>
+                </div>
                 {datosPropiedades}
             </div>
-            <footer>Footer</footer>
+            <footer></footer>
         </div>
     )
 }
