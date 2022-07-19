@@ -68,7 +68,7 @@ export const LoanSection = () => {
         <AntTab label="Gifts or Grants" />
       </AntTabs>
       { selectedTab === 0 && <PersonalInformation/>}
-      { selectedTab === 1 && <Apply/>}
+      { selectedTab === 1 && <Contact/>}
       </Box>
   )
 }
