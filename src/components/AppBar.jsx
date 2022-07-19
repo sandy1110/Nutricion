@@ -144,7 +144,7 @@ const ResponsiveAppBar = () => {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 
-            <Link to="/apply" className={classes.link}>
+            <Link to="/about" className={classes.link}>
               <Button
                 key="about"
                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -152,7 +152,7 @@ const ResponsiveAppBar = () => {
                 About
               </Button>
             </Link>
-          <Link to="/invest" className={classes.link}>
+          <Link to="/about" className={classes.link}>
               <Button
                 key="policies"
                 sx={{ my: 2, color: 'white', display: 'block' }}
