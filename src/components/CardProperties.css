@@ -11,12 +11,14 @@
 
 img {
     width: 55%;
+    margin-left: 5px;
 }
 
 .information {
     display: block;
     width: 40%;
     justify-content: space-between;
+    margin-left: 5px;
 }
 
 .mortgageId {

@@ -15,16 +15,18 @@ export const InvestProperties = () => {
 
     return (
         <div className="container">
-            <nav></nav>
-            <main>
-                <img className="mapImage" src={MapImage}/>
-            </main>
-            <div className="sidebar">
+            <nav>
                 <h2>where do you want to invest?</h2>
                 <div className="searchBar">
-                    <input/>
-                    <SearchIcon/>
+                    <input />
+                    <SearchIcon />
                 </div>
+            </nav>
+            <main>
+                {/* have to add map here for next release,   it is hardcoded */}
+                <img className="mapImage" src={MapImage} />
+            </main>
+            <div className="sidebar">
                 {datosPropiedades}
             </div>
             <footer></footer>
