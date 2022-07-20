@@ -3,6 +3,7 @@ import { Box, Tabs, Tab, Typography } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 import { PersonalInformation } from "../forms/PersonalInformation";
 import { Contact } from "../Pages/Contact";
+import { AboutProperty} from "../forms/AboutProperty";
 
 const AntTabs = styled(Tabs)({
   borderBottom: '1px solid #e8e8e8',
@@ -62,10 +63,10 @@ export const DeclarationsSection = () => {
         </Typography>
       </Box>
       <AntTabs value={selectedTab} onChange={handleSelectedTab}>
-        <AntTab label="About this Property" />
-        <AntTab label="About your Finances" />
+        <AntTab label="About this Property"/>
+        <AntTab label="About your Finances"/>
       </AntTabs>
-      { selectedTab === 0 && <PersonalInformation/>}
+      { selectedTab === 0 && <AboutProperty/>}
       { selectedTab === 1 && <Contact/>}
       </Box>
   )
