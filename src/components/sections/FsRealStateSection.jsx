@@ -1,9 +1,8 @@
 import { useState } from "react"
 import { Box, Tabs, Tab, Typography } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
-import { PersonalInformation } from "../forms/PersonalInformation";
-import { Contact } from "../Pages/Contact";
 import { PropertyYouOwn } from "../forms/PropertyYouOwn";
+import { OtherProperties } from "../forms/OtherProperties";
 
 const AntTabs = styled(Tabs)({
   borderBottom: '1px solid #e8e8e8',
@@ -67,7 +66,7 @@ export const FsRealStateSection = () => {
         <AntTab label="Additional Property" />
       </AntTabs>
       { selectedTab === 0 && <PropertyYouOwn/>}
-      { selectedTab === 1 && <Contact/>}
+      { selectedTab === 1 && <OtherProperties/>}
       </Box>
   )
 }
