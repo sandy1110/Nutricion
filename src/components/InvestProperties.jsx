@@ -3,7 +3,6 @@ import "./InvestProperties.css"
 import { images } from '../Helpers/CarouselData'
 import SearchIcon from '@mui/icons-material/Search';
 import { MapComponent } from "./MapComponent";
-import MapImage from '../Assets/MockMap.png'
 
 
 
@@ -23,13 +22,11 @@ export const InvestProperties = () => {
                 </div>
             </nav>
             <main>
-                {/* have to add map here for next release,   it is hardcoded */}
-                <img className="mapImage" src={MapImage} />
+                <MapComponent/>
             </main>
             <div className="sidebar">
                 {datosPropiedades}
             </div>
-            <footer></footer>
         </div>
     )
 }

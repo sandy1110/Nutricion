@@ -1,13 +1,12 @@
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
 
 export const MapComponent = () => {
-    const { isLoaded } = useLoadScript({ googleMapsApiKey: 'AIzaSyCgF_ZSrmQTmONbGUs5Y23EvRLuyJSC1JE' })
+    const Google_Key = process.env.REACT_APP_GOOGLE_API_KEY
+    const { isLoaded } = useLoadScript({ googleMapsApiKey: Google_Key })
 
-    if (!isLoaded) return <div>Loading...</div>
-    return <GoogleMap zoom={10} center={{ lat: 44, lng: -80 }} mapContainerClassName='map-container' ></GoogleMap>
+    if (!isLoaded) return <div className='container'>Loading...</div>
+    return (
+            <GoogleMap zoom={10} center={{ lat: 44, lng: -80 }} mapContainerClassName='container' ></GoogleMap>
+    )
 
 }
-
-// function Mapa() {
-//     return <GoogleMap zoom={10} center={{ lat: 44, lng: -80 }} ></GoogleMap>
-// }
