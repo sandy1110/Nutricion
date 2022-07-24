@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import { LoanAndProperty } from "../forms/LoanAndProperty";
 import { OtherMortgageLoans } from "../forms/OtherMortgageLoans";
 import { RentalIncome } from "../forms/RentalIncome";
+import { GiftsOrGrants } from "../forms/GiftsOrGrants";
 
 const AntTabs = styled(Tabs)({
   borderBottom: '1px solid #e8e8e8',
@@ -71,6 +72,7 @@ export const LoanSection = () => {
       { selectedTab === 0 && <LoanAndProperty/>}
       { selectedTab === 1 && <OtherMortgageLoans/>}
       { selectedTab === 2 && <RentalIncome/>}
+      { selectedTab === 2 && <GiftsOrGrants/>}
       </Box>
   )
 }
