@@ -1,7 +1,22 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField } from '@material-ui/core';
+
+const initialValues={
+
+    creditorName: '',
+    monthlyPay: '',
+    loanAmount: '',
+    creditLimit: '',
+    cName: '',
+    mPay: '',
+    lAmount: '',
+    cLimit: '',
+    name: '',
+    payment: '',
+    loan: '',
+    credit: '',
+}
 
 export const OtherMortgageLoans = () => {
     return(
@@ -10,7 +25,7 @@ export const OtherMortgageLoans = () => {
                 <Box display="flex" flexDirection="column" gridRowGap={10} sx={{p:3, margin:2}}>
                     <TextField fullWidth
                         label="Creditor Name"
-                        name=''
+                        name='creditorName'
                         variant="standard"
                     />
                     <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
@@ -23,19 +38,19 @@ export const OtherMortgageLoans = () => {
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
                         <TextField fullWidth
                             label="Monthly Payment"
-                            name='street'
+                            name='monthlyPay'
                             placeholder='$'
                             variant="standard"
                         />
                         <TextField fullWidth
                             label="Loan Amount / Amount to be Drawn"
-                            name='unit'
+                            name='loanAmount'
                             placeholder='$'
                             variant="standard"
                         />
                         <TextField fullWidth
                             label="Credit limit (if applicable)"
-                            name='unit'
+                            name='creditLimit'
                             placeholder='$'
                             variant="standard"
                         />
@@ -46,7 +61,7 @@ export const OtherMortgageLoans = () => {
                 <Box display="flex" flexDirection="column" gridRowGap={10} sx={{p:3, margin:2}}>
                     <TextField fullWidth
                         label="Creditor Name"
-                        name=''
+                        name='cName'
                         variant="standard"
                     />
                     <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
@@ -59,19 +74,19 @@ export const OtherMortgageLoans = () => {
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
                         <TextField fullWidth
                             label="Monthly Payment"
-                            name='street'
+                            name='mPay'
                             placeholder='$'
                             variant="standard"
                         />
                         <TextField fullWidth
                             label="Loan Amount / Amount to be Drawn"
-                            name='unit'
+                            name='lAmount'
                             placeholder='$'
                             variant="standard"
                         />
                         <TextField fullWidth
                             label="Credit limit (if applicable)"
-                            name='unit'
+                            name='cLimit'
                             placeholder='$'
                             variant="standard"
                         />
@@ -82,7 +97,7 @@ export const OtherMortgageLoans = () => {
                 <Box display="flex" flexDirection="column" gridRowGap={10} sx={{p:3, margin:2}}>
                     <TextField fullWidth
                         label="Creditor Name"
-                        name=''
+                        name='name'
                         variant="standard"
                     />
                     <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
@@ -95,19 +110,19 @@ export const OtherMortgageLoans = () => {
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
                         <TextField fullWidth
                             label="Monthly Payment"
-                            name='street'
+                            name='payment'
                             placeholder='$'
                             variant="standard"
                         />
                         <TextField fullWidth
                             label="Loan Amount / Amount to be Drawn"
-                            name='unit'
+                            name='loan'
                             placeholder='$'
                             variant="standard"
                         />
                         <TextField fullWidth
                             label="Credit limit (if applicable)"
-                            name='unit'
+                            name='credit'
                             placeholder='$'
                             variant="standard"
                         />
