@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { Box, Paper, TextField, Typography } from '@material-ui/core';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
@@ -21,28 +20,6 @@ const initialValues ={
     country:'',
 
 }
-
-/*const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(props, ref) {
-    const { onChange, ...other } = props;
-  
-    return (
-      <NumberFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        thousandSeparator
-        isNumericString
-        prefix="$"
-      />
-    );
-  });*/
 
 export const Liabilities = () => {
     const [values, setValues] =useState(initialValues);
