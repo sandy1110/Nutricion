@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
-import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, InputLabel, MenuItem, Paper, Radio, Select, TextField } from '@material-ui/core';
+import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
+import { Box, Paper, Radio, TextField } from '@material-ui/core';
 
 const initialValues ={
-    name:'',
-    alternateNames:'',
-    age:'',
-    sss:'',
-    citizenship:'',
-    credit:'',
-    maritalStatus:'',
-    otherBorrowes:'',
-    dependents:'',
-    street:'',
-    unit:'',
-    city:'',
-    state:'',
-    zip:'',
-    country:'',
+    
+    type: '', 
+    title: '',
+    credit: '',
+    credit2: '',
+    money: '',
+    credit3: '',
+    credit4:'',
 
 }
 
@@ -64,14 +56,14 @@ export const AboutProperty = () => {
                         <TextField
                             fullWidth
                             label=""
-                            name=''
+                            name='type'
                             onChange={handleInputChange}
                             variant="standard"
                         />
                         <TextField
                             fullWidth
                             label=""
-                            name=''
+                            name='title'
                             onChange={handleInputChange}
                             variant="standard"
                         />
@@ -102,7 +94,7 @@ export const AboutProperty = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
+                            name='credit2'
                             onChange={handleInputChange}
                             >
                             <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
@@ -111,7 +103,7 @@ export const AboutProperty = () => {
                         <TextField
                             fullWidth
                             label="$"
-                            name=''
+                            name='money'
                             onChange={handleInputChange}
                             placeholder="$"
                             variant="standard"
@@ -129,7 +121,7 @@ export const AboutProperty = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
+                            name='credit3'
                             onChange={handleInputChange}
                             >
                             <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
@@ -146,7 +138,7 @@ export const AboutProperty = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
+                            name='credit4'
                             onChange={handleInputChange}
                             >
                             <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />

@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField, Typography } from '@material-ui/core';
+
+const initialValues ={
+
+    nationality: '',
+    print: '',
+    print2: '',
+    print3: '',
+}
 
 export const DemographicInformation = () => {
     return(
@@ -82,7 +89,7 @@ export const DemographicInformation = () => {
                             <TextField
                             fullWidth
                             label=""
-                            name='print'
+                            name='print2'
                             placeholder="For example, Hmong, Laotian, Thai, Pakistani, and so on"
                             variant="standard"
                         />  
@@ -99,7 +106,7 @@ export const DemographicInformation = () => {
                             <TextField
                                 fullWidth
                                 label=""
-                                name='print'
+                                name='print3'
                                 placeholder="For example: Fijan, Tongan, and so on"
                                 variant="standard"
                             />

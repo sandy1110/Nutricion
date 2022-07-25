@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
-import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, InputLabel, MenuItem, Paper, Radio, Select, TextField } from '@material-ui/core';
+import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
+import { Box, Paper, Radio } from '@material-ui/core';
 
 const initialValues ={
-    name:'',
-    alternateNames:'',
-    age:'',
-    sss:'',
-    citizenship:'',
-    credit:'',
-    maritalStatus:'',
-    otherBorrowes:'',
-    dependents:'',
-    street:'',
-    unit:'',
-    city:'',
-    state:'',
-    zip:'',
-    country:'',
 
+    value1: '',
+    value2: '',
+    value3: '',
+    value4: '',
+    value5: '',
+    value6: '',
+    value7: '',
+    value8: '',
 }
 
 export const AboutFinances = () => {
@@ -40,7 +32,7 @@ export const AboutFinances = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
+                            name='value1'
                             onChange={handleInputChange}
                             >
                             <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
@@ -55,7 +47,7 @@ export const AboutFinances = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
+                            name='value2'
                             onChange={handleInputChange}
                             >
                             <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
@@ -70,7 +62,7 @@ export const AboutFinances = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
+                            name='value3'
                             onChange={handleInputChange}
                             >
                             <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
@@ -85,7 +77,7 @@ export const AboutFinances = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
+                            name='value4'
                             onChange={handleInputChange}
                             >
                             <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
@@ -100,7 +92,7 @@ export const AboutFinances = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
+                            name='value5'
                             onChange={handleInputChange}
                             >
                             <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
@@ -115,7 +107,7 @@ export const AboutFinances = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
+                            name='value6'
                             onChange={handleInputChange}
                             >
                             <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
@@ -130,7 +122,7 @@ export const AboutFinances = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
+                            name='value7'
                             onChange={handleInputChange}
                             >
                             <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
@@ -155,7 +147,7 @@ export const AboutFinances = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
+                            name='value8'
                             onChange={handleInputChange}
                             >
                             <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
