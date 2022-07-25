@@ -1,7 +1,20 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField, Typography } from '@material-ui/core';
+
+const initialValues={
+
+    loanAmount: '',
+    loanPurpose: '',
+    street: '',
+    unit: '',
+    city: '',
+    state: '',
+    zip: '',
+    country: '',
+    street2: '',
+    unit2: '',
+}
 
 export const LoanAndProperty = () => {
     return(
@@ -11,7 +24,7 @@ export const LoanAndProperty = () => {
                     <Box display="flex" flexDirection= "row" gridColumnGap={15} alignItems="center" sx={{py:2}}>
                         <TextField 
                             label="Loan Amount"
-                            name=''
+                            name='loanAmount'
                             variant="standard"
                         />
                         <FormLabel>
@@ -24,7 +37,7 @@ export const LoanAndProperty = () => {
                         </RadioGroup>
                         <TextField 
                             label=""
-                            name=''
+                            name='loanPurpose'
                             variant="standard"
                         />
                     </Box>
