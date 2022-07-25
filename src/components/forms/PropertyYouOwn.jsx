@@ -1,48 +1,28 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { FormControl, FormControlLabel, FormLabel, RadioGroup, Typography } from '@mui/material';
 import { Box, InputLabel, MenuItem, Paper, Radio, Select, TextField } from '@material-ui/core';
 
 const initialValues ={
-    name:'',
-    alternateNames:'',
-    age:'',
-    sss:'',
-    citizenship:'',
-    credit:'',
-    maritalStatus:'',
-    otherBorrowes:'',
-    dependents:'',
+   
+    notProperty:'',
     street:'',
     unit:'',
     city:'',
     state:'',
     zip:'',
     country:'',
+    status:'',
+    occupancy:'',
+    taxes:'',
+    rentalIncome:'',
+    creditor:'',
+    accountNum:'',
+    type:'',
+    monthlyMortgage:'',
+    unpaidBalance:'',
+    creditLimit:'',
 
 }
-
-/*const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(props, ref) {
-    const { onChange, ...other } = props;
-  
-    return (
-      <NumberFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        thousandSeparator
-        isNumericString
-        prefix="$"
-      />
-    );
-  });*/
 
 export const PropertyYouOwn = () => {
     const [values, setValues] =useState(initialValues);
