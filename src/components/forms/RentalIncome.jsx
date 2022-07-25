@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField } from '@material-ui/core';
+
+const initialValues={
+
+    amount:'',
+    unit:'',
+}
 
 export const RentalIncome = () => {
     return(
@@ -22,7 +27,7 @@ export const RentalIncome = () => {
                         </FormLabel>
                         <TextField 
                             label="Amount"
-                            name='unit'
+                            name='amount'
                             placeholder='$'
                             variant="standard"
                         />
