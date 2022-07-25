@@ -1,48 +1,47 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { FormControl, FormControlLabel, FormLabel, RadioGroup, Typography } from '@mui/material';
 import { Box, InputLabel, MenuItem, Paper, Radio, Select, TextField } from '@material-ui/core';
 
 const initialValues ={
-    name:'',
-    alternateNames:'',
-    age:'',
-    sss:'',
-    citizenship:'',
-    credit:'',
-    maritalStatus:'',
-    otherBorrowes:'',
-    dependents:'',
-    street:'',
-    unit:'',
-    city:'',
-    state:'',
-    zip:'',
-    country:'',
-
+   
+    notProperty: '',
+    street: '',
+    unit: '',
+    city: '',
+    state: '',
+    zip: '',
+    country: '',
+    status: '',
+    occupancy: '',
+    taxes: '',
+    rentalIncome: '',
+    creditor: '',
+    accountNum: '',
+    type: '',
+    monthlyMortgage: '',
+    unpaidBalance: '',
+    notProperty2: '',
+    creditLimit: '',
+    street1: '',
+    unit1: '',
+    city1: '',
+    state1: '',
+    zip1: '',
+    country1: '',
+    status1: '',
+    occupancy1: '',
+    taxes1: '',
+    rentalIncome1: '',
+    creditor1: '',
+    accountNum1: '',
+    type1: '',
+    monthlyMortgage1: '',
+    unpaidBalance1: '',
+    notProperty3: '',
+    creditLimit2: '',
 }
 
-/*const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(props, ref) {
-    const { onChange, ...other } = props;
-  
-    return (
-      <NumberFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        thousandSeparator
-        isNumericString
-        prefix="$"
-      />
-    );
-  });*/
+
 
 export const OtherProperties = () => {
     const [values, setValues] =useState(initialValues);
@@ -198,7 +197,7 @@ export const OtherProperties = () => {
                         placeholder="$"
                     />
                     <InputLabel sx={{width:"20%"}}><em>To be paid off at or before closing</em></InputLabel>
-                    <RadioGroup name='notProperty' onChange={handleInputChange}>
+                    <RadioGroup name='notProperty2' onChange={handleInputChange}>
                         <FormControlLabel value="before" control={<Radio size='small'/>} />
                     </RadioGroup>
                     <TextField fullWidth
@@ -219,12 +218,12 @@ export const OtherProperties = () => {
                         fullWidth
                         variant="standard"
                         label="Street"
-                        name='street'
+                        name='street1'
                         onChange={handleInputChange}
                     />
                     <TextField
                         label="Unit #"
-                        name='unit'
+                        name='unit1'
                         onChange={handleInputChange}
                         variant="standard"
                     />
@@ -233,26 +232,26 @@ export const OtherProperties = () => {
                     <TextField
                         fullWidth
                         label="City"
-                        name='city'
+                        name='city1'
                         onChange={handleInputChange}
                         variant="standard"
                     />
                     <TextField
                         label="State"
-                        name='state'
+                        name='state1'
                         onChange={handleInputChange}
                         variant="standard"
                     />
                     <TextField
                         label="Zip"
-                        name='zip'
+                        name='zip1'
                         onChange={handleInputChange}
                         variant="standard"
                         type="number"
                     />
                     <TextField
                         label="Country"
-                        name='country'
+                        name='country1'
                         onChange={handleInputChange}
                         variant="standard"
                     />
@@ -262,7 +261,7 @@ export const OtherProperties = () => {
                         <InputLabel>Status</InputLabel>
                         <Select fullWidth
                             label="Status"
-                            name='status'
+                            name='status1'
                             onChange={handleInputChange}
                         >
                             <MenuItem value={1}>Sold</MenuItem>
@@ -274,7 +273,7 @@ export const OtherProperties = () => {
                         <InputLabel>Intended Occupancy</InputLabel>
                         <Select fullWidth
                             label="Occupancy"
-                            name='occupancy'
+                            name='occupancy1'
                             onChange={handleInputChange}
                         >
                             <MenuItem value={1}>Investment</MenuItem>
@@ -285,7 +284,7 @@ export const OtherProperties = () => {
                     </Box>
                     <TextField fullWidth
                         label="Monthly Insurance, Taxes, etc."
-                        name='taxes'
+                        name='taxes1'
                         onChange={handleInputChange}
                         variant="standard"
                     />
@@ -294,7 +293,7 @@ export const OtherProperties = () => {
                 <Box display="flex" flexDirection="row" gridColumnGap={20} gridRowGap={20}>
                     <TextField fullWidth
                         label="Monthly Rental Income"
-                        name='rentalIncome'
+                        name='rentalIncome1'
                         onChange={handleInputChange}
                         variant="standard"
                         placeholder="$"
@@ -304,20 +303,20 @@ export const OtherProperties = () => {
                 <Box display="flex" flexDirection="row" gridColumnGap={20}>
                     <TextField fullWidth
                         label="Creditor Name"
-                        name='creditor'
+                        name='creditor1'
                         onChange={handleInputChange}
                         variant="standard"
                     />
                     <TextField fullWidth
                         label="Account Number"
-                        name='accountNum'
+                        name='accountNum1'
                         onChange={handleInputChange}
                         variant="standard"
                     />
                     <InputLabel>Type</InputLabel>
                     <Select fullWidth
                         label="Type"
-                        name='type'
+                        name='type1'
                         onChange={handleInputChange}
                     >
                         <MenuItem value={1}>FHA</MenuItem>
@@ -330,14 +329,14 @@ export const OtherProperties = () => {
                 <Box display="flex" flexDirection="row" gridColumnGap={20}>
                     <TextField fullWidth
                         label="Monthly Mortgage Payment"
-                        name='monthlyMortgage'
+                        name='monthlyMortgage1'
                         onChange={handleInputChange}
                         variant="standard"
                         placeholder="$"
                     />
                     <TextField fullWidth
                         label="Unpaid Balance"
-                        name='unpaidBalance'
+                        name='unpaidBalance1'
                         onChange={handleInputChange}
                         variant="standard"
                         placeholder="$"
@@ -348,7 +347,7 @@ export const OtherProperties = () => {
                     </RadioGroup>
                     <TextField fullWidth
                         label="Credit Limit"
-                        name='creditLimit'
+                        name='creditLimit2'
                         onChange={handleInputChange}
                         variant="standard"
                         placeholder="$"
