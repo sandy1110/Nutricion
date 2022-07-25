@@ -1,48 +1,71 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField } from '@material-ui/core';
 
 const initialValues ={
-    name:'',
-    alternateNames:'',
-    age:'',
-    sss:'',
-    citizenship:'',
-    credit:'',
-    maritalStatus:'',
-    otherBorrowes:'',
-    dependents:'',
-    street:'',
-    unit:'',
-    city:'',
-    state:'',
-    zip:'',
-    country:'',
+    
+    previousIncome: '',
+    previousBussinesOwner: '',
+    previousEndDate: '',
+    previousStartDate: '',
+    previousPosition: '',
+    previousCountry: '',
+    previousZip: '',
+    previousState: '',
+    previousCity: '',
+    previousUnit: '',
+    previousStreet: '',
+    previousEmployer: '',
+
+    additionalTotal: '',
+    dditionalOther: '',
+    additionalmilitaryEntitlements: '',
+    aditionalCommission: '',
+    additionalBonus: '',
+    additionalOvertime: '',
+    additionalBase: '',
+    additionalMonthlyIncome: '',
+    additionalBusinessOwner: '',
+    additionalEmployedByFamily: '',
+    additionalMonths: '',
+    additionalYears: '',
+    additionalStartDate: '',
+    additionalPosition: '',
+    additionalCountry: '',
+    additionalZip: '',
+    additionalState: '',
+    additionalCity: '',
+    additionalUnit: '',
+    additionalStreet: '',
+    additionalPhone: '',
+    additionalEmployer: '',
+
+
+    total: '',
+    other: '',
+    militaryEntitlements: '',
+    commission: '',
+    bonus: '',
+    overtime: '',
+    base: '',
+    monthlyIncome: '',
+    businessOwner: '',
+    employedByFamily: '',
+    months: '',
+    years: '',
+    startDate: '',
+    position: '',
+    country: '',
+    zip: '',
+    state: '',
+    city: '',
+    unit: '',
+    street: '',
+    phone: '',
+    employer: '',
 
 }
 
-/*const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(props, ref) {
-    const { onChange, ...other } = props;
-  
-    return (
-      <NumberFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        thousandSeparator
-        isNumericString
-        prefix="$"
-      />
-    );
-  });*/
 
 export const EmploymentAndIncome = () => {
     const [values, setValues] =useState(initialValues);
@@ -128,7 +151,7 @@ export const EmploymentAndIncome = () => {
                         <TextField
                             fullWidth
                             label="Start Date"
-                            name='position'
+                            name='startDate'
                             onChange={handleInputChange}
                             variant="standard"
                             placeholder="___ / ___ / _____"
@@ -139,10 +162,12 @@ export const EmploymentAndIncome = () => {
                         <TextField
                             label="Years"
                             variant="standard"
+                            name="years"
                         />
                         <TextField
                             label="Months"
                             variant="standard"
+                            name="months"
                         />
                     </Box>
                     <FormControl sx={{py:3}}>
@@ -239,12 +264,12 @@ export const EmploymentAndIncome = () => {
                             fullWidth
                             variant="standard"
                             label="Employer or Business Name"
-                            name='employer'
+                            name='additionalEmployer'
                             onChange={handleInputChange}
                         />
                         <TextField
                             label="Phone"
-                            name='phone'
+                            name='additionalPhone'
                             onChange={handleInputChange}
                             placeholder="(___)___-_______"
                             variant="standard"
@@ -255,12 +280,12 @@ export const EmploymentAndIncome = () => {
                             fullWidth
                             variant="standard"
                             label="Street"
-                            name='street'
+                            name='additionalStreet'
                             onChange={handleInputChange}
                         />
                         <TextField
                             label="Unit #"
-                            name='unit'
+                            name='additionalUnit'
                             onChange={handleInputChange}
                             variant="standard"
                         />
@@ -269,26 +294,26 @@ export const EmploymentAndIncome = () => {
                         <TextField
                             fullWidth
                             label="City"
-                            name='city'
+                            name='additionalCity'
                             onChange={handleInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="State"
-                            name='state'
+                            name='additionalState'
                             onChange={handleInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="Zip"
-                            name='zip'
+                            name='additionalZip'
                             onChange={handleInputChange}
                             variant="standard"
                             type="number"
                         />
                         <TextField
                             label="Country"
-                            name='country'
+                            name='additionalCountry'
                             onChange={handleInputChange}
                             variant="standard"
                         />
@@ -297,14 +322,14 @@ export const EmploymentAndIncome = () => {
                         <TextField
                             fullWidth
                             label="Position or Title"
-                            name='position'
+                            name='additionalPosition'
                             onChange={handleInputChange}
                             variant="standard"
                         />
                         <TextField
                             fullWidth
                             label="Start Date"
-                            name='position'
+                            name='additionalStartDate'
                             onChange={handleInputChange}
                             variant="standard"
                             placeholder="___ / ___ / _____"
@@ -315,14 +340,16 @@ export const EmploymentAndIncome = () => {
                         <TextField
                             label="Years"
                             variant="standard"
+                            name="additionalYears"
                         />
                         <TextField
                             label="Months"
                             variant="standard"
+                            name="additionalMonths"
                         />
                     </Box>
                     <FormControl sx={{py:3}}>
-                        <RadioGroup name='employedByFamily' onChange={handleInputChange}>
+                        <RadioGroup name='additionalEmployedByFamily' onChange={handleInputChange}>
                             <FormControlLabel value="yes" 
                                 control={<Radio size='small'/>} 
                                 label="I'm employed by a family member, property seller, real state agent, or other party transaction." />
@@ -331,14 +358,14 @@ export const EmploymentAndIncome = () => {
                     <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
                         <FormControl>
                             <FormLabel>Check if you are the Business Owner or Self-Employed</FormLabel>
-                            <RadioGroup name='businessOwner' onChange={handleInputChange}>
+                            <RadioGroup name='additionalBusinessOwner' onChange={handleInputChange}>
                                 <FormControlLabel value="less25" control={<Radio size='small'/>} label="I have an ownership share of less than 25%." />
                                 <FormControlLabel value="more25" control={<Radio size='small'/>} label="I have an ownership share of 25% or more" />
                             </RadioGroup>
                         </FormControl>
                         <TextField
                             label="Monthly Income (or Loss)"
-                            name='monthlyIncome'
+                            name='additionalMonthlyIncome'
                             onChange={handleInputChange}
                             variant="standard"
                             placeholder="___ / ___ / _____"
@@ -350,7 +377,7 @@ export const EmploymentAndIncome = () => {
                     <TextField
                         fullWidth
                         label="Base"
-                        name='base'
+                        name='additionalBase'
                         onChange={handleInputChange}
                         placeholder="$_________ /month"
                         variant="standard"
@@ -358,7 +385,7 @@ export const EmploymentAndIncome = () => {
                     <TextField
                         fullWidth
                         label="Overtime"
-                        name='overtime'
+                        name='additionalOvertime'
                         onChange={handleInputChange}
                         placeholder="$_________ /month"
                         variant="standard"
@@ -366,7 +393,7 @@ export const EmploymentAndIncome = () => {
                     <TextField
                         fullWidth
                         label="Bonus"
-                        name='bonus'
+                        name='additionalBonus'
                         onChange={handleInputChange}
                         placeholder="$_________ /month"
                         variant="standard"
@@ -374,7 +401,7 @@ export const EmploymentAndIncome = () => {
                     <TextField
                         fullWidth
                         label="Commission"
-                        name='commission'
+                        name='aditionalCommission'
                         onChange={handleInputChange}
                         placeholder="$_________ /month"
                         variant="standard"
@@ -382,7 +409,7 @@ export const EmploymentAndIncome = () => {
                     <TextField
                         fullWidth
                         label="Military Entitlements"
-                        name='militaryEntitlements'
+                        name='additionalmilitaryEntitlements'
                         onChange={handleInputChange}
                         placeholder="$_________ /month"
                         variant="standard"
@@ -390,7 +417,7 @@ export const EmploymentAndIncome = () => {
                     <TextField
                         fullWidth
                         label="Other"
-                        name='other'
+                        name='additionalOther'
                         onChange={handleInputChange}
                         placeholder="$_________ /month"
                         variant="standard"
@@ -398,7 +425,7 @@ export const EmploymentAndIncome = () => {
                     <TextField
                         fullWidth
                         label="TOTAL"
-                        name='total'
+                        name='additionalTotal'
                         onChange={handleInputChange}
                         placeholder="$_________ /month"
                         variant="standard"
@@ -414,7 +441,7 @@ export const EmploymentAndIncome = () => {
                         fullWidth
                         variant="standard"
                         label="Employer or Business Name"
-                        name='employer'
+                        name='previousEmployer' 
                         onChange={handleInputChange}
                     />
                     <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -422,12 +449,12 @@ export const EmploymentAndIncome = () => {
                             fullWidth
                             variant="standard"
                             label="Street"
-                            name='street'
+                            name='previousStreet'
                             onChange={handleInputChange}
                         />
                         <TextField
                             label="Unit #"
-                            name='unit'
+                            name='previousUnit'
                             onChange={handleInputChange}
                             variant="standard"
                         />
@@ -436,26 +463,26 @@ export const EmploymentAndIncome = () => {
                         <TextField
                             fullWidth
                             label="City"
-                            name='city'
+                            name='previousCity'
                             onChange={handleInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="State"
-                            name='state'
+                            name='previousState'
                             onChange={handleInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="Zip"
-                            name='zip'
+                            name='previousZip'
                             onChange={handleInputChange}
                             variant="standard"
                             type="number"
                         />
                         <TextField
                             label="Country"
-                            name='country'
+                            name='previousCountry'
                             onChange={handleInputChange}
                             variant="standard"
                         />
@@ -464,14 +491,14 @@ export const EmploymentAndIncome = () => {
                         <TextField
                             fullWidth
                             label="Position or Title"
-                            name='position'
+                            name='previousPosition'
                             onChange={handleInputChange}
                             variant="standard"
                         />
                         <TextField
                             fullWidth
                             label="Start Date"
-                            name='startDate'
+                            name='previousStartDate'
                             onChange={handleInputChange}
                             variant="standard"
                             placeholder="___ / ___ / _____"
@@ -479,14 +506,14 @@ export const EmploymentAndIncome = () => {
                         <TextField
                             fullWidth
                             label="End Date"
-                            name='endDate'
+                            name='previousEndDate'
                             onChange={handleInputChange}
                             variant="standard"
                             placeholder="___ / ___ / _____"
                         />
                     </Box>
                     <FormControl sx={{py:3}}>
-                        <RadioGroup name='bussinesOwner' onChange={handleInputChange}>
+                        <RadioGroup name='previousBussinesOwner' onChange={handleInputChange}>
                             <FormControlLabel value="yes" 
                                 control={<Radio size='small'/>} 
                                 label="Check if you were the Business Owner or Self-Employed." />
@@ -498,7 +525,7 @@ export const EmploymentAndIncome = () => {
                     <TextField
                         fullWidth
                         label="Income"
-                        name='total'
+                        name='previousIncome'
                         onChange={handleInputChange}
                         placeholder="$_________ /month"
                         variant="standard"
