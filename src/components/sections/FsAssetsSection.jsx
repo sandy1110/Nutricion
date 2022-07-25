@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Box, Tabs, Tab, Typography } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 import { Assets } from "../forms/Assets";
-import { Apply } from "../Pages/Apply";
+import { Liabilities } from "../forms/Liabilities";
 
 const AntTabs = styled(Tabs)({
   borderBottom: '1px solid #e8e8e8',
@@ -67,7 +67,7 @@ export const FsAssetsSection = () => {
         <AntTab label="Liabilities" />
       </AntTabs>
       { selectedTab === 0 && <Assets/>}
-      { selectedTab === 1 && <Apply/>}
+      { selectedTab === 1 && <Liabilities/>}
       </Box>
   )
 }

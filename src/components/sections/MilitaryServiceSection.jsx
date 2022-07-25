@@ -1,8 +1,7 @@
 import { useState } from "react"
 import { Box, Tabs, Tab, Typography } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
-import { PersonalInformation } from "../forms/PersonalInformation";
-import { Apply } from "../Pages/Apply";
+import { MilitaryService } from "../forms/MilitaryService";
 
 const AntTabs = styled(Tabs)({
   borderBottom: '1px solid #e8e8e8',
@@ -60,12 +59,7 @@ export const MilitaryServiceSection = () => {
             This section asks questions about you (or your deceased spouse's) military service.
         </Typography>
       </Box>
-      <AntTabs value={selectedTab} onChange={handleSelectedTab}>
-        <AntTab label="Personal Information" />
-        <AntTab label="Employment and Income" />
-      </AntTabs>
-      { selectedTab === 0 && <PersonalInformation/>}
-      { selectedTab === 1 && <Apply/>}
-      </Box>
+      <MilitaryService/>
+    </Box>
   )
 }
