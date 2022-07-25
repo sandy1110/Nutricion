@@ -72,7 +72,7 @@ export const LoanSection = () => {
       { selectedTab === 0 && <LoanAndProperty/>}
       { selectedTab === 1 && <OtherMortgageLoans/>}
       { selectedTab === 2 && <RentalIncome/>}
-      { selectedTab === 2 && <GiftsOrGrants/>}
+      { selectedTab === 3 && <GiftsOrGrants/>}
       </Box>
   )
 }
