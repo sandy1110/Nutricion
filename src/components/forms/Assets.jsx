@@ -46,6 +46,12 @@ const initialValues ={
 
 export const Assets = () => {
     const [values, setValues] =useState(initialValues);
+    const [type, setType] = React.useState('');
+    const [select, setSelect] = React.useState('');
+    const [asset, setAsset] = React.useState('');
+    const [credit, setCredit] = React.useState('');
+   
+   
 
     const handleInputChange = event =>{
         const [name, value] = event.target;
@@ -53,6 +59,23 @@ export const Assets = () => {
             [name].value
         ]);
     }
+
+    const handleTypeChange = (event) => {
+        setType(event.target.value);
+    };
+
+    const handleSelectChange = (event) => {
+        setSelect(event.target.value);
+    };
+
+    const handleAssetChange = (event) => {
+        setAsset(event.target.value);
+    };
+       
+    const handleCreditChange = (event) => {
+        setCredit(event.target.value);
+    };
+
     return (
         <Box display="flex" flexDirection="column" gridRowGap={25}>
             <Paper sx={{backgroundColor:"black"}}>
@@ -68,7 +91,8 @@ export const Assets = () => {
                             <Select fullWidth
                             label="Select Type"
                             name='type'
-                            onChange={handleInputChange}
+                            value={type}
+                            onChange={handleTypeChange}
                             >
                             <MenuItem value={1}>Checking</MenuItem>
                             <MenuItem value={2}>Savings</MenuItem>
@@ -122,8 +146,9 @@ export const Assets = () => {
                             <InputLabel>Select Type</InputLabel>
                             <Select fullWidth
                             label="Select Type"
-                            name='type'
-                            onChange={handleInputChange}
+                            name='select'
+                            value={select}
+                            onChange={handleSelectChange}
                             >
                             <MenuItem value={1}>Asset</MenuItem>
                             <MenuItem value={2}>Credit</MenuItem>
@@ -133,9 +158,10 @@ export const Assets = () => {
                     <Box display="flex" flexDirection="row" gridColumnGap={20}>
                         <FormControl variant="standard" fullWidth>
                         <InputLabel>Asset Type</InputLabel>
-                            <Select
+                            <Select 
                             name='assetType'
-                            onChange={handleInputChange}
+                            value={asset}
+                            onChange={handleAssetChange}
                             >
                             <MenuItem value={1}>Proceeds from Real Estate Property to be sold on or before closing</MenuItem>
                             <MenuItem value={2}>Proceeds from Sale of Non-Real Estate Asset</MenuItem>
@@ -144,21 +170,22 @@ export const Assets = () => {
                             <MenuItem value={5}>Other</MenuItem>
                             </Select>
                         </FormControl>
-                        <FormControl variant="standard" fullWidth>
-                        <InputLabel>Credit Type</InputLabel>
-                            <Select
-                            name='assetType'
-                            onChange={handleInputChange}
-                            >
-                            <MenuItem value={1}>Earnest Money</MenuItem>
-                            <MenuItem value={2}>Employer Assistance</MenuItem>
-                            <MenuItem value={3}>Lot Equity</MenuItem>
-                            <MenuItem value={4}>Relocation Funds</MenuItem>
-                            <MenuItem value={5}>Rent Credit</MenuItem>
-                            <MenuItem value={6}>Sweat Equity</MenuItem>
-                            <MenuItem value={7}>Trade Equity</MenuItem>
-                            </Select>
-                        </FormControl>
+                            <FormControl variant="standard" fullWidth>
+                            <InputLabel>Credit Type</InputLabel>
+                                <Select
+                                name='assetType'
+                                value={credit}
+                                onChange={handleCreditChange}
+                                >
+                                <MenuItem value={1}>Earnest Money</MenuItem>
+                                <MenuItem value={2}>Employer Assistance</MenuItem>
+                                <MenuItem value={3}>Lot Equity</MenuItem>
+                                <MenuItem value={4}>Relocation Funds</MenuItem>
+                                <MenuItem value={5}>Rent Credit</MenuItem>
+                                <MenuItem value={6}>Sweat Equity</MenuItem>
+                                <MenuItem value={7}>Trade Equity</MenuItem>
+                                </Select>
+                            </FormControl>
                     </Box> 
                     <Box display="flex" sx={{p:2, margin:1}} justifyContent="flex-end" gridColumnGap={10}>
                         <TextField
