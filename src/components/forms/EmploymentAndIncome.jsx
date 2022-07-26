@@ -165,7 +165,6 @@ export const EmploymentAndIncome = () => {
                             name='monthlyIncome'
                             onChange={handleInputChange}
                             variant="standard"
-                            placeholder="___ / ___ / _____"
                         />
                     </Box>
                 </Box>
@@ -341,7 +340,6 @@ export const EmploymentAndIncome = () => {
                             name='monthlyIncome'
                             onChange={handleInputChange}
                             variant="standard"
-                            placeholder="___ / ___ / _____"
                         />
                     </Box>
                 </Box>
