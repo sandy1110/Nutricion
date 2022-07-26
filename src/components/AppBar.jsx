@@ -9,7 +9,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
-import criptoforLogo from '../assets/criptofor_logo.png';
+import criptoforLogo from '../Assets/criptofor_logo.png';
 import { Link } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core";
 import { useMoralis } from "react-moralis";
