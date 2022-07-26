@@ -1,6 +1,6 @@
 import { CardProperty } from "./CardProperty"
 import "./InvestProperties.css"
-import { images } from '../Helpers/CarouselData'
+import { images } from '../helpers/CarouselData'
 import SearchIcon from '@mui/icons-material/Search';
 import { MapComponent } from "./MapComponent";
 
