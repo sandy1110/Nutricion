@@ -169,21 +169,12 @@ export const Acknowledgments = () => {
                                 (g)  other actions permissible under applicable law.
                             </ul>
                         </Typography>              
-                    </Box>        
+                    </Box>
                 </Box>
-                <Box display="flex" flexDirection>
-                    <Box sx={{p:2, margin:2, width:"80%"}}>
-                        <RadioGroup row>
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="I have read and I accept the terms and conditions on this document." />
-                        </RadioGroup>
-                    </Box>
-                    <Box sx={{p:2, margin:2, width:"20%"}}>
-                        <TextField  
-                            variant="standard"
-                            label="Date (mm/dd/yyyy)"
-                            name='date'
-                        />
-                    </Box>
+                <Box sx={{p:2, margin:2}}>
+                    <RadioGroup row>
+                        <FormControlLabel value="individual" control={<Radio size='small'/>} label="I hereby accept the Terms and Conditions, Acknoledgements and Agreements." />
+                    </RadioGroup>
                 </Box>
                 {/*<Box display="flex" flexDirection>
                     <Box sx={{p:2, margin:2, width:"80%"}}>
