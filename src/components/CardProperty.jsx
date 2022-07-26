@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Card, CardContent, Typography, CardActions, Button, CardMedia } from "@mui/material"
-import { images } from '../Helpers/CarouselData'
+import { images } from '../helpers/CarouselData'
 import "./CardProperties.css"
 
 export const CardProperty = ({ propertyData }) => {
