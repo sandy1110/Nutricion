@@ -24,6 +24,41 @@ const initialValues ={
 
 export const AboutProperty = () => {
     const [values, setValues] =useState(initialValues);
+    const [primaryResidence, setPrimaryResidence] =useState(initialValues);
+    const [ownershipInterest, setOwnershipInterest] =useState(initialValues);
+    const [familyRelationship, setFamilyRelationship] =useState(initialValues);
+    const [borrowMoney, setBorrowMoney] =useState(initialValues);
+    const [mortgage, setMortgage] =useState(initialValues);
+    const [credit, setCredit] =useState(initialValues);
+    const [lien, setLien] =useState(initialValues);
+
+    const handlePrimaryResidenceChange = (event) => {
+        setPrimaryResidence(event.target.value);
+    };
+
+    const handleOwnershipInterestChange = (event) => {
+        setOwnershipInterest(event.target.value);
+    };
+
+    const handleFamilyRelationshipChange = (event) => {
+        setFamilyRelationship(event.target.value);
+    };
+
+    const handleBorrowMoney = (event) => {
+        setBorrowMoney(event.target.value);
+    };
+
+    const handleMortgageChange = (event) => {
+        setMortgage(event.target.value);
+    };
+
+    const handleCredit = (event) => {
+        setCredit(event.target.value);
+    };
+
+    const handleLienChange = (event) => {
+        setLien(event.target.value);
+    };
 
     const handleInputChange = event =>{
         const [name, value] = event.target;
@@ -34,13 +69,37 @@ export const AboutProperty = () => {
     return (
         <Box display="flex" flexDirection="column" gridRowGap={10}>
             <Paper sx={{backgroundColor:"black"}}>
-            <Box display="flex" flexDirection="row">
+                <Box display="flex" flexDirection="row">
+                    <Box sx={{p:2, margin:2, width:"85%"}}>
+                        <FormLabel> Will you occupy the property as your primary residence? </FormLabel>
+                    </Box>
+                    <Box sx={{width:"15%"}}>       
+                        <RadioGroup row
+                            name='primaryResidence'
+                            value={primaryResidence}
+                            onChange={handlePrimaryResidenceChange}
+                            >
+                            <FormControlLabel value="yes" checked={primaryResidence=="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={primaryResidence=="no"} control={<Radio size='small'/>} label="No" />
+                        </RadioGroup>
+                    </Box> 
                     <Box sx={{p:2, margin:2, width:"85%"}}>
                         <FormLabel>
-                            Will you occupy the property as your primary residence?
-                            <br></br>
                             If YES, have you had an ownership interest in another property in the last three years?
-                            <br></br>
+                        </FormLabel>
+                    </Box>
+                    <Box sx={{width:"15%"}}>       
+                        <RadioGroup row
+                            name='ownershipInterest'
+                            value={ownershipInterest}
+                            onChange={handleOwnershipInterestChange}
+                            >
+                            <FormControlLabel value="yes" checked={ownershipInterest=="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={ownershipInterest=="no"} control={<Radio size='small'/>} label="No" />
+                        </RadioGroup> 
+                    </Box> 
+                    <Box sx={{p:2, margin:2, width:"85%"}}>
+                        <FormLabel>
                             If YES, complete (1) and (2) below:
                             <br></br>
                             <ul>
@@ -50,17 +109,7 @@ export const AboutProperty = () => {
                             </ul>
                         </FormLabel>
                     </Box>
-                    <Box sx={{width:"15%"}}>       
-                        <RadioGroup row
-                            name='credit'
-                            onChange={handleInputChange}
-                            >
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="joint" control={<Radio size='small'/>} label="No" />
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="joint" control={<Radio size='small'/>} label="No" />
-                        </RadioGroup> 
-
+                    <Box sx={{width:"15%"}}>   
                         <TextField
                             fullWidth
                             label=""
@@ -84,11 +133,12 @@ export const AboutProperty = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
-                            onChange={handleInputChange}
+                            name='familyRelationship'
+                            value={familyRelationship}
+                            onChange={handleFamilyRelationshipChange}
                             >
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="joint" control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={familyRelationship=="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={familyRelationship=="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -102,11 +152,12 @@ export const AboutProperty = () => {
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
-                            onChange={handleInputChange}
+                            name='borrowMoney'
+                            value={borrowMoney}
+                            onChange={handleBorrowMoney}
                             >
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="joint" control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={borrowMoney=="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={borrowMoney=="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                         <TextField
                             fullWidth
@@ -118,39 +169,56 @@ export const AboutProperty = () => {
                         />  
                     </Box> 
                 </Box>
-
                 <Box display="flex" flexDirection="row">
                     <Box sx={{p:2, margin:2, width:"85%"}}>
                     <FormLabel> 
-                        (1) Have you or will you be applying for a mortgage loan on another property (not the property securing this loan) on or before closing this transaction that is not disclosed on this loan application?
-                        <br></br>
-                        (2) Have you or will you be applying for any new credit (e.g., installment loan, credit card, etc.) on or before closing this loan that is not disclosed on this applicattion?
+                        (1) Have you or will you be applying for a mortgage loan on another property 
+                        (not the property securing this loan) on or before closing this transaction that is not disclosed on this loan application?
+                    </FormLabel>
+                    </Box>
+                    <Box sx={{width:"15%"}}>       
+                        <RadioGroup row
+                            name='mortgage'
+                            value={mortgage}
+                            onChange={handleMortgageChange}
+                            >
+                            <FormControlLabel value="yes" cheked={mortgage="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" cheked={mortgage="no"} control={<Radio size='small'/>} label="No" />
+                        </RadioGroup> 
+                    </Box> 
+                </Box>
+                <Box display="flex" flexDirection="row">
+                    <Box sx={{p:2, margin:2, width:"85%"}}>
+                    <FormLabel> 
+                        (2) Have you or will you be applying for any new credit (e.g., installment loan, credit card, etc.) 
+                        on or before closing this loan that is not disclosed on this applicattion?
                     </FormLabel>
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
                             name='credit'
-                            onChange={handleInputChange}
+                            value={credit}
+                            onChange={handleCredit}
                             >
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="joint" control={<Radio size='small'/>} label="No" />
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="joint" control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={credit=="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={credit=="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
 
                 <Box display="flex" flexDirection="row">
                     <Box sx={{p:2, margin:2, width:"85%"}}>
-                        <FormLabel>Will this property be subject to a lien that could take priority over the first mortgage lien, such as a clean energy lien paid through your property taxes (e.g., the Property Assessed Clean Energy Program)?</FormLabel>
+                        <FormLabel>Will this property be subject to a lien that could take priority over the first mortgage lien, such as a clean energy lien paid through your property taxes 
+                            (e.g., the Property Assessed Clean Energy Program)?</FormLabel>
                     </Box>
                     <Box sx={{width:"15%"}}>       
                         <RadioGroup row
-                            name='credit'
-                            onChange={handleInputChange}
-                            >
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="joint" control={<Radio size='small'/>} label="No" />
+                            name='lien'
+                            value={lien}
+                            onChange={handleLienChange}
+                        >
+                            <FormControlLabel value="yes" checked={lien=="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={lien=="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>

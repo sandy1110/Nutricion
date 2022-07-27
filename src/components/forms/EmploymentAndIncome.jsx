@@ -46,6 +46,11 @@ const initialValues ={
 
 export const EmploymentAndIncome = () => {
     const [values, setValues] =useState(initialValues);
+    const [bussinesOwner, setBussinesOwner] = useState('');
+
+    const handleBussinesOwner = (event) => {
+        setBussinesOwner(event.target.value);
+    };
 
     const handleInputChange = event =>{
         const [name, value] = event.target;
@@ -484,8 +489,9 @@ export const EmploymentAndIncome = () => {
                         />
                     </Box>
                     <FormControl sx={{py:3}}>
-                        <RadioGroup name='bussinesOwner' onChange={handleInputChange}>
-                            <FormControlLabel value="yes" 
+                        <RadioGroup name='bussinesOwner' value={bussinesOwner} onChange={handleBussinesOwner}>
+                            <FormControlLabel value="yes"
+                                checked={bussinesOwner=="yes"} 
                                 control={<Radio size='small'/>} 
                                 label="Check if you were the Business Owner or Self-Employed." />
                         </RadioGroup>
