@@ -64,7 +64,7 @@ export function Layout() {
                 aria-label="form-tabs"
                 margin="20%"
             >
-                <Tab label="Borrower" {...a11yProps(0)} sx={{ backgroundColor:'#ff914d', color: 'white', borderRadius:2, margin:"12%", py:'7%'}}/>
+                <Tab label="Borrower" {...a11yProps(0)} />
                 <Tab label="FS Assets & Liabilities" {...a11yProps(1)} />
                 <Tab label="FS Real Estate" {...a11yProps(2)} />
                 <Tab label="Loan & Property" {...a11yProps(3)} />

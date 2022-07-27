@@ -1,0 +1,58 @@
+.box {
+    margin-top: 10px;
+    width: 90%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    border: outset;
+    border-radius: 10px;
+    box-shadow: 5px 5px lightgray;
+}
+
+.cardImg {
+    width: 55%;
+    margin-left: 5px;
+}
+
+.information {
+    display: block;
+    width: 40%;
+    justify-content: space-between;
+    margin-left: 5px;
+}
+
+.mortgageId {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.propertyValue {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.area {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.capRate {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.address {
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.buttonInvest {
+    width: 100px;
+}
+
+.centerButton {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}

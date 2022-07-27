@@ -1,6 +1,6 @@
 
 import "./Carousel.css"
-import { images } from '../helpers/CarouselData'
+import { images } from '../Helpers/CarouselData'
 import { useState } from "react"
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos"

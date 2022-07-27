@@ -177,7 +177,7 @@ export const EmploymentAndIncome = () => {
                                 label="I'm employed by a family member, property seller, real state agent, or other party transaction." />
                         </RadioGroup>
                     </FormControl>
-                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"column"}}>
                         <FormControl>
                             <FormLabel>Check if you are the Business Owner or Self-Employed</FormLabel>
                             <RadioGroup name='businessOwner' onChange={handleInputChange}>
@@ -185,12 +185,11 @@ export const EmploymentAndIncome = () => {
                                 <FormControlLabel value="more25" control={<Radio size='small'/>} label="I have an ownership share of 25% or more" />
                             </RadioGroup>
                         </FormControl>
-                        <TextField
+                        <TextField 
                             label="Monthly Income (or Loss)"
                             name='monthlyIncome'
                             onChange={handleInputChange}
                             variant="standard"
-                            placeholder="___ / ___ / _____"
                         />
                     </Box>
                 </Box>
@@ -355,7 +354,7 @@ export const EmploymentAndIncome = () => {
                                 label="I'm employed by a family member, property seller, real state agent, or other party transaction." />
                         </RadioGroup>
                     </FormControl>
-                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"column"}}>
                         <FormControl>
                             <FormLabel>Check if you are the Business Owner or Self-Employed</FormLabel>
                             <RadioGroup name='additionalBusinessOwner' onChange={handleInputChange}>
@@ -363,12 +362,11 @@ export const EmploymentAndIncome = () => {
                                 <FormControlLabel value="more25" control={<Radio size='small'/>} label="I have an ownership share of 25% or more" />
                             </RadioGroup>
                         </FormControl>
-                        <TextField
+                        <TextField 
                             label="Monthly Income (or Loss)"
                             name='additionalMonthlyIncome'
                             onChange={handleInputChange}
                             variant="standard"
-                            placeholder="___ / ___ / _____"
                         />
                     </Box>
                 </Box>
