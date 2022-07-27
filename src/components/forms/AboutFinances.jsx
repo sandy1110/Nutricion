@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 //import { NumberFormat } from 'react-number-format';
-import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, InputLabel, MenuItem, Paper, Radio, Select, TextField } from '@material-ui/core';
+import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
+import { Box, Paper, Radio } from '@material-ui/core';
 
 const initialValues ={
     name:'',
@@ -70,12 +70,7 @@ export const AboutFinances = () => {
         setBankrupticityType(event.target.value);
     };
 
-    const handleInputChange = event =>{
-        const [name, value] = event.target;
-        setValues([...values,
-            [name].value
-        ]);
-    }
+ 
     return (
         <Box display="flex" flexDirection="column" gridRowGap={10}>
             <Paper sx={{backgroundColor:"black"}}>
@@ -89,8 +84,8 @@ export const AboutFinances = () => {
                             value={cosigner}
                             onChange={handlecosignerChange}
                             >
-                            <FormControlLabel value="yes" checked={cosigner=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={cosigner=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={cosigner==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={cosigner==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -105,8 +100,8 @@ export const AboutFinances = () => {
                             value={judgements}
                             onChange={handleJudgementsChange}
                             >
-                            <FormControlLabel value="yes" checked={judgements=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={judgements=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={judgements==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={judgements==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -121,8 +116,8 @@ export const AboutFinances = () => {
                             value={delinquent}
                             onChange={handleDelinquentChange}
                         >
-                            <FormControlLabel value="yes" checked={delinquent=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={delinquent=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={delinquent==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={delinquent==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -137,8 +132,8 @@ export const AboutFinances = () => {
                             value={financialLiability}
                             onChange={handleFinancialLiabilityChange}
                             >
-                            <FormControlLabel value="yes" checked={financialLiability=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={financialLiability=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={financialLiability==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={financialLiability==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -153,8 +148,8 @@ export const AboutFinances = () => {
                             value={conveyedTitle}
                             onChange={handleConveyedTitle}
                         >
-                            <FormControlLabel value="yes" checked={conveyedTitle=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={conveyedTitle=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={conveyedTitle==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={conveyedTitle==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -169,8 +164,8 @@ export const AboutFinances = () => {
                             value={acceptLessMortgage}
                             onChange={handleAcceptLessMortgage}
                         >
-                            <FormControlLabel value="yes" checked={acceptLessMortgage=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={acceptLessMortgage=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={acceptLessMortgage==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={acceptLessMortgage==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -185,8 +180,8 @@ export const AboutFinances = () => {
                             value={foreclosedProperty}
                             onChange={handleForeclosedPropertyChange}
                             >
-                            <FormControlLabel value="yes" checked={foreclosedProperty=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={foreclosedProperty=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={foreclosedProperty==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={foreclosedProperty==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -203,10 +198,10 @@ export const AboutFinances = () => {
                         value={bankrupticityType}
                         onChange={handleBankrupticityTypeChange}
                     > 
-                        <FormControlLabel value="7" checked={bankrupticityType=="7"} control={<Radio size='small'/>} label="Chapter 7" />
-                        <FormControlLabel value="11" checked={bankrupticityType=="11"} control={<Radio size='small'/>} label="Chapter 11" />
-                        <FormControlLabel value="12" checked={bankrupticityType=="12"} control={<Radio size='small'/>} label="Chapter 12" />
-                        <FormControlLabel value="13" checked={bankrupticityType=="13"} control={<Radio size='small'/>} label="Chapter 13" />
+                        <FormControlLabel value="7" checked={bankrupticityType==="7"} control={<Radio size='small'/>} label="Chapter 7" />
+                        <FormControlLabel value="11" checked={bankrupticityType==="11"} control={<Radio size='small'/>} label="Chapter 11" />
+                        <FormControlLabel value="12" checked={bankrupticityType==="12"} control={<Radio size='small'/>} label="Chapter 12" />
+                        <FormControlLabel value="13" checked={bankrupticityType==="13"} control={<Radio size='small'/>} label="Chapter 13" />
                     </RadioGroup>
                     </Box>
                     <Box sx={{width:"15%"}}>       
@@ -215,8 +210,8 @@ export const AboutFinances = () => {
                             value={bankrupticity}
                             onChange={handleBankrupticityChange}
                             >
-                            <FormControlLabel value="yes" checked={bankrupticity=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={bankrupticity=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={bankrupticity==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={bankrupticity==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>

@@ -212,9 +212,9 @@ export const PersonalInformation = () => {
                             value={maritalStatus}
                             onChange={(e) => handleMaritalStatusChange(e)}
                         >
-                            <FormControlLabel value="married" checked={maritalStatus=="married"} control={<Radio size='small'/>} label="Married" />
-                            <FormControlLabel value="separated" checked={maritalStatus=="separated"} control={<Radio size='small'/>} label="Separated" />
-                            <FormControlLabel value="unmarried" checked={maritalStatus=="unmarried"} control={<Radio size='small'/>} label="Unmarried" />
+                            <FormControlLabel value="married" checked={maritalStatus==="married"} control={<Radio size='small'/>} label="Married" />
+                            <FormControlLabel value="separated" checked={maritalStatus==="separated"} control={<Radio size='small'/>} label="Separated" />
+                            <FormControlLabel value="unmarried" checked={maritalStatus==="unmarried"} control={<Radio size='small'/>} label="Unmarried" />
                             <InputLabel>Single, Widowed, Divorced, Civil Union, Domestic Partnership</InputLabel>
                         </RadioGroup>
                     </FormControl>
@@ -377,9 +377,9 @@ export const PersonalInformation = () => {
                         value={formerAddress}
                         onChange={(e) => handleFormerAddressChange(e)}
                     >
-                        <FormControlLabel value="no" checked={formerAddress=="no"} control={<Radio />} label="No primary housing expense" />
-                        <FormControlLabel value="own" checked={formerAddress=="own"} control={<Radio />} label="Own" />
-                        <FormControlLabel value="rent" checked={formerAddress=="rent"} control={<Radio />} label="Rent" />
+                        <FormControlLabel value="no" checked={formerAddress==="no"} control={<Radio />} label="No primary housing expense" />
+                        <FormControlLabel value="own" checked={formerAddress==="own"} control={<Radio />} label="Own" />
+                        <FormControlLabel value="rent" checked={formerAddress==="rent"} control={<Radio />} label="Rent" />
                     </RadioGroup>
                 </Box>
             </Box>

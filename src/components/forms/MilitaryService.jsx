@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 //import { NumberFormat } from 'react-number-format';
-import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
+import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField } from '@material-ui/core';
 import { RadioButtonChecked } from '@material-ui/icons';
 
@@ -29,8 +29,8 @@ export const MilitaryService = () => {
                                 value={everServed}
                                 onChange={handleEverServedChange}
                             > 
-                                <FormControlLabel value="yes" checked={everServed=="yes"} control={<Radio size='small'/>} label="Yes" />
-                                <FormControlLabel value="no" checked={everServed=="no"} control={<Radio size='small'/>} label="No" />
+                                <FormControlLabel value="yes" checked={everServed==="yes"} control={<Radio size='small'/>} label="Yes" />
+                                <FormControlLabel value="no" checked={everServed==="no"} control={<Radio size='small'/>} label="No" />
                             </RadioGroup>
                     </Box>
                 </Box>
@@ -46,10 +46,10 @@ export const MilitaryService = () => {
                             value={servingType}
                             onChange={handleServingTypeChange}
                         >
-                            <FormControlLabel value="serving" checked={servingType=="serving"} control={<Radio size='small'/>} label="Currently serving on active duty with projected expiration date of service/tour" />
-                            <FormControlLabel value="retired" checked={servingType=="retired"} control={<Radio size='small'/>} label="Currently retired, discharged, or separated from service"/>
-                            <FormControlLabel value="period" checked={servingType=="period"} control={<Radio size='small'/>} label="Only period of service was as a non-activated member of the Reserve or National Guard"/>
-                            <FormControlLabel value="spouse" checked={servingType=="spouse"} control={<Radio size='small'/>} label="Surviving spouse" />
+                            <FormControlLabel value="serving" checked={servingType==="serving"} control={<Radio size='small'/>} label="Currently serving on active duty with projected expiration date of service/tour" />
+                            <FormControlLabel value="retired" checked={servingType==="retired"} control={<Radio size='small'/>} label="Currently retired, discharged, or separated from service"/>
+                            <FormControlLabel value="period" checked={servingType==="period"} control={<Radio size='small'/>} label="Only period of service was as a non-activated member of the Reserve or National Guard"/>
+                            <FormControlLabel value="spouse" checked={servingType==="spouse"} control={<Radio size='small'/>} label="Surviving spouse" />
                         </RadioGroup> 
                     </Box> 
                     <Box sx={{width: "15%"}}>
