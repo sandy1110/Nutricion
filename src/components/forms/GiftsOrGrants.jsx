@@ -17,6 +17,12 @@ const initialValues ={
 }
 
 export const GiftsOrGrants = () => {
+    const [deposited, setDeposited] = useState('');
+
+    const handleDepositedChange = (event) => {
+        setDeposited(event.target.value);
+    };
+
     return(
         <Box display="flex" flexDirection="column" gridRowGap={25}>
             <Paper sx={{backgroundColor:"black"}}>
@@ -28,9 +34,13 @@ export const GiftsOrGrants = () => {
                     />
                     <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
                         <FormLabel sx={{width:"20%"}}>Desposited / Not Deposited</FormLabel>
-                        <RadioGroup row>
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Deposited" />
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Not Deposited" />
+                        <RadioGroup row
+                            name="deposited"
+                            value={deposited}
+                            onChange={handleDepositedChange}
+                        >
+                            <FormControlLabel value="deposited" checked={deposited=="deposited"} control={<Radio size='small'/>} label="Deposited" />
+                            <FormControlLabel value="notDeposited" checked={deposited=="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
                         </RadioGroup>
                     </Box>
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
