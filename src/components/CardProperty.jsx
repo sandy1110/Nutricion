@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box, Card, CardContent, Typography, CardActions, Button, CardMedia } from "@mui/material"
-import { images } from '../Helpers/CarouselData'
+import { Box, Button } from "@mui/material"
 import "./CardProperties.css"
 
 export const CardProperty = ({ propertyData }) => {
@@ -9,7 +8,7 @@ export const CardProperty = ({ propertyData }) => {
 
     return (
         <Box className='box'>
-            <img src={img} />
+            <img className="cardImg" src={img} alt="Property card"/>
             <div className='information'>
                 <div className='mortgageId'>Mortgage ID {id}</div>
                 <div className='propertyValue'>Value ${value} USD</div>
