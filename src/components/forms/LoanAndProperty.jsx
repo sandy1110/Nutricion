@@ -4,6 +4,27 @@ import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField, Typography } from '@material-ui/core';
 
 export const LoanAndProperty = () => {
+    const [loanPurpose, setLoanPurpose] = useState('');
+    const [occupancy, setOccupancy] = useState('');
+    const [bussinesProperty, setBussinesProperty] = useState('');
+    const [manufacturedHome, setManufacturedHome] = useState('');
+
+    const handleLoanPurposeChange = (event) => {
+        setLoanPurpose(event.target.value);
+    };
+
+    const handleOccupancyChange = (event) => {
+        setOccupancy(event.target.value);
+    };
+
+    const handleBussinesPropertyChange = (event) => {
+        setBussinesProperty(event.target.value);
+    };
+
+    const handleManufacturedHome = (event) => {
+        setManufacturedHome(event.target.value);
+    };
+    
     return(
         <Box display="flex" flexDirection="column" gridRowGap={25}>
             <Paper sx={{backgroundColor:"black"}}>
@@ -14,13 +35,15 @@ export const LoanAndProperty = () => {
                             name=''
                             variant="standard"
                         />
-                        <FormLabel>
-                            Loan Purpose
-                        </FormLabel>
-                        <RadioGroup row>
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Purhcase" />
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Refinance" />
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Other (specify)" />
+                        <FormLabel>Loan Purpose</FormLabel>
+                        <RadioGroup row
+                            name="loanPurpose"
+                            value={loanPurpose}
+                            onChange={handleLoanPurposeChange}
+                        >
+                            <FormControlLabel value="purchase" checked={loanPurpose=="purchase"} control={<Radio size='small'/>} label="Purchase" />
+                            <FormControlLabel value="refinance" checked={loanPurpose=="refinance"} control={<Radio size='small'/>} label="Refinance" />
+                            <FormControlLabel value="other" checked={loanPurpose=="other"} control={<Radio size='small'/>} label="Other (specify)" />
                         </RadioGroup>
                         <TextField 
                             label=""
@@ -84,11 +107,15 @@ export const LoanAndProperty = () => {
                 </Box>
                 <FormLabel sx={{py:3}}> Occupancy </FormLabel>
                 <Box display="flex" flexDirection= "row" alignItems="center">
-                    <RadioGroup row>
-                        <FormControlLabel value="individual" control={<Radio size='small'/>} label="Primary Residence" />
-                        <FormControlLabel value="individual" control={<Radio size='small'/>} label="Second Home" />
-                        <FormControlLabel value="individual" control={<Radio size='small'/>} label="Investment Property" />
-                        <FormControlLabel value="individual" control={<Radio size='small'/>} label="FHS Secondary Residence" />
+                    <RadioGroup row
+                        name="occupancy"
+                        value={occupancy}
+                        onChange={handleOccupancyChange}
+                    >
+                        <FormControlLabel value="primary" checked={occupancy=="primary"} control={<Radio size='small'/>} label="Primary Residence" />
+                        <FormControlLabel value="second" checked={occupancy=="second"} control={<Radio size='small'/>} label="Second Home" />
+                        <FormControlLabel value="investment" checked={occupancy=="investment"} control={<Radio size='small'/>} label="Investment Property" />
+                        <FormControlLabel value="fhs" checked={occupancy=="fhs"} control={<Radio size='small'/>} label="FHS Secondary Residence" />
                     </RadioGroup>
                 </Box>
             </Box>
@@ -103,9 +130,13 @@ export const LoanAndProperty = () => {
                             If you will occupy the property, will you set aside space within the property to operate
                             your own business? <em>(e.g. daycare, medical office, beauty/barber shop)</em>
                         </FormLabel>
-                        <RadioGroup row>
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="No" />
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
+                        <RadioGroup row
+                            name="bussinesProperty"
+                            value={bussinesProperty}
+                            onChange={handleBussinesPropertyChange}
+                        >
+                            <FormControlLabel value="no" checked={bussinesProperty=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={bussinesProperty=="yes"} control={<Radio size='small'/>} label="Yes" />
                         </RadioGroup>
                     </Box>
                     <Typography variant="subtitle">
@@ -116,9 +147,13 @@ export const LoanAndProperty = () => {
                             Is the property a manufactured home
                             <em>(e.g. a factory built dwelling built on a permanent chasis)</em>
                         </FormLabel>
-                        <RadioGroup row>
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="No" />
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Yes" />
+                        <RadioGroup row
+                            name="manufacturedHome"
+                            value={manufacturedHome}
+                            onChange={handleManufacturedHome}
+                        >
+                            <FormControlLabel value="no" control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" control={<Radio size='small'/>} label="Yes" />
                         </RadioGroup>
                     </Box>
                 </Box>
