@@ -3,7 +3,7 @@ import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField } from '@material-ui/core';
 
 const initialValues={
-    date: '',
+    endDate: '',
 }
 
 
@@ -58,7 +58,7 @@ export const MilitaryService = () => {
                     <Box sx={{width: "15%"}}>
                         <TextField
                             label="(mm/dd/yy)"
-                            name='date'
+                            name='endDate'
                             placeholder="(___)___-_______"
                             variant="standard"
                         />

@@ -3,10 +3,7 @@ import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { Box, Paper,  TextField, Typography } from '@material-ui/core';
 
 const initialValues ={  
-    date1: '',
-    date2: '',
-    signature: '',
-    signature2: '',
+    agree: '',
 }
 
 export const Acknowledgments = () => {

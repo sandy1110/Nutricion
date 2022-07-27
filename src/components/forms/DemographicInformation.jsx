@@ -5,9 +5,9 @@ import { Box, Paper, Radio, TextField, Typography } from '@material-ui/core';
 const initialValues ={
 
     nationality: '',
-    print: '',
-    print2: '',
-    print3: '',
+    race: '',
+    asian: '',
+    other: '',
 }
 
 export const DemographicInformation = () => {
@@ -72,7 +72,7 @@ export const DemographicInformation = () => {
                         <TextField
                             fullWidth
                             label=""
-                            name='print'
+                            name='race'
                             variant="standard"
                         />
                         <FormControlLabel value="individual" control={<Radio size='small'/>} label="Asian"/>
@@ -89,7 +89,7 @@ export const DemographicInformation = () => {
                             <TextField
                             fullWidth
                             label=""
-                            name='print2'
+                            name='Asian'
                             placeholder="For example, Hmong, Laotian, Thai, Pakistani, and so on"
                             variant="standard"
                         />  
@@ -106,7 +106,7 @@ export const DemographicInformation = () => {
                             <TextField
                                 fullWidth
                                 label=""
-                                name='print3'
+                                name='other'
                                 placeholder="For example: Fijan, Tongan, and so on"
                                 variant="standard"
                             />
