@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 //import { NumberFormat } from 'react-number-format';
-import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, InputLabel, MenuItem, Paper, Radio, Select, TextField } from '@material-ui/core';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import { Box, InputLabel, MenuItem, Paper, Select, TextField } from '@material-ui/core';
 
 const initialValues ={
     name:'',
@@ -24,7 +28,7 @@ const initialValues ={
 
 /*const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(props, ref) {
     const { onChange, ...other } = props;
-  
+
     return (
       <NumberFormat
         {...other}
@@ -74,6 +78,7 @@ export const PersonalInformation = () => {
         ]);
     }
     return (
+        <>
         <Box display="flex" flexDirection="column" gridRowGap={10}>
         <Paper sx={{backgroundColor:"black"}}>
             <Box display="flex" flexDirection="row">
@@ -103,7 +108,7 @@ export const PersonalInformation = () => {
                         variant="standard"
                         /*InputProps={{
                             inputComponent: NumberFormatCustom,
-                          }}  */                
+                          }}  */
                     />
                     <Box display="flex" flexDirection="row" gridColumnGap={15}>
                         <FormControl variant="standard" sx={{py:2, minWidth: 200 }} fullWidth>
@@ -182,13 +187,13 @@ export const PersonalInformation = () => {
                             value={creditType}
                             onChange={handleCreditTypeChange}
                         >
-                            <FormControlLabel checked={creditType === 'individual'}  value='individual' control={
-                                <Radio size='small'/>} label="I'm applying for individual credit." />
-                            <FormControlLabel value='joint' checked={creditType==='joint'} control={
-                                <Radio size='small'/>} label="I'm applying for joint credit" />
+                            <FormControlLabel checked={creditType==='individual'} value='individual' control={<Radio size='small'/>} label="I'm applying for individual credit." />
+                            <FormControlLabel checked={creditType==='joint'} value='joint' control={<Radio size='small'/>} label="I'm applying for joint credit" />
                         </RadioGroup>
                     </FormControl>
-                    
+
+
+
                 </Box>
                 <Box sx={{p:2, margin:2, width:"50%"}}>
                     <TextField
@@ -433,5 +438,6 @@ export const PersonalInformation = () => {
             </Box>
         </Paper>
         </Box>
+        </>
     )
   }
