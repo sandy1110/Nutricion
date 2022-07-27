@@ -54,5 +54,10 @@
 .centerButton {
     padding-top: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+}
+
+.locationIcon {
+    padding-top: 10px;
+    cursor: pointer;
 }
