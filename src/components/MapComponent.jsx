@@ -7,7 +7,7 @@ export const MapComponent = ({lat, lng}) => {
     if (!isLoaded) return <div className='container'>Loading...</div>
     return (
         <GoogleMap
-            zoom={10}
+            zoom={15}
             center={{ lat: lat, lng: lng }}
             mapContainerClassName='container'
         >
