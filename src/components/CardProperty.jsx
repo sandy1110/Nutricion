@@ -26,7 +26,6 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
                         style={{ backgroundColor: "orange", borderRadius: 35 }}
                         variant='contained'
                         className='buttonInvest'
-                        onClick={handlePropertyClick}
                     >
                         Invest
                     </Button>
