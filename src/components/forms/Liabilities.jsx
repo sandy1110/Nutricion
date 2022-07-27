@@ -23,6 +23,8 @@ const initialValues ={
 
 export const Liabilities = () => {
     const [values, setValues] =useState(initialValues);
+    const [select, setSelect] =useState(initialValues);
+    const [type, setType] =useState(initialValues);
 
     const handleInputChange = event =>{
         const [name, value] = event.target;
@@ -30,6 +32,15 @@ export const Liabilities = () => {
             [name].value
         ]);
     }
+
+    const handleSelectChange = (event) => {
+        setSelect(event.target.value);
+    };
+
+    const handleTypeChange = (event) => {
+        setType(event.target.value);
+    };
+
     return (
         <Box display="flex" flexDirection="column" gridRowGap={25}>
             <Paper sx={{backgroundColor:"black"}}>
@@ -44,8 +55,9 @@ export const Liabilities = () => {
                             <InputLabel>Select Type</InputLabel>
                             <Select fullWidth
                             label="Select Type"
-                            name='type'
-                            onChange={handleInputChange}
+                            name='select'
+                            value={select}
+                            onChange={handleSelectChange}
                             >
                             <MenuItem value={1}>Revolving</MenuItem>
                             <MenuItem value={2}>Installment</MenuItem>
@@ -110,13 +122,14 @@ export const Liabilities = () => {
                             <Select fullWidth
                             label="Select Type"
                             name='type'
-                            onChange={handleInputChange}
+                            value={type}
+                            onChange={handleTypeChange}
                             >
                             <MenuItem value={1}>Alimony</MenuItem>
                             <MenuItem value={2}>Child Support</MenuItem>
-                            <MenuItem value={2}>Separate Maitenance</MenuItem>
-                            <MenuItem value={2}>Job Related Expenses</MenuItem>
-                            <MenuItem value={2}>Other</MenuItem>
+                            <MenuItem value={3}>Separate Maitenance</MenuItem>
+                            <MenuItem value={4}>Job Related Expenses</MenuItem>
+                            <MenuItem value={5}>Other</MenuItem>
                             </Select>                            
                         </FormControl>
                         <TextField 
