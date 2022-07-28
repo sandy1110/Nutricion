@@ -3,13 +3,23 @@ import "./InvestProperties.css"
 import { images } from '../helpers/CarouselData'
 import SearchIcon from '@mui/icons-material/Search';
 import { MapComponent } from "./MapComponent";
+import { useState } from 'react'
 
 
 
 export const InvestProperties = () => {
 
+    const [mapLat, setMapLat] = useState(32.803963)
+    const [mapLng, setMapLng] = useState(-117.130824)
+
     const datosPropiedades = images.map((property) => {
-        return (<CardProperty key={property.id} propertyData={property} />)
+        return (
+            <CardProperty
+                key={property.id}
+                propertyData={property}
+                setMapLat={setMapLat}
+                setMapLng={setMapLng}
+            />)
     })
 
     return (
@@ -22,7 +32,7 @@ export const InvestProperties = () => {
                 </div>
             </nav>
             <main>
-                <MapComponent/>
+                <MapComponent lat={mapLat} lng={mapLng} />
             </main>
             <div className="sidebar">
                 {datosPropiedades}
