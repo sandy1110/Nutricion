@@ -1,38 +1,29 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField } from '@material-ui/core';
 
 const initialValues ={
-    name:'',
-    alternateNames:'',
-    age:'',
-    sss:'',
-    citizenship:'',
-    credit:'',
-    maritalStatus:'',
-    otherBorrowes:'',
-    dependents:'',
-    street:'',
-    unit:'',
-    city:'',
-    state:'',
-    zip:'',
-    country:'',
-
+    type: '', 
+    title: '',
+    credit: '',
+    primaryResidence: '',
+    money: '',
+    ownershipInterest: '',
+    familyRelationship:'',
+    borrowMoney: '',
+    mortgage: '',
+    lien: '',
 }
 
 export const AboutProperty = () => {
-    const [values, setValues] =useState("");
-    const [primaryResidence, setPrimaryResidence] =useState("");
-    const [ownershipInterest, setOwnershipInterest] =useState("");
-    const [familyRelationship, setFamilyRelationship] =useState("");
-    const [borrowMoney, setBorrowMoney] =useState("");
-    const [mortgage, setMortgage] =useState("");
-    const [credit, setCredit] =useState("");
-    const [lien, setLien] =useState("");
-
-
+    const [values, setValues] =useState(initialValues);
+    const [primaryResidence, setPrimaryResidence] =useState(initialValues);
+    const [ownershipInterest, setOwnershipInterest] =useState(initialValues);
+    const [familyRelationship, setFamilyRelationship] =useState(initialValues);
+    const [borrowMoney, setBorrowMoney] =useState(initialValues);
+    const [mortgage, setMortgage] =useState(initialValues);
+    const [credit, setCredit] =useState(initialValues);
+    const [lien, setLien] =useState(initialValues);
 
     const handlePrimaryResidenceChange = (event) => {
         setPrimaryResidence(event.target.value);
@@ -54,11 +45,11 @@ export const AboutProperty = () => {
         setMortgage(event.target.value);
     };
 
-    const handleCreditChange = (event) => {
-        setCredit({checked: event.target.value});
+    const handleCredit = (event) => {
+        setCredit(event.target.value);
     };
 
-    const handleLien = (event) => {
+    const handleLienChange = (event) => {
         setLien(event.target.value);
     };
 
@@ -81,12 +72,10 @@ export const AboutProperty = () => {
                             value={primaryResidence}
                             onChange={handlePrimaryResidenceChange}
                             >
-                            <FormControlLabel value="yes" checked={primaryResidence==="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={primaryResidence==="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={primaryResidence=="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={primaryResidence=="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup>
                     </Box> 
-                </Box>
-                <Box display="flex" flexDirection="row">
                     <Box sx={{p:2, margin:2, width:"85%"}}>
                         <FormLabel>
                             If YES, have you had an ownership interest in another property in the last three years?
@@ -98,12 +87,10 @@ export const AboutProperty = () => {
                             value={ownershipInterest}
                             onChange={handleOwnershipInterestChange}
                             >
-                            <FormControlLabel value="yes" checked={ownershipInterest==="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={ownershipInterest==="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={ownershipInterest=="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={ownershipInterest=="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
-                </Box>
-                <Box display="flex" flexDirection="row">
                     <Box sx={{p:2, margin:2, width:"85%"}}>
                         <FormLabel>
                             If YES, complete (1) and (2) below:
@@ -115,23 +102,24 @@ export const AboutProperty = () => {
                             </ul>
                         </FormLabel>
                     </Box>
-                    <Box sx={{width:"15%", py: 5}} >   
+                    <Box sx={{width:"15%"}}>   
                         <TextField
                             fullWidth
                             label=""
-                            name=''
+                            name='type'
                             onChange={handleInputChange}
                             variant="standard"
                         />
                         <TextField
                             fullWidth
                             label=""
-                            name=''
+                            name='title'
                             onChange={handleInputChange}
                             variant="standard"
                         />
                     </Box> 
                 </Box>
+
                 <Box display="flex" flexDirection="row">
                     <Box sx={{p:2, margin:2, width:"85%"}}>
                     <FormLabel>If this is a Purchase Transaction: Do you have a family relationship or bussiness affiliation with the seller of the property?</FormLabel>
@@ -142,8 +130,8 @@ export const AboutProperty = () => {
                             value={familyRelationship}
                             onChange={handleFamilyRelationshipChange}
                             >
-                            <FormControlLabel value="yes" checked={familyRelationship==="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={familyRelationship==="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={familyRelationship=="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={familyRelationship=="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -161,13 +149,13 @@ export const AboutProperty = () => {
                             value={borrowMoney}
                             onChange={handleBorrowMoney}
                             >
-                            <FormControlLabel value="yes" checked={borrowMoney==="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={borrowMoney==="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={borrowMoney=="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={borrowMoney=="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                         <TextField
                             fullWidth
                             label="$"
-                            name=''
+                            name='money'
                             onChange={handleInputChange}
                             placeholder="$"
                             variant="standard"
@@ -187,8 +175,8 @@ export const AboutProperty = () => {
                             value={mortgage}
                             onChange={handleMortgageChange}
                             >
-                            <FormControlLabel value= "yes" checked={mortgage.checked==="yes"}  control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value= "no" checked={mortgage.checked==="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" cheked={mortgage="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" cheked={mortgage="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -203,10 +191,10 @@ export const AboutProperty = () => {
                         <RadioGroup row
                             name='credit'
                             value={credit}
-                            onChange={(e)=>setCredit(e.target.value)}
+                            onChange={handleCredit}
                             >
-                            <FormControlLabel value= {true}  control={<Radio checked={credit}size='small'/>} label="Yes" />
-                            <FormControlLabel value= {false} control={<Radio checked={credit} size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={credit=="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={credit=="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -220,12 +208,11 @@ export const AboutProperty = () => {
                         <RadioGroup row
                             name='lien'
                             value={lien}
-                            onChange={handleLien}
+                            onChange={handleLienChange}
                         >
-                            <FormControlLabel value="yes" checked={lien==="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={lien==="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={lien=="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={lien=="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
-                        <FormLabel>{credit}</FormLabel>
                     </Box> 
                 </Box>
             </Paper>

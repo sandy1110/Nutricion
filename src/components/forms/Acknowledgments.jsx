@@ -1,58 +1,13 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
-import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, Paper, Radio, TextField, Typography } from '@material-ui/core';
+import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
+import { Box, Paper,  TextField, Typography } from '@material-ui/core';
 
-const initialValues ={
-    name:'',
-    alternateNames:'',
-    age:'',
-    sss:'',
-    citizenship:'',
-    credit:'',
-    maritalStatus:'',
-    otherBorrowes:'',
-    dependents:'',
-    street:'',
-    unit:'',
-    city:'',
-    state:'',
-    zip:'',
-    country:'',
-
+const initialValues ={  
+    agree: '',
 }
 
-/*const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(props, ref) {
-    const { onChange, ...other } = props;
-  
-    return (
-      <NumberFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        thousandSeparator
-        isNumericString
-        prefix="$"
-      />
-    );
-  });*/
-
 export const Acknowledgments = () => {
-    const [values, setValues] =useState(initialValues);
 
-    const handleInputChange = event =>{
-        const [name, value] = event.target;
-        setValues([...values,
-            [name].value
-        ]);
-    }
     return (
         <Box display="flex" flexDirection="column" gridRowGap={25}>
             <Paper sx={{backgroundColor:"black"}}>
@@ -182,14 +137,14 @@ export const Acknowledgments = () => {
                             fullWidth
                             variant="standard"
                             label="Addittional Borrower Signature"
-                            name='name'
+                            name='signature2'
                         />
                     </Box>
                     <Box sx={{p:2, margin:2, width:"20%"}}>
                         <TextField  
                             variant="standard"
                             label="Date (mm/dd/yyyy)"
-                            name='name'
+                            name='date2'
                         />  
                     </Box>
                 </Box>*/}

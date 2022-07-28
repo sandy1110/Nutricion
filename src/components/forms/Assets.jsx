@@ -1,48 +1,19 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { Box, Paper, TextField, Typography } from '@material-ui/core';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const initialValues ={
-    name:'',
-    alternateNames:'',
-    age:'',
-    sss:'',
-    citizenship:'',
-    credit:'',
-    maritalStatus:'',
-    otherBorrowes:'',
-    dependents:'',
-    street:'',
-    unit:'',
-    city:'',
-    state:'',
-    zip:'',
-    country:'',
 
+    aType: '',
+    financialInstitution: '',
+    accountNumber: '',
+    cash: '',
+    sType: '',
+    assetType: '',
+    creditType: '',
+    cash: '',
+    
 }
-
-/*const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(props, ref) {
-    const { onChange, ...other } = props;
-  
-    return (
-      <NumberFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        thousandSeparator
-        isNumericString
-        prefix="$"
-      />
-    );
-  });*/
 
 export const Assets = () => {
     const [values, setValues] =useState(initialValues);
@@ -146,9 +117,8 @@ export const Assets = () => {
                             <InputLabel>Select Type</InputLabel>
                             <Select fullWidth
                             label="Select Type"
-                            name='select'
-                            value={select}
-                            onChange={handleSelectChange}
+                            name='sType'
+                            onChange={handleInputChange}
                             >
                             <MenuItem value={1}>Asset</MenuItem>
                             <MenuItem value={2}>Credit</MenuItem>

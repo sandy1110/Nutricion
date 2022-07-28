@@ -3,21 +3,15 @@ import { Box, Paper, TextField, Typography } from '@material-ui/core';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const initialValues ={
-    name:'',
-    alternateNames:'',
-    age:'',
-    sss:'',
-    citizenship:'',
-    credit:'',
-    maritalStatus:'',
-    otherBorrowes:'',
-    dependents:'',
-    street:'',
-    unit:'',
-    city:'',
-    state:'',
-    zip:'',
-    country:'',
+    
+    type: '',
+    companyName: '',
+    accountNumber: '',
+    unpadeBalance: '',
+    paid: '',
+    payment: '',
+    type2: '',
+    payment2: '',
 
 }
 
@@ -134,7 +128,7 @@ export const Liabilities = () => {
                         </FormControl>
                         <TextField 
                                 label="Monthly Payment"
-                                name='payment'
+                                name='payment2'
                                 onChange={handleInputChange}
                                 variant="standard"
                                 placeholder='$'

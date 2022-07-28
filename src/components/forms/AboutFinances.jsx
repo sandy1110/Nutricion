@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio } from '@material-ui/core';
 
 const initialValues ={
-    name:'',
-    alternateNames:'',
-    age:'',
-    sss:'',
-    citizenship:'',
-    credit:'',
-    maritalStatus:'',
-    otherBorrowes:'',
-    dependents:'',
-    street:'',
-    unit:'',
-    city:'',
-    state:'',
-    zip:'',
-    country:'',
-
+    cosigner: '',
+    judgements: '',
+    delinquent: '',
+    financialLiability: '',
+    conveyedTitle: '',
+    bankrupticity: '',
+    bankrupticityType: '',
+    foreclosedProperty: '',
+    acceptLessMortgage: '',
 }
 
 export const AboutFinances = () => {
@@ -70,7 +62,6 @@ export const AboutFinances = () => {
         setBankrupticityType(event.target.value);
     };
 
- 
     return (
         <Box display="flex" flexDirection="column" gridRowGap={10}>
             <Paper sx={{backgroundColor:"black"}}>
