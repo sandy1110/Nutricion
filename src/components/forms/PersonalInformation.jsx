@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -316,8 +315,8 @@ export const PersonalInformation = () => {
                         onChange={(e) => handleCurrentHousingChange(e)}
                     >
                         <FormControlLabel value="no" checked={currentHousing === "no"} control={<Radio />} label="No primary housing expense" />
-                        <FormControlLabel value="own" checked={currentHousing === "no"} control={<Radio />} label="Own" />
-                        <FormControlLabel value="rent" checked={currentHousing === "no"} control={<Radio />} label="Rent" />
+                        <FormControlLabel value="own" checked={currentHousing === "own"} control={<Radio />} label="Own" />
+                        <FormControlLabel value="rent" checked={currentHousing === "rent"} control={<Radio />} label="Rent" />
                     </RadioGroup>
                 </Box>
             </Box>

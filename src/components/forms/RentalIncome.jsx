@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, Paper, Radio, TextField } from '@material-ui/core';
+import { Box, Paper, TextField } from '@material-ui/core';
+import Radio from '@mui/material/Radio';
 
 const initialValues={
 
@@ -9,6 +10,14 @@ const initialValues={
 }
 
 export const RentalIncome = () => {
+
+    const [apply, setApply] = useState('');
+
+    const handleApplyChange = event => {
+        setApply(event.target.value);
+    };
+
+
     return(
         <Box display="flex" flexDirection="column" gridRowGap={25}>
             <Paper sx={{backgroundColor:"black"}}>
@@ -17,8 +26,8 @@ export const RentalIncome = () => {
                         <FormLabel>
                             Complete if the property if a 2-3 Unit Primary Residence or an Investment Property 
                         </FormLabel>
-                        <RadioGroup row>
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Does not apply" />
+                        <RadioGroup row name='apply' value={apply} onChange={handleApplyChange}>
+                            <FormControlLabel value="not" checked={apply==="not"} control={<Radio size='small'/>} label="Does not apply" />
                         </RadioGroup>
                     </Box>
                     <Box display="flex" justifyContent="space-between" alignItems="center" gridColumnGap={15} sx={{ flexDirection:"row"}}>

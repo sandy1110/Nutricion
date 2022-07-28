@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, Paper, Radio } from '@material-ui/core';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+import { Box, Paper } from '@material-ui/core';
 
 const initialValues ={
     cosigner: '',
@@ -15,7 +18,6 @@ const initialValues ={
 }
 
 export const AboutFinances = () => {
-    const [values, setValues] =useState(initialValues);
     const [cosigner, setCosigner] = useState('');
     const [judgements, setJudgements] = useState('');
     const [delinquent, setDelinquent] = useState('');
