@@ -1,7 +1,20 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField } from '@material-ui/core';
+
+const initialValues ={
+
+    aType: '',
+    source: '',
+    cash: '',
+    type: '',
+    source2: '',
+    cash2: '',
+    type2: '',
+    source3: '',
+    cash3: '',
+
+}
 
 export const GiftsOrGrants = () => {
     const [deposited, setDeposited] = useState('');
@@ -16,7 +29,7 @@ export const GiftsOrGrants = () => {
                 <Box display="flex" flexDirection="column" gridRowGap={10} sx={{p:3, margin:2}}>
                     <TextField fullWidth
                         label="Asset Type"
-                        name=''
+                        name='aType'
                         variant="standard"
                     />
                     <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
@@ -33,12 +46,12 @@ export const GiftsOrGrants = () => {
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
                         <TextField fullWidth
                             label="Source"
-                            name='street'
+                            name='source'
                             variant="standard"
                         />
                         <TextField fullWidth
                             label="Cash or Market value"
-                            name='unit'
+                            name='cash'
                             placeholder='$'
                             variant="standard"
                         />
@@ -49,7 +62,7 @@ export const GiftsOrGrants = () => {
                 <Box display="flex" flexDirection="column" gridRowGap={10} sx={{p:3, margin:2}}>
                     <TextField fullWidth
                         label="Asset Type"
-                        name=''
+                        name='type'
                         variant="standard"
                     />
                     <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
@@ -62,12 +75,12 @@ export const GiftsOrGrants = () => {
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
                         <TextField fullWidth
                             label="Source"
-                            name='street'
+                            name='source2'
                             variant="standard"
                         />
                         <TextField fullWidth
                             label="Cash or Market value"
-                            name='unit'
+                            name='cash2'
                             placeholder='$'
                             variant="standard"
                         />
@@ -78,7 +91,7 @@ export const GiftsOrGrants = () => {
                 <Box display="flex" flexDirection="column" gridRowGap={10} sx={{p:3, margin:2}}>
                     <TextField fullWidth
                         label="Asset Type"
-                        name=''
+                        name='type2'
                         variant="standard"
                     />
                     <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
@@ -91,12 +104,12 @@ export const GiftsOrGrants = () => {
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
                         <TextField fullWidth
                             label="Source"
-                            name='street'
+                            name='source3'
                             variant="standard"
                         />
                         <TextField fullWidth
                             label="Cash or Market value"
-                            name='unit'
+                            name='cash3'
                             placeholder='$'
                             variant="standard"
                         />

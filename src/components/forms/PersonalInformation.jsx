@@ -4,45 +4,49 @@ import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/mater
 import { Box, InputLabel, MenuItem, Paper, Radio, Select, TextField } from '@material-ui/core';
 
 const initialValues ={
-    name:'',
-    alternateNames:'',
-    age:'',
-    sss:'',
-    citizenship:'',
-    credit:'',
-    maritalStatus:'',
-    otherBorrowes:'',
-    dependents:'',
-    street:'',
-    unit:'',
-    city:'',
-    state:'',
-    zip:'',
-    country:'',
+   
+    name: '',
+    alternateNames: '',
+    sss: '',
+    citizenship: '',
+    dateOfBirth: '',
+    homePhone: '',
+    cellPhone: '',
+    workPhone: '',
+    ext: '',
+    email: '',
+    credit: '',
+    otherBorrower: '',
+    maritalStatus: '',
+    borrower: '',
+    dependents: '',
+    ages: '',
+    street: '',
+    unit: '',
+    city: '',
+    state: '',
+    zip: '',
+    country: '',
+    years: '',
+    months: '',
+    currentHousing: '',
+    street2: '',
+    unit2: '',
+    city2: '',
+    state2: '',
+    zip2: '',
+    country2: '',
+    street1: '',
+    unit1: '',
+    city1: '',
+    state1: '',
+    zip1: '',
+    country1: '',
+    years1: '',
+    months1: '',
+    currentHousing1: '',
 
 }
-
-/*const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(props, ref) {
-    const { onChange, ...other } = props;
-  
-    return (
-      <NumberFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        thousandSeparator
-        isNumericString
-        prefix="$"
-      />
-    );
-  });*/
 
 export const PersonalInformation = () => {
     const [values, setValues] =useState(initialValues);
@@ -100,10 +104,7 @@ export const PersonalInformation = () => {
                         name='sss'
                         onChange={handleInputChange}
                         placeholder="or Individual Taxpayer Identification Number"
-                        variant="standard"
-                        /*InputProps={{
-                            inputComponent: NumberFormatCustom,
-                          }}  */                
+                        variant="standard"            
                     />
                     <Box display="flex" flexDirection="row" gridColumnGap={15}>
                         <FormControl variant="standard" sx={{py:2, minWidth: 200 }} fullWidth>
@@ -238,6 +239,7 @@ export const PersonalInformation = () => {
                         label="Ages"
                         multiline
                         variant="standard"
+                        name='ages'
                     />
                 </Box>
             </Box>
@@ -294,11 +296,13 @@ export const PersonalInformation = () => {
                         label="Years"
                         multiline
                         variant="standard"
+                        name="years"
                     />
                     <TextField
                         label="Months"
                         multiline
                         variant="standard"
+                        name="months"
                     />
                     <FormLabel sx={{m:2}}>Housing</FormLabel>
                     <RadioGroup row
@@ -320,13 +324,13 @@ export const PersonalInformation = () => {
                     <TextField
                         fullWidth
                         label="Street"
-                        name='street'
+                        name='street1'
                         onChange={handleInputChange}
                         variant="standard"
                     />
                     <TextField
                         label="Unit #"
-                        name='unit'
+                        name='unit1'
                         onChange={handleInputChange}
                         variant="standard"
                     />
@@ -335,26 +339,26 @@ export const PersonalInformation = () => {
                     <TextField
                         fullWidth
                         label="City"
-                        name='city'
+                        name='city1'
                         onChange={handleInputChange}
                         variant="standard"
                     />
                     <TextField
                         label="State"
-                        name='state'
+                        name='state1'
                         onChange={handleInputChange}
                         variant="standard"
                     />
                     <TextField
                         label="Zip"
-                        name='zip'
+                        name='zip1'
                         onChange={handleInputChange}
                         variant="standard"
                         type="number"
                     />
                     <TextField
                         label="Country"
-                        name='country'
+                        name='country1'
                         onChange={handleInputChange}
                         variant="standard"
                     />
@@ -362,12 +366,12 @@ export const PersonalInformation = () => {
                 <FormLabel>How long at Current Address?</FormLabel>
                 <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
                     <TextField
-                        label="Years"
+                        label="Years1"
                         multiline
                         variant="standard"
                     />
                     <TextField
-                        label="Months"
+                        label="Months1"
                         multiline
                         variant="standard"
                     />
@@ -391,13 +395,13 @@ export const PersonalInformation = () => {
                     <TextField
                         fullWidth
                         label="Street"
-                        name='street'
+                        name='street2'
                         onChange={handleInputChange}
                         variant="standard"
                     />
                     <TextField
                         label="Unit #"
-                        name='unit'
+                        name='unit2'
                         onChange={handleInputChange}
                         variant="standard"
                     />
@@ -406,26 +410,26 @@ export const PersonalInformation = () => {
                     <TextField
                         fullWidth
                         label="City"
-                        name='city'
+                        name='city2'
                         onChange={handleInputChange}
                         variant="standard"
                     />
                     <TextField
                         label="State"
-                        name='state'
+                        name='state2'
                         onChange={handleInputChange}
                         variant="standard"
                     />
                     <TextField
                         label="Zip"
-                        name='zip'
+                        name='zip2'
                         onChange={handleInputChange}
                         variant="standard"
                         type="number"
                     />
                     <TextField
                         label="Country"
-                        name='country'
+                        name='country2'
                         onChange={handleInputChange}
                         variant="standard"
                     />

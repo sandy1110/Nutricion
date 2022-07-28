@@ -1,25 +1,19 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
-import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, InputLabel, MenuItem, Paper, Radio, Select, TextField } from '@material-ui/core';
+import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
+import { Box, Paper, Radio, TextField } from '@material-ui/core';
 
 const initialValues ={
-    name:'',
-    alternateNames:'',
-    age:'',
-    sss:'',
-    citizenship:'',
-    credit:'',
-    maritalStatus:'',
-    otherBorrowes:'',
-    dependents:'',
-    street:'',
-    unit:'',
-    city:'',
-    state:'',
-    zip:'',
-    country:'',
-
+    
+    type: '', 
+    title: '',
+    credit: '',
+    primaryResidence: '',
+    money: '',
+    ownershipInterest: '',
+    familyRelationship:'',
+    borrowMoney: '',
+    mortgage: '',
+    lien: '',
 }
 
 export const AboutProperty = () => {
@@ -113,14 +107,14 @@ export const AboutProperty = () => {
                         <TextField
                             fullWidth
                             label=""
-                            name=''
+                            name='type'
                             onChange={handleInputChange}
                             variant="standard"
                         />
                         <TextField
                             fullWidth
                             label=""
-                            name=''
+                            name='title'
                             onChange={handleInputChange}
                             variant="standard"
                         />
@@ -162,7 +156,7 @@ export const AboutProperty = () => {
                         <TextField
                             fullWidth
                             label="$"
-                            name=''
+                            name='money'
                             onChange={handleInputChange}
                             placeholder="$"
                             variant="standard"

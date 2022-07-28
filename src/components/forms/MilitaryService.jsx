@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
-import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
+import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField } from '@material-ui/core';
-import { RadioButtonChecked } from '@material-ui/icons';
+
+const initialValues={
+    endDate: '',
+}
+
 
 export const MilitaryService = () => {
 
@@ -55,7 +58,7 @@ export const MilitaryService = () => {
                     <Box sx={{width: "15%"}}>
                         <TextField
                             label="(mm/dd/yy)"
-                            name='date'
+                            name='endDate'
                             placeholder="(___)___-_______"
                             variant="standard"
                         />

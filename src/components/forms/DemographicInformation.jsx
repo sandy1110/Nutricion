@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField, Typography } from '@material-ui/core';
+
+const initialValues ={
+
+    nationality: '',
+    race: '',
+    asian: '',
+    other: '',
+}
 
 export const DemographicInformation = () => {
     return(
@@ -65,7 +72,7 @@ export const DemographicInformation = () => {
                         <TextField
                             fullWidth
                             label=""
-                            name='print'
+                            name='race'
                             variant="standard"
                         />
                         <FormControlLabel value="individual" control={<Radio size='small'/>} label="Asian"/>
@@ -82,7 +89,7 @@ export const DemographicInformation = () => {
                             <TextField
                             fullWidth
                             label=""
-                            name='print'
+                            name='Asian'
                             placeholder="For example, Hmong, Laotian, Thai, Pakistani, and so on"
                             variant="standard"
                         />  
@@ -99,7 +106,7 @@ export const DemographicInformation = () => {
                             <TextField
                                 fullWidth
                                 label=""
-                                name='print'
+                                name='other'
                                 placeholder="For example: Fijan, Tongan, and so on"
                                 variant="standard"
                             />
