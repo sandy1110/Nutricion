@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, Paper, Radio, TextField } from '@material-ui/core';
+import { Box, Paper, TextField } from '@material-ui/core';
+import Radio from '@mui/material/Radio';
+
+
 
 const initialValues={
 
@@ -19,6 +22,27 @@ const initialValues={
 }
 
 export const OtherMortgageLoans = () => {
+
+    const [firstLien, setFirstLien] = useState('');
+    const [firstLien1, setFirstLien1] = useState('');
+    const [firstLien2, setFirstLien2] = useState('');
+  
+
+    const handleFirstLienChange = (event) => {
+        setFirstLien(event.target.value);
+    };
+
+
+    const handleFirstLien1Change = (event) => {
+        setFirstLien1(event.target.value);
+    };
+
+
+    const handleFirstLien2Change = (event) => {
+        setFirstLien2(event.target.value);
+    };
+
+
     return(
         <Box display="flex" flexDirection="column" gridRowGap={25}>
             <Paper sx={{backgroundColor:"black"}}>
@@ -26,13 +50,16 @@ export const OtherMortgageLoans = () => {
                     <TextField fullWidth
                         label="Creditor Name"
                         name='creditorName'
-                        variant="standard"
                     />
                     <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
                         <FormLabel sx={{width:"20%"}}>Lien Type</FormLabel>
-                        <RadioGroup row>
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="First Lien" />
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Subordinate Lien" />
+                        <RadioGroup row
+                            name="firstLien"
+                            value={firstLien}
+                            onChange={handleFirstLienChange}
+                        >
+                            <FormControlLabel value="first" checked={firstLien==="first"} control={<Radio size='small'/>} label="First Lien" />
+                            <FormControlLabel value="subordinate" checked={firstLien==="subordinate"} control={<Radio size='small'/>} label="Subordinate Lien" />
                         </RadioGroup>
                     </Box>
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
@@ -66,9 +93,13 @@ export const OtherMortgageLoans = () => {
                     />
                     <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
                         <FormLabel sx={{width:"20%"}}>Lien Type</FormLabel>
-                        <RadioGroup row>
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="First Lien" />
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Subordinate Lien" />
+                        <RadioGroup row
+                            name="firstLien1"
+                            value={firstLien1}
+                            onChange={handleFirstLien1Change}
+                        >
+                            <FormControlLabel value="first" checked={firstLien1==="first"} control={<Radio size='small'/>} label="First Lien" />
+                            <FormControlLabel value="subordinate" checked={firstLien1==="subordinate"} control={<Radio size='small'/>} label="Subordinate Lien" />
                         </RadioGroup>
                     </Box>
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
@@ -102,9 +133,13 @@ export const OtherMortgageLoans = () => {
                     />
                     <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
                         <FormLabel sx={{width:"20%"}}>Lien Type</FormLabel>
-                        <RadioGroup row>
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="First Lien" />
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Subordinate Lien" />
+                        <RadioGroup row
+                            name="firstLien2"
+                            value={firstLien2}
+                            onChange={handleFirstLien2Change}
+                        >
+                            <FormControlLabel value="first" checked={firstLien2==="first"} control={<Radio size='small'/>} label="First Lien" />
+                            <FormControlLabel value="subordinate" checked={firstLien2==="subordinate"} control={<Radio size='small'/>} label="Subordinate Lien" />
                         </RadioGroup>
                     </Box>
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>

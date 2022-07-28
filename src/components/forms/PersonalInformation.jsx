@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-//import { NumberFormat } from 'react-number-format';
-import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, InputLabel, MenuItem, Paper, Radio, Select, TextField } from '@material-ui/core';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import { Box, InputLabel, MenuItem, Paper, Select, TextField } from '@material-ui/core';
 
 const initialValues ={
    
@@ -78,6 +81,7 @@ export const PersonalInformation = () => {
         ]);
     }
     return (
+        <>
         <Box display="flex" flexDirection="column" gridRowGap={10}>
         <Paper sx={{backgroundColor:"black"}}>
             <Box display="flex" flexDirection="row">
@@ -183,13 +187,13 @@ export const PersonalInformation = () => {
                             value={creditType}
                             onChange={handleCreditTypeChange}
                         >
-                            <FormControlLabel checked={creditType === 'individual'}  value='individual' control={
-                                <Radio size='small'/>} label="I'm applying for individual credit." />
-                            <FormControlLabel value='joint' checked={creditType==='joint'} control={
-                                <Radio size='small'/>} label="I'm applying for joint credit" />
+                            <FormControlLabel checked={creditType==='individual'} value='individual' control={<Radio size='small'/>} label="I'm applying for individual credit." />
+                            <FormControlLabel checked={creditType==='joint'} value='joint' control={<Radio size='small'/>} label="I'm applying for joint credit" />
                         </RadioGroup>
                     </FormControl>
-                    
+
+
+
                 </Box>
                 <Box sx={{p:2, margin:2, width:"50%"}}>
                     <TextField
@@ -213,9 +217,9 @@ export const PersonalInformation = () => {
                             value={maritalStatus}
                             onChange={(e) => handleMaritalStatusChange(e)}
                         >
-                            <FormControlLabel value="married" checked={maritalStatus=="married"} control={<Radio size='small'/>} label="Married" />
-                            <FormControlLabel value="separated" checked={maritalStatus=="separated"} control={<Radio size='small'/>} label="Separated" />
-                            <FormControlLabel value="unmarried" checked={maritalStatus=="unmarried"} control={<Radio size='small'/>} label="Unmarried" />
+                            <FormControlLabel value="married" checked={maritalStatus==="married"} control={<Radio size='small'/>} label="Married" />
+                            <FormControlLabel value="separated" checked={maritalStatus==="separated"} control={<Radio size='small'/>} label="Separated" />
+                            <FormControlLabel value="unmarried" checked={maritalStatus==="unmarried"} control={<Radio size='small'/>} label="Unmarried" />
                             <InputLabel>Single, Widowed, Divorced, Civil Union, Domestic Partnership</InputLabel>
                         </RadioGroup>
                     </FormControl>
@@ -311,8 +315,8 @@ export const PersonalInformation = () => {
                         onChange={(e) => handleCurrentHousingChange(e)}
                     >
                         <FormControlLabel value="no" checked={currentHousing === "no"} control={<Radio />} label="No primary housing expense" />
-                        <FormControlLabel value="own" checked={currentHousing === "no"} control={<Radio />} label="Own" />
-                        <FormControlLabel value="rent" checked={currentHousing === "no"} control={<Radio />} label="Rent" />
+                        <FormControlLabel value="own" checked={currentHousing === "own"} control={<Radio />} label="Own" />
+                        <FormControlLabel value="rent" checked={currentHousing === "rent"} control={<Radio />} label="Rent" />
                     </RadioGroup>
                 </Box>
             </Box>
@@ -381,9 +385,9 @@ export const PersonalInformation = () => {
                         value={formerAddress}
                         onChange={(e) => handleFormerAddressChange(e)}
                     >
-                        <FormControlLabel value="no" checked={formerAddress=="no"} control={<Radio />} label="No primary housing expense" />
-                        <FormControlLabel value="own" checked={formerAddress=="own"} control={<Radio />} label="Own" />
-                        <FormControlLabel value="rent" checked={formerAddress=="rent"} control={<Radio />} label="Rent" />
+                        <FormControlLabel value="no" checked={formerAddress==="no"} control={<Radio />} label="No primary housing expense" />
+                        <FormControlLabel value="own" checked={formerAddress==="own"} control={<Radio />} label="Own" />
+                        <FormControlLabel value="rent" checked={formerAddress==="rent"} control={<Radio />} label="Rent" />
                     </RadioGroup>
                 </Box>
             </Box>
@@ -437,5 +441,6 @@ export const PersonalInformation = () => {
             </Box>
         </Paper>
         </Box>
+        </>
     )
   }
