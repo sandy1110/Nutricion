@@ -170,7 +170,7 @@ export const DemographicInformation = () => {
                                 variant="standard"
                             />
                             </ul>
-                            <FormControlLabel value="white" control={<Radio size='small'/>} label="Withe"/>
+                            <FormControlLabel value="white" control={<Radio size='small'/>} label="White"/>
                             <FormControlLabel value="notProvided" control={<Radio size='small'/>} label="I do not wish to provide this information"/>
                         </RadioGroup>                       
                     </Box>
