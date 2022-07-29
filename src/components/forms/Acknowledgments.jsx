@@ -3,6 +3,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { Box, Paper, Typography } from '@material-ui/core';
+import Checkbox from '@mui/material/Checkbox';
 
 const initialValues ={  
     agree: '',
@@ -134,13 +135,11 @@ export const Acknowledgments = () => {
                     </Box>
                 </Box>
                 <Box sx={{p:2, margin:2}}>
-                    <RadioGroup row
-                        name='agree'
-                        value={agree}
-                        onChange={handleAgreeChange}
-                    >
-                        <FormControlLabel value="yes" checked={agree} control={<Radio size='small'/>} label="I hereby accept the Terms and Conditions, Acknoledgements and Agreements." />
-                    </RadioGroup>
+                    <FormControlLabel control={<Checkbox 
+                        checked={agree}
+                        onChange={handleAgreeChange} />} label="I hereby accept the Terms and Conditions, Acknoledgements and Agreements." 
+                    />
+
                 </Box>
             </Paper>
         </Box>     

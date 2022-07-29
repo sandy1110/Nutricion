@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { FormControl, FormControlLabel, FormLabel, RadioGroup, Typography } from '@mui/material';
+import { FormControlLabel, FormGroup, FormLabel, RadioGroup, Typography } from '@mui/material';
 import { Box, InputLabel, MenuItem, Paper, Select, TextField } from '@material-ui/core';
 import Radio from '@mui/material/Radio';
+import Checkbox from '@mui/material/Checkbox';
 
 const initialValues ={
    
@@ -29,7 +30,16 @@ export const PropertyYouOwn = () => {
     const [values, setValues] = useState(initialValues);
     const [state, setState] = useState('');
     const [paid, setPaid] = useState('');
+    const [notProperty, setNotProperty] = useState(false);
+    const [paidOff, setPaidOff] = useState(false);
 
+    const handleProperty = () => {
+        setNotProperty(!notProperty);
+    };
+
+    const handlePaidOff = () => {
+        setPaidOff(!paidOff);
+    };
 
     const handleStateChange = event => {
         setState(event.target.value);
@@ -50,14 +60,11 @@ export const PropertyYouOwn = () => {
         <Box display="flex" flexDirection="column" gridRowGap={25}>
             <Paper sx={{backgroundColor:'#000'}}>
                 <Box sx={{m:1}}>
-                    <FormControl sx={{p:3}}>
-                        <RadioGroup name='state' value={state} onChange={handleStateChange}>
-                            <FormControlLabel value="state"
-                                checked={state==="state"} 
-                                control={<Radio size='small'/>} 
-                                label="I don't own any real state" />
-                        </RadioGroup>
-                    </FormControl>
+                    <FormGroup sx={{p:3}}>
+                        <FormControlLabel control={<Checkbox 
+                            checked={notProperty}
+                            onChange={handleProperty} />} label="I don´t own any Real Estate" />
+                    </FormGroup>
                 </Box>
             </Paper>
             <Paper sx={{backgroundColor:"black"}}>
@@ -192,7 +199,11 @@ export const PropertyYouOwn = () => {
                         variant="standard"
                         placeholder="$"
                     />
-                    <InputLabel sx={{width:"20%"}}><em>To be paid off at or before closing</em></InputLabel>
+                    <FormGroup sx={{width:"20%", p:3}}>
+                        <FormControlLabel control={<Checkbox 
+                            checked={paidOff}
+                            onChange={handlePaidOff} />} label="To be paid off at or before closing" />
+                    </FormGroup>
                     <RadioGroup name='paid' value={paid} onChange={handlePaidChange}>
                         <FormControlLabel value="paid" checked={paid==="paid"} control={<Radio size='small'/>} />
                     </RadioGroup>
