@@ -4,6 +4,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { Box, Paper, Typography } from '@material-ui/core';
 import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
 
 const initialValues ={  
     agree: '',
@@ -140,6 +141,9 @@ export const Acknowledgments = () => {
                         onChange={handleAgreeChange} />} label="I hereby accept the Terms and Conditions, Acknoledgements and Agreements." 
                     />
 
+                </Box>
+                <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
+                    <Button variant="contained"> SAVE </Button>
                 </Box>
             </Paper>
         </Box>     

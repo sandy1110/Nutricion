@@ -4,6 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 import { Box, Paper, TextField } from '@material-ui/core';
+import Button from '@mui/material/Button';
 
 
 
@@ -552,6 +553,9 @@ export const EmploymentAndIncome = () => {
                 </Box>
             </Box>
         </Paper>
+        <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
+                <Button variant="contained"> SAVE </Button>
+            </Box>
         </Box>
     )
   }

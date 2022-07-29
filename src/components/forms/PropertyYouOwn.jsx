@@ -3,6 +3,7 @@ import { FormControlLabel, FormGroup, FormLabel, RadioGroup, Typography } from '
 import { Box, InputLabel, MenuItem, Paper, Select, TextField } from '@material-ui/core';
 import Radio from '@mui/material/Radio';
 import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
 
 const initialValues ={
    
@@ -217,6 +218,9 @@ export const PropertyYouOwn = () => {
                 </Box>
             </Box>
             </Paper>
+            <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
+                <Button variant="contained"> SAVE </Button>
+            </Box>
         </Box>
     )
   }

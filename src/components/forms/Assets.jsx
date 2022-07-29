@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Paper, TextField, Typography } from '@material-ui/core';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-
+import Button from '@mui/material/Button';
 
 const initialValues ={
 
@@ -169,6 +169,9 @@ export const Assets = () => {
                     </Box>      
                 </Box>
             </Paper>
+            <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
+                <Button variant="contained"> SAVE </Button>
+            </Box>
         </Box>     
     )
   }
