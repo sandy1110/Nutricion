@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FormControl, FormControlLabel, FormLabel, RadioGroup, Typography } from '@mui/material';
-import { Box, InputLabel, MenuItem, Paper, Radio, Select, TextField } from '@material-ui/core';
+import { Box, InputLabel, MenuItem, Paper, Select, TextField } from '@material-ui/core';
+import Radio from '@mui/material/Radio';
 
 const initialValues ={
    
@@ -25,7 +26,18 @@ const initialValues ={
 }
 
 export const PropertyYouOwn = () => {
-    const [values, setValues] =useState(initialValues);
+    const [values, setValues] = useState(initialValues);
+    const [state, setState] = useState('');
+    const [paid, setPaid] = useState('');
+
+
+    const handleStateChange = event => {
+        setState(event.target.value);
+    };
+
+    const handlePaidChange = event => {
+        setPaid(event.target.value);
+    };
 
     const handleInputChange = event =>{
         const [name, value] = event.target;
@@ -33,13 +45,15 @@ export const PropertyYouOwn = () => {
             [name].value
         ]);
     }
+
     return (
         <Box display="flex" flexDirection="column" gridRowGap={25}>
             <Paper sx={{backgroundColor:'#000'}}>
                 <Box sx={{m:1}}>
                     <FormControl sx={{p:3}}>
-                        <RadioGroup name='notProperty' onChange={handleInputChange}>
-                            <FormControlLabel value="not" 
+                        <RadioGroup name='state' value={state} onChange={handleStateChange}>
+                            <FormControlLabel value="state"
+                                checked={state==="state"} 
                                 control={<Radio size='small'/>} 
                                 label="I don't own any real state" />
                         </RadioGroup>
@@ -179,8 +193,8 @@ export const PropertyYouOwn = () => {
                         placeholder="$"
                     />
                     <InputLabel sx={{width:"20%"}}><em>To be paid off at or before closing</em></InputLabel>
-                    <RadioGroup name='notProperty' onChange={handleInputChange}>
-                        <FormControlLabel value="before" control={<Radio size='small'/>} />
+                    <RadioGroup name='paid' value={paid} onChange={handlePaidChange}>
+                        <FormControlLabel value="paid" checked={paid==="paid"} control={<Radio size='small'/>} />
                     </RadioGroup>
                     <TextField fullWidth
                         label="Credit Limit"

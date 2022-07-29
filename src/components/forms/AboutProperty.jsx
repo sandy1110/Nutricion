@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, Paper, Radio, TextField } from '@material-ui/core';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+import { Box, Paper, TextField } from '@material-ui/core';
 
 const initialValues ={
-    
     type: '', 
     title: '',
     credit: '',
@@ -17,14 +19,13 @@ const initialValues ={
 }
 
 export const AboutProperty = () => {
-    const [values, setValues] =useState(initialValues);
-    const [primaryResidence, setPrimaryResidence] =useState(initialValues);
-    const [ownershipInterest, setOwnershipInterest] =useState(initialValues);
-    const [familyRelationship, setFamilyRelationship] =useState(initialValues);
-    const [borrowMoney, setBorrowMoney] =useState(initialValues);
-    const [mortgage, setMortgage] =useState(initialValues);
-    const [credit, setCredit] =useState(initialValues);
-    const [lien, setLien] =useState(initialValues);
+    const [primaryResidence, setPrimaryResidence] =useState('');
+    const [ownershipInterest, setOwnershipInterest] =useState('');
+    const [familyRelationship, setFamilyRelationship] =useState('');
+    const [borrowMoney, setBorrowMoney] =useState('');
+    const [mortgage, setMortgage] =useState('');
+    const [credit, setCredit] =useState('');
+    const [lien, setLien] =useState('');
 
     const handlePrimaryResidenceChange = (event) => {
         setPrimaryResidence(event.target.value);
@@ -54,71 +55,69 @@ export const AboutProperty = () => {
         setLien(event.target.value);
     };
 
-    const handleInputChange = event =>{
-        const [name, value] = event.target;
-        setValues([...values,
-            [name].value
-        ]);
-    }
     return (
         <Box display="flex" flexDirection="column" gridRowGap={10}>
             <Paper sx={{backgroundColor:"black"}}>
-                <Box display="flex" flexDirection="row">
-                    <Box sx={{p:2, margin:2, width:"85%"}}>
-                        <FormLabel> Will you occupy the property as your primary residence? </FormLabel>
-                    </Box>
-                    <Box sx={{width:"15%"}}>       
-                        <RadioGroup row
-                            name='primaryResidence'
-                            value={primaryResidence}
-                            onChange={handlePrimaryResidenceChange}
+                <Box display="flex" flexDirection="column">
+                    <Box display="flex" flexDirection="row">
+                        <Box sx={{p:2, margin:2, width:"85%"}}>
+                            <FormLabel> Will you occupy the property as your primary residence? </FormLabel>
+                        </Box>
+                        <Box sx={{width:"15%"}}>       
+                            <RadioGroup row
+                                name='primaryResidence'
+                                value={primaryResidence}
+                                onChange={handlePrimaryResidenceChange}
                             >
-                            <FormControlLabel value="yes" checked={primaryResidence=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={primaryResidence=="no"} control={<Radio size='small'/>} label="No" />
-                        </RadioGroup>
-                    </Box> 
-                    <Box sx={{p:2, margin:2, width:"85%"}}>
-                        <FormLabel>
-                            If YES, have you had an ownership interest in another property in the last three years?
-                        </FormLabel>
+                                <FormControlLabel value="yes" checked={primaryResidence==="yes"} control={<Radio size='small'/>} label="Yes" />
+                                <FormControlLabel value="no" checked={primaryResidence==="no"} control={<Radio size='small'/>} label="No" />
+                            </RadioGroup>
+                        </Box>
                     </Box>
-                    <Box sx={{width:"15%"}}>       
-                        <RadioGroup row
-                            name='ownershipInterest'
-                            value={ownershipInterest}
-                            onChange={handleOwnershipInterestChange}
-                            >
-                            <FormControlLabel value="yes" checked={ownershipInterest=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={ownershipInterest=="no"} control={<Radio size='small'/>} label="No" />
-                        </RadioGroup> 
-                    </Box> 
-                    <Box sx={{p:2, margin:2, width:"85%"}}>
-                        <FormLabel>
-                            If YES, complete (1) and (2) below:
-                            <br></br>
-                            <ul>
-                                (1) What type of property did you own: primary residence (PR), FHA secondary residence (SR), second home (SH), or investment property (IP)?
+                    <Box display="flex" flexDirection="row"> 
+                        <Box sx={{p:2, margin:2, width:"85%"}}>
+                            <FormLabel>
+                                If YES, have you had an ownership interest in another property in the last three years?
+                            </FormLabel>
+                        </Box>
+                        <Box sx={{width:"15%"}}>       
+                            <RadioGroup row
+                                name='ownershipInterest'
+                                value={ownershipInterest}
+                                onChange={handleOwnershipInterestChange}
+                                >
+                                <FormControlLabel value="yes" checked={ownershipInterest==="yes"} control={<Radio size='small'/>} label="Yes" />
+                                <FormControlLabel value="no" checked={ownershipInterest==="no"} control={<Radio size='small'/>} label="No" />
+                            </RadioGroup> 
+                        </Box> 
+                    </Box>
+                    <Box display="flex" flexDirection="row"> 
+                        <Box sx={{p:2, margin:2, width:"85%"}}>
+                            <FormLabel>
+                                If YES, complete (1) and (2) below:
                                 <br></br>
-                                (2) How did you hold title to the property: by yourself (S), jointly with your spouse (SP), or jointly with another person (O)?
-                            </ul>
-                        </FormLabel>
+                                <ul>
+                                    (1) What type of property did you own: primary residence (PR), FHA secondary residence (SR), second home (SH), or investment property (IP)?
+                                    <br></br>
+                                    (2) How did you hold title to the property: by yourself (S), jointly with your spouse (SP), or jointly with another person (O)?
+                                </ul>
+                            </FormLabel>
+                        </Box>
+                        <Box sx={{width:"15%"}}>   
+                            <TextField
+                                fullWidth
+                                label=""
+                                name='type'
+                                variant="standard"
+                            />
+                            <TextField
+                                fullWidth
+                                label=""
+                                name='title'
+                                variant="standard"
+                            />
+                        </Box> 
                     </Box>
-                    <Box sx={{width:"15%"}}>   
-                        <TextField
-                            fullWidth
-                            label=""
-                            name='type'
-                            onChange={handleInputChange}
-                            variant="standard"
-                        />
-                        <TextField
-                            fullWidth
-                            label=""
-                            name='title'
-                            onChange={handleInputChange}
-                            variant="standard"
-                        />
-                    </Box> 
                 </Box>
 
                 <Box display="flex" flexDirection="row">
@@ -131,8 +130,8 @@ export const AboutProperty = () => {
                             value={familyRelationship}
                             onChange={handleFamilyRelationshipChange}
                             >
-                            <FormControlLabel value="yes" checked={familyRelationship=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={familyRelationship=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={familyRelationship==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={familyRelationship==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -150,14 +149,13 @@ export const AboutProperty = () => {
                             value={borrowMoney}
                             onChange={handleBorrowMoney}
                             >
-                            <FormControlLabel value="yes" checked={borrowMoney=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={borrowMoney=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={borrowMoney==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={borrowMoney==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                         <TextField
                             fullWidth
                             label="$"
                             name='money'
-                            onChange={handleInputChange}
                             placeholder="$"
                             variant="standard"
                         />  
@@ -176,8 +174,8 @@ export const AboutProperty = () => {
                             value={mortgage}
                             onChange={handleMortgageChange}
                             >
-                            <FormControlLabel value="yes" cheked={mortgage="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" cheked={mortgage="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" cheked={mortgage==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" cheked={mortgage==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -194,8 +192,8 @@ export const AboutProperty = () => {
                             value={credit}
                             onChange={handleCredit}
                             >
-                            <FormControlLabel value="yes" checked={credit=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={credit=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={credit==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={credit==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>
@@ -211,8 +209,8 @@ export const AboutProperty = () => {
                             value={lien}
                             onChange={handleLienChange}
                         >
-                            <FormControlLabel value="yes" checked={lien=="yes"} control={<Radio size='small'/>} label="Yes" />
-                            <FormControlLabel value="no" checked={lien=="no"} control={<Radio size='small'/>} label="No" />
+                            <FormControlLabel value="yes" checked={lien==="yes"} control={<Radio size='small'/>} label="Yes" />
+                            <FormControlLabel value="no" checked={lien==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
                 </Box>

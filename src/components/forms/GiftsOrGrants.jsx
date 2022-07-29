@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, Paper, Radio, TextField } from '@material-ui/core';
+import { Box, Paper, TextField } from '@material-ui/core';
+import Radio from '@mui/material/Radio';
+
 
 const initialValues ={
 
@@ -18,9 +20,19 @@ const initialValues ={
 
 export const GiftsOrGrants = () => {
     const [deposited, setDeposited] = useState('');
+    const [deposited1, setDeposited1] = useState('');
+    const [deposited2, setDeposited2] = useState('');
 
     const handleDepositedChange = (event) => {
         setDeposited(event.target.value);
+    };
+
+    const handleDeposited1Change = (event) => {
+        setDeposited1(event.target.value);
+    };
+
+    const handleDeposited2Change = (event) => {
+        setDeposited2(event.target.value);
     };
 
     return(
@@ -39,8 +51,8 @@ export const GiftsOrGrants = () => {
                             value={deposited}
                             onChange={handleDepositedChange}
                         >
-                            <FormControlLabel value="deposited" checked={deposited=="deposited"} control={<Radio size='small'/>} label="Deposited" />
-                            <FormControlLabel value="notDeposited" checked={deposited=="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
+                            <FormControlLabel value="deposited" checked={deposited==="deposited"} control={<Radio size='small'/>} label="Deposited" />
+                            <FormControlLabel value="notDeposited" checked={deposited==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
                         </RadioGroup>
                     </Box>
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
@@ -67,9 +79,13 @@ export const GiftsOrGrants = () => {
                     />
                     <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
                         <FormLabel sx={{width:"20%"}}>Desposited / Not Deposited</FormLabel>
-                        <RadioGroup row>
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Deposited" />
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Not Deposited" />
+                        <RadioGroup row
+                            name="deposited1"
+                            value={deposited1}
+                            onChange={handleDeposited1Change}
+                        >
+                            <FormControlLabel value="deposited" checked={deposited1==="deposited"} control={<Radio size='small'/>} label="Deposited" />
+                            <FormControlLabel value="notDeposited" checked={deposited1==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
                         </RadioGroup>
                     </Box>
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
@@ -96,9 +112,13 @@ export const GiftsOrGrants = () => {
                     />
                     <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
                         <FormLabel sx={{width:"20%"}}>Desposited / Not Deposited</FormLabel>
-                        <RadioGroup row>
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Deposited" />
-                            <FormControlLabel value="individual" control={<Radio size='small'/>} label="Not Deposited" />
+                        <RadioGroup row
+                            name="deposited2"
+                            value={deposited2}
+                            onChange={handleDeposited2Change}
+                        >
+                            <FormControlLabel value="deposited" checked={deposited2==="deposited"} control={<Radio size='small'/>} label="Deposited" />
+                            <FormControlLabel value="notDeposited" checked={deposited2==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
                         </RadioGroup>
                     </Box>
                     <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>

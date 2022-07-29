@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
-import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
-import { Box, Paper,  TextField, Typography } from '@material-ui/core';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import { Box, Paper, Typography } from '@material-ui/core';
 
 const initialValues ={  
     agree: '',
 }
 
 export const Acknowledgments = () => {
+    const [agree, setAgree] =useState(false);
+
+    const handleAgreeChange = () => {
+        setAgree(!agree);
+    };
 
     return (
         <Box display="flex" flexDirection="column" gridRowGap={25}>
@@ -127,27 +134,14 @@ export const Acknowledgments = () => {
                     </Box>
                 </Box>
                 <Box sx={{p:2, margin:2}}>
-                    <RadioGroup row>
-                        <FormControlLabel value="individual" control={<Radio size='small'/>} label="I hereby accept the Terms and Conditions, Acknoledgements and Agreements." />
+                    <RadioGroup row
+                        name='agree'
+                        value={agree}
+                        onChange={handleAgreeChange}
+                    >
+                        <FormControlLabel value="yes" checked={agree} control={<Radio size='small'/>} label="I hereby accept the Terms and Conditions, Acknoledgements and Agreements." />
                     </RadioGroup>
                 </Box>
-                {/*<Box display="flex" flexDirection>
-                    <Box sx={{p:2, margin:2, width:"80%"}}>
-                        <TextField 
-                            fullWidth
-                            variant="standard"
-                            label="Addittional Borrower Signature"
-                            name='signature2'
-                        />
-                    </Box>
-                    <Box sx={{p:2, margin:2, width:"20%"}}>
-                        <TextField  
-                            variant="standard"
-                            label="Date (mm/dd/yyyy)"
-                            name='date2'
-                        />  
-                    </Box>
-                </Box>*/}
             </Paper>
         </Box>     
     )
