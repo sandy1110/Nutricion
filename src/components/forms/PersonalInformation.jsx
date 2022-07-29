@@ -448,6 +448,5 @@ export const PersonalInformation = () => {
             </Box>
         </Paper>
         </Box>
-        </>
     )
   }
