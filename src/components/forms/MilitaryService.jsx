@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, Radio, TextField } from '@material-ui/core';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const initialValues={
     endDate: '',
@@ -11,6 +14,7 @@ export const MilitaryService = () => {
 
     const [everServed, setEverServed] = useState('');
     const [servingType, setServingType] = useState('');
+    const [endDate, setEndDate] = useState(new Date());
 
     const handleEverServedChange = (event) => {
         setEverServed(event.target.value);
@@ -56,12 +60,19 @@ export const MilitaryService = () => {
                         </RadioGroup> 
                     </Box> 
                     <Box sx={{width: "15%"}}>
-                        <TextField
-                            label="(mm/dd/yy)"
-                            name='endDate'
-                            placeholder="(___)___-_______"
-                            variant="standard"
-                        />
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                            disableFuture
+                            label="End Date"
+                            openTo="year"
+                            views={['year', 'month', 'day']}
+                            value={endDate}
+                            onChange={(newValue) => {
+                                setEndDate(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
                     </Box>
                 </Box>
             </Paper>
