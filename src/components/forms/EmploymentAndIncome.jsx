@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 import { Box, Paper, TextField } from '@material-ui/core';
 
@@ -69,6 +72,10 @@ const initialValues ={
 
 
 export const EmploymentAndIncome = () => {
+    const [currentStartDate, setCurrentStartDate] = useState(new Date());
+    const [additionalStartDate, setAdditionalStartDate] = useState(new Date());
+    const [previousStartDate, setPreviousStartDate] = useState(new Date());
+    const [previousEndDate, setPreviousEndDate] = useState(new Date());
     const [previousBusinessOwner, setPreviousBusinessOwner] = useState('');
     const [employedByFamily, setEmployedByFamily] = useState('');
     const [businessOwner, setBusinessOwner] = useState('');
@@ -158,13 +165,19 @@ export const EmploymentAndIncome = () => {
                             name='position'
                             variant="standard"
                         />
-                        <TextField
-                            fullWidth
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                            disableFuture
                             label="Start Date"
-                            name='startDate'
-                            variant="standard"
-                            placeholder="___ / ___ / _____"
-                        />
+                            openTo="year"
+                            views={['year', 'month', 'day']}
+                            value={currentStartDate}
+                            onChange={(newValue) => {
+                                setCurrentStartDate(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
                     </Box>
                     <FormLabel>How long in this line of work?</FormLabel>
                     <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -325,13 +338,19 @@ export const EmploymentAndIncome = () => {
                             name='additionalPosition'
                             variant="standard"
                         />
-                        <TextField
-                            fullWidth
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                            disableFuture
                             label="Start Date"
-                            name='additionalStartDate'
-                            variant="standard"
-                            placeholder="___ / ___ / _____"
-                        />
+                            openTo="year"
+                            views={['year', 'month', 'day']}
+                            value={additionalStartDate}
+                            onChange={(newValue) => {
+                                setAdditionalStartDate(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
                     </Box>
                     <FormLabel>How long in this line of work?</FormLabel>
                     <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -482,20 +501,32 @@ export const EmploymentAndIncome = () => {
                             name='previousPosition'
                             variant="standard"
                         />
-                        <TextField
-                            fullWidth
-                            label="Start Date"
-                            name='previousStartDate'
-                            variant="standard"
-                            placeholder="___ / ___ / _____"
-                        />
-                        <TextField
-                            fullWidth
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                            disableFuture
+                            label="Start Date "
+                            openTo="year"
+                            views={['year', 'month', 'day']}
+                            value={previousStartDate}
+                            onChange={(newValue) => {
+                                setPreviousStartDate(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                            disableFuture
                             label="End Date"
-                            name='previousEndDate'
-                            variant="standard"
-                            placeholder="___ / ___ / _____"
-                        />
+                            openTo="year"
+                            views={['year', 'month', 'day']}
+                            value={previousEndDate}
+                            onChange={(newValue) => {
+                                setPreviousEndDate(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
                     </Box>
                     <FormControl sx={{py:3}}>
                         <RadioGroup name='previousBussinesOwner' 

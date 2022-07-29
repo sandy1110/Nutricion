@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import { TextField, Paper } from '@mui/material';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
+import { Box, InputLabel, MenuItem, Radio, Select } from '@material-ui/core';
 import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import { Box, InputLabel, MenuItem, Paper, Select, TextField } from '@material-ui/core';
-
 const initialValues ={
    
     name: '',
@@ -57,6 +57,7 @@ export const PersonalInformation = () => {
     const [maritalStatus, setMaritalStatus] = useState('');
     const [currentHousing, setCurrentHousing] = useState('');
     const [formerAddress, setFormerAddress] = useState('');
+    const [dateOfBirth, setDateOfBirth] = useState(new Date());
 
     const handleCreditTypeChange = (event) => {
         setCreditType(event.target.value);
@@ -81,11 +82,10 @@ export const PersonalInformation = () => {
         ]);
     }
     return (
-        <>
-        <Box display="flex" flexDirection="column" gridRowGap={10}>
-        <Paper sx={{backgroundColor:"black"}}>
-            <Box display="flex" flexDirection="row">
-                <Box sx={{p:2, margin:2, width:"60%"}}>
+        <Box display="flex" flexDirection="column" gridRowGap={25}>
+        <Paper sx={{width:"100%", marginTop:3}}>
+            <Box display="flex" flexDirection="row" gridColumnGap={40} sx={{m:3}}>
+                <Box display="flex" flexDirection="column" gridRowGap={8} justifyContent="flex-end" sx={{ width:"64%"}}>
                     <TextField
                         fullWidth
                         variant="standard"
@@ -110,8 +110,8 @@ export const PersonalInformation = () => {
                         placeholder="or Individual Taxpayer Identification Number"
                         variant="standard"            
                     />
-                    <Box display="flex" flexDirection="row" gridColumnGap={15}>
-                        <FormControl variant="standard" sx={{py:2, minWidth: 200 }} fullWidth>
+                    <Box display="flex" flexDirection="row" gridColumnGap={15} sx={{py:2}}>
+                        <FormControl variant="standard" sx={{minWidth: 200 }} fullWidth>
                             <InputLabel>Citizenship</InputLabel>
                             <Select
                             label="citizenship"
@@ -123,15 +123,22 @@ export const PersonalInformation = () => {
                             <MenuItem value={3}>Non-Permanent Resident Alien</MenuItem>
                             </Select>
                         </FormControl>
-                        <TextField
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                            disableFuture
                             label="Date of Birth"
-                            name='dateOfBirth'
-                            onChange={handleInputChange}
-                            variant="standard"
-                        />
+                            openTo="year"
+                            views={['year', 'month', 'day']}
+                            value={dateOfBirth}
+                            onChange={(newValue) => {
+                                setDateOfBirth(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
                     </Box>
                 </Box>
-                <Box sx={{p:2, margin:2, width:"40%"}}>
+                <Box display="flex" flexDirection="column" gridRowGap={18} sx={{width:"36%"}}>
                     <FormLabel>Contact Information</FormLabel>
                     <TextField
                         fullWidth
@@ -177,7 +184,7 @@ export const PersonalInformation = () => {
                 </Box>
             </Box>
         </Paper>
-        <Paper sx={{backgroundColor:"black", p:10, margin:"auto", flexGrow:1}}>
+        <Paper sx={{width:"100%"}}>
             <Box display="flex" flexDirection="row">
                 <Box sx={{p:2, margin:2, width:"50%"}}>
                     <FormControl>
@@ -207,7 +214,7 @@ export const PersonalInformation = () => {
                 </Box>
             </Box>
         </Paper>
-        <Paper sx={{backgroundColor:"black", p:10, margin:"auto", flexGrow:1}}>
+        <Paper sx={{width:"100%"}}>
             <Box display="flex" flexDirection="row">
                 <Box sx={{p:2, margin:2, width:"70%"}}>
                     <FormControl>
@@ -248,7 +255,7 @@ export const PersonalInformation = () => {
                 </Box>
             </Box>
         </Paper>
-        <Paper sx={{backgroundColor:"black", p:10, margin:"auto", flexGrow:1}}>
+        <Paper sx={{width:"100%"}}>
             <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
                 <FormLabel>Current Address</FormLabel>
                 <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -321,7 +328,7 @@ export const PersonalInformation = () => {
                 </Box>
             </Box>
         </Paper>
-        <Paper sx={{backgroundColor:"black", p:10, margin:"auto", flexGrow:1}}>
+        <Paper sx={{width:"100%"}}>
             <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
                 <FormLabel>If at Current Address for LESS than 2 years, list Former Address</FormLabel>
                 <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -392,7 +399,7 @@ export const PersonalInformation = () => {
                 </Box>
             </Box>
         </Paper>
-        <Paper sx={{backgroundColor:"black", p:10, margin:"auto", flexGrow:1}}>
+        <Paper sx={{width:"100%"}}>
             <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
                 <FormLabel>Mailing Address <em> if different from Current Address</em></FormLabel>
                 <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -441,6 +448,5 @@ export const PersonalInformation = () => {
             </Box>
         </Paper>
         </Box>
-        </>
     )
   }
