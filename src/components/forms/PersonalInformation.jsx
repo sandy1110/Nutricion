@@ -330,8 +330,8 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="Alternate Names"
                             name='alternateNames'
-                            value={alternateNames}
-                            onChange={(e)=>handleAlternateNames(e.target.value)}
+                            value={formValues.alternateNames}
+                            onChange={onInputChange}
                             placeholder="Any names under which credit was previously received"
                             variant="standard"
                         />
@@ -339,8 +339,8 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="Social Security Number"
                             name='sss'
-                            value={sss}
-                            onChange={(e)=>handleSss(e.target.value)}
+                            value={formValues.sss}
+                            onChange={onInputChange}
                             placeholder="or Individual Taxpayer Identification Number"
                             variant="standard"            
                         />
@@ -350,8 +350,8 @@ export const PersonalInformation = () => {
                                 <Select
                                 label="citizenship"
                                 name='citizenship'
-                                value={citizenship}
-                                onChange={(e)=>handleCitizenship(e.target.value)}
+                                value={formValues.citizenship}
+                                onChange={onInputChange}
                                 >
                                 <MenuItem value={1}>U.S Citizen</MenuItem>
                                 <MenuItem value={2}>Permanent Resident Alien</MenuItem>
@@ -364,10 +364,8 @@ export const PersonalInformation = () => {
                                 label="Date of Birth"
                                 openTo="year"
                                 views={['year', 'month', 'day']}
-                                value={dateOfBirth}
-                                onChange={(newValue) => {
-                                    handleDateOfBirth(newValue);
-                                }}
+                                value={formValues.dateOfBirth}
+                                onChange={onInputChange}
                                 renderInput={(params) => <TextField {...params} />}
                                 />
                             </LocalizationProvider>
@@ -379,8 +377,8 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="Home phone"
                             name='homePhone'
-                            value={homePhone}
-                            onChange={(e)=>handleHomePhone(e.target.value)}
+                            value={formValues.homePhone}
+                            onChange={onInputChange}
                             placeholder="(___)___-_______"
                             variant="standard"
                         />
@@ -388,8 +386,8 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="Cell phone"
                             name='cellPhone'
-                            value={cellPhone}
-                            onChange={(e)=>handleCellPhone(e.target.value)}
+                            value={formValues.cellPhone}
+                            onChange={onInputChange}
                             placeholder="(___)___-_______"
                             variant="standard"
                         />
@@ -398,8 +396,8 @@ export const PersonalInformation = () => {
                                 fullWidth
                                 label="Work phone"
                                 name='workPhone'
-                                value={workPhone}
-                                onChange={(e)=>handleWorkPhone(e.target.value)}
+                                value={formValues.workPhone}
+                                onChange={onInputChange}
                                 placeholder="(___)___-_______"
                                 variant="standard"
                             />
@@ -407,8 +405,8 @@ export const PersonalInformation = () => {
                                 fullWidth
                                 label="Ext."
                                 name='ext'
-                                value={ext}
-                                onChange={(e)=>handleExt(e.target.value)}
+                                value={formValues.ext}
+                                onChange={onInputChange}
                                 placeholder="(___)___-_______"
                                 variant="standard"
                             />
@@ -417,8 +415,8 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="Email"
                             name='email'
-                            value={email}
-                            onChange={(e)=>handleEmail(e.target.value)}
+                            value={formValues.email}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                     </Box>
@@ -431,8 +429,8 @@ export const PersonalInformation = () => {
                             <FormLabel>Type of Credit</FormLabel>
                             <RadioGroup
                                 name='creditType'
-                                value={creditType}
-                                onChange={(e)=>handleCreditType(e.target.value)}
+                                value={formValues.creditType}
+                                onChange={onInputChange}
                             >
                                 <FormControlLabel checked={creditType==='individual'} value='individual' control={<Radio size='small'/>} label="I'm applying for individual credit." />
                                 <FormControlLabel checked={creditType==='joint'} value='joint' control={<Radio size='small'/>} label="I'm applying for joint credit" />
@@ -446,8 +444,8 @@ export const PersonalInformation = () => {
                             placeholder="(First, Middle, Last, Suffix)"
                             variant="standard"
                             name='otherBorrower'
-                            value={otherBorrower}
-                            onChange={(e)=>handleOtherBorrower(e.target.value)}
+                            value={formValues.otherBorrower}
+                            onChange={onInputChange}
                         />
                     </Box>
                 </Box>
@@ -459,8 +457,8 @@ export const PersonalInformation = () => {
                             <FormLabel>Marital Status</FormLabel>
                             <RadioGroup
                                 name='maritalStatus'
-                                value={maritalStatus}
-                                onChange={(e) => handleMaritalStatus(e)}
+                                value={formValues.maritalStatus}
+                                onChange={onInputChange}
                             >
                                 <FormControlLabel value="married" checked={maritalStatus==="married"} control={<Radio size='small'/>} label="Married" />
                                 <FormControlLabel value="separated" checked={maritalStatus==="separated"} control={<Radio size='small'/>} label="Separated" />
@@ -472,8 +470,8 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="Total Number of Borrowers: "
                             name='borrower'
-                            value={borrower}
-                            onChange={(e)=>handleBorrower(e.target.value)}
+                            value={formValues.borrower}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                     </Box>
@@ -483,16 +481,16 @@ export const PersonalInformation = () => {
                             label="Number"
                             variant="standard"
                             name='dependents'
-                            value={dependents}
-                            onChange={(e)=>handleDependents(e.target.value)}
+                            value={formValues.dependents}
+                            onChange={onInputChange}
                         />
                         <TextField
                             label="Ages"
                             multiline
                             variant="standard"
                             name='ages'
-                            value={ages}
-                            onChange={(e)=>handleAges(e.target.value)}
+                            value={formValues.ages}
+                            onChange={onInputChange}
                         />
                     </Box>
                 </Box>
@@ -505,15 +503,15 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="Street"
                             name='currentStreet'
-                            value={currentStreet}
-                            onChange={(e)=>handleCurrentStreet(e.target.value)}
+                            value={formValues.currentStreet}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="Unit #"
                             name='currentUnit'
-                            value={currentUnit}
-                            onChange={(e)=>handleCurrentUnit(e.target.value)}
+                            value={formValues.currentUnit}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                     </Box>
@@ -522,30 +520,30 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="City"
                             name='currentCity'
-                            value={currentCity}
-                            onChange={(e)=>handleCurrentCity(e.target.value)}
+                            value={formValues.currentCity}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="State"
                             name='currentState'
-                            value={currentState}
-                            onChange={(e)=>handleCurrentState(e.target.value)}
+                            value={formValues.currentState}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="Zip"
                             name='currentZip'
-                            value={currentZip}
-                            onChange={(e)=>handleCurrentZip(e.target.value)}
+                            value={formValues.currentZip}
+                            onChange={onInputChange}
                             variant="standard"
                             type="number"
                         />
                         <TextField
                             label="Country"
                             name='currentCountry'
-                            value={currentCountry}
-                            onChange={(e)=>handleCurrentCountry(e.target.value)}
+                            value={formValues.currentCountry}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                     </Box>
@@ -556,22 +554,22 @@ export const PersonalInformation = () => {
                             multiline
                             variant="standard"
                             name="currentYears"
-                            value={currentYears}
-                            onChange={(e)=>handleCurrentYears(e.target.value)}
+                            value={formValues.currentYears}
+                            onChange={onInputChange}
                         />
                         <TextField
                             label="Months"
                             multiline
                             variant="standard"
                             name="currentMonths"
-                            value={currentMonths}
-                            onChange={(e)=>handleCurrentMonths(e.target.value)}
+                            value={formValues.currentMonths}
+                            onChange={onInputChange}
                         />
                         <FormLabel sx={{m:2}}>Housing</FormLabel>
                         <RadioGroup row
                             name="currentHousing"
-                            value={currentHousing}
-                            onChange={(e) => handleCurrentHousing(e)}
+                            value={formValues.currentHousing}
+                            onChange={onInputChange}
                         >
                             <FormControlLabel value="no" checked={currentHousing === "no"} control={<Radio />} label="No primary housing expense" />
                             <FormControlLabel value="own" checked={currentHousing === "own"} control={<Radio />} label="Own" />
@@ -588,15 +586,15 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="Street"
                             name='formerStreet'
-                            value={formerStreet}
-                            onChange={(e)=>handleFormerStreet(e.target.value)}
+                            value={formValues.formerStreet}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="Unit #"
                             name='formerUnit'
-                            value={formerUnit}
-                            onChange={(e)=>handleFormerUnit(e.target.value)}
+                            value={formValues.formerUnit}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                     </Box>
@@ -605,30 +603,30 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="City"
                             name='formerCity'
-                            value={formerCity}
-                            onChange={(e)=>handleFormerCity(e.target.value)}
+                            value={formValues.formerCity}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="State"
                             name='formerState'
-                            value={formerState}
-                            onChange={(e)=>handleFormerState(e.target.value)}
+                            value={formValues.formerState}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="Zip"
                             name='formerZip'
-                            value={formerZip}
-                            onChange={(e)=>handleFormerZip(e.target.value)}
+                            value={formValues.formerZip}
+                            onChange={onInputChange}
                             variant="standard"
                             type="number"
                         />
                         <TextField
                             label="Country"
                             name='formerCountry'
-                            value={formerCountry}
-                            onChange={(e)=>handleFormerCountry(e.target.value)}
+                            value={formValues.formerCountry}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                     </Box>
@@ -637,24 +635,24 @@ export const PersonalInformation = () => {
                         <TextField
                             label="Years"
                             name='formerYears'
-                            value={formerYears}
+                            value={formValues.formerYears}
                             multiline
-                            onChange={(e)=>handleFormerYears(e.target.value)}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="Months"
                             name='formerMonths'
-                            value={formerMonths}
-                            onChange={(e)=>handleFormerMonths(e.target.value)}
+                            value={formValues.formerMonths}
+                            onChange={onInputChange}
                             multiline
                             variant="standard"
                         />
                         <FormLabel sx={{m:2}}>Housing</FormLabel>
                         <RadioGroup row
                             name="formerAddress"
-                            value={formerAddress}
-                            onChange={(e) => handleFormerAddress(e)}
+                            value={formValues.formerAddress}
+                            onChange={onInputChange}
                         >
                             <FormControlLabel value="no" checked={formerAddress==="no"} control={<Radio />} label="No primary housing expense" />
                             <FormControlLabel value="own" checked={formerAddress==="own"} control={<Radio />} label="Own" />
@@ -671,15 +669,15 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="Street"
                             name='mailingStreet'
-                            value={mailingStreet}
-                            onChange={(e)=>handleMailingStreet(e.target.value)}
+                            value={formValues.mailingStreet}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="Unit #"
                             name='mailingUnit'
-                            value={mailingUnit}
-                            onChange={(e)=>handleMailingUnit(e.target.value)}
+                            value={formValues.mailingUnit}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                     </Box>
@@ -688,30 +686,30 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="City"
                             name='mailingCity'
-                            value={mailingCity}
-                            onChange={(e)=>handleMailingCity(e.target.value)}
+                            value={formValues.mailingCity}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="State"
                             name='mailingState'
-                            value={mailingState}
-                            onChange={(e)=>handleMailingState(e.target.value)}
+                            value={formValues.mailingState}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                         <TextField
                             label="Zip"
                             name='mailingZip'
-                            value={mailingZip}
-                            onChange={(e)=>handleMailingZip(e.target.value)}
+                            value={formValues.mailingZip}
+                            onChange={onInputChange}
                             variant="standard"
                             type="number"
                         />
                         <TextField
                             label="Country"
                             name='mailingCountry'
-                            value={mailingCountry}
-                            onChange={(e)=>handleMailingCountry(e.target.value)}
+                            value={formValues.mailingCountry}
+                            onChange={onInputChange}
                             variant="standard"
                         />
                     </Box>
