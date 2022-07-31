@@ -13,7 +13,7 @@ const initialValues = {
     alternateNames: '',
     sss: '',
     citizenship: '',
-    dateOfBirth: '',
+    dateOfBirth: new Date(),
     homePhone: '',
     cellPhone: '',
     workPhone: '',
