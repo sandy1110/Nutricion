@@ -12,13 +12,13 @@ const AntTabs = styled(Tabs)({
 });
 
 const AntTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) => ({
-  textTransform: 'none',
+  textTransform: 'uppercase',
   minWidth: 0,
   [theme.breakpoints.up('sm')]: {
     minWidth: 0,
   },
   fontWeight: theme.typography.fontWeightRegular,
-  marginRight: theme.spacing(1),
+  marginRight: theme.spacing(),
   color: 'rgba(0, 0, 0, 0.85)',
   fontFamily: [
     '-apple-system',

@@ -4,7 +4,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { Box, InputLabel, MenuItem, Select } from '@mui/material';
 import Radio from '@mui/material/Radio';
 
 const initialValues ={
@@ -83,10 +83,10 @@ export const PersonalInformation = () => {
         ]);
     }
     return (
-        <Box display="flex" flexDirection="column" gridRowGap={25}>
-        <Paper sx={{width:"100%", marginTop:3}}>
-            <Box display="flex" flexDirection="row" gridColumnGap={40} sx={{m:3}}>
-                <Box display="flex" flexDirection="column" gridRowGap={8} justifyContent="flex-end" sx={{ width:"64%"}}>
+        <Box sx={{display:'flex', flexDirection:'column', gridRowGap:25}}>
+        <Paper elevation={3} sx={{width:"100%", marginTop:3}}>
+            <Box sx={{display:'flex', flexDirection:'row', gridColumnGap:35, m:3}}>
+                <Box sx={{display:'flex', flexDirection:'column', gridRowGap:8, width:"64%"}}>
                     <TextField
                         fullWidth
                         variant="standard"
@@ -94,6 +94,7 @@ export const PersonalInformation = () => {
                         name='name'
                         onChange={handleInputChange}
                         placeholder="(First, Middle, Last)"
+                        color="warning"
                     />
                     <TextField
                         fullWidth
@@ -102,6 +103,7 @@ export const PersonalInformation = () => {
                         onChange={handleInputChange}
                         placeholder="Any names under which credit was previously received"
                         variant="standard"
+                        color="warning"
                     />
                     <TextField
                         fullWidth
@@ -109,10 +111,11 @@ export const PersonalInformation = () => {
                         name='sss'
                         onChange={handleInputChange}
                         placeholder="or Individual Taxpayer Identification Number"
-                        variant="standard"            
+                        variant="standard"  
+                        color="warning"          
                     />
                     <Box display="flex" flexDirection="row" gridColumnGap={15} sx={{py:2}}>
-                        <FormControl variant="standard" sx={{minWidth: 200 }} fullWidth>
+                        <FormControl variant="standard" color="warning" sx={{minWidth: 200 }} fullWidth>
                             <InputLabel>Citizenship</InputLabel>
                             <Select
                             label="citizenship"
@@ -125,7 +128,7 @@ export const PersonalInformation = () => {
                             </Select>
                         </FormControl>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
+                            <DatePicker color="warning"
                             disableFuture
                             label="Date of Birth"
                             openTo="year"
@@ -148,6 +151,7 @@ export const PersonalInformation = () => {
                         onChange={handleInputChange}
                         placeholder="(___)___-_______"
                         variant="standard"
+                        color="warning"
                     />
                     <TextField
                         fullWidth
@@ -156,6 +160,7 @@ export const PersonalInformation = () => {
                         onChange={handleInputChange}
                         placeholder="(___)___-_______"
                         variant="standard"
+                        color="warning"
                     />
                     <Box display="flex" flexDirection="row" gridColumnGap={15}>
                         <TextField
@@ -165,6 +170,7 @@ export const PersonalInformation = () => {
                             onChange={handleInputChange}
                             placeholder="(___)___-_______"
                             variant="standard"
+                            color="warning"
                         />
                         <TextField
                             fullWidth
@@ -173,6 +179,7 @@ export const PersonalInformation = () => {
                             onChange={handleInputChange}
                             placeholder="(___)___-_______"
                             variant="standard"
+                            color="warning"
                         />
                     </Box>
                     <TextField
@@ -181,11 +188,12 @@ export const PersonalInformation = () => {
                         name='email'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                 </Box>
             </Box>
         </Paper>
-        <Paper sx={{width:"100%"}}>
+        <Paper elevation={3} sx={{width:"100%"}}>
             <Box display="flex" flexDirection="row">
                 <Box sx={{p:2, margin:2, width:"50%"}}>
                     <FormControl>
@@ -211,11 +219,12 @@ export const PersonalInformation = () => {
                         variant="standard"
                         name='otherBorrowers'
                         onChange={handleInputChange}
+                        color="warning"
                     />
                 </Box>
             </Box>
         </Paper>
-        <Paper sx={{width:"100%"}}>
+        <Paper elevation={3} sx={{width:"100%"}}>
             <Box display="flex" flexDirection="row">
                 <Box sx={{p:2, margin:2, width:"70%"}}>
                     <FormControl>
@@ -228,7 +237,7 @@ export const PersonalInformation = () => {
                             <FormControlLabel value="married" checked={maritalStatus==="married"} control={<Radio size='small'/>} label="Married" />
                             <FormControlLabel value="separated" checked={maritalStatus==="separated"} control={<Radio size='small'/>} label="Separated" />
                             <FormControlLabel value="unmarried" checked={maritalStatus==="unmarried"} control={<Radio size='small'/>} label="Unmarried" />
-                            <InputLabel>Single, Widowed, Divorced, Civil Union, Domestic Partnership</InputLabel>
+                            <FormLabel>Single, Widowed, Divorced, Civil Union, Domestic Partnership</FormLabel>
                         </RadioGroup>
                     </FormControl>
                     <TextField
@@ -237,6 +246,7 @@ export const PersonalInformation = () => {
                         name='borrowers'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                 </Box>
                 <Box sx={{p:2, margin:2, width:"30%"}}>
@@ -246,17 +256,19 @@ export const PersonalInformation = () => {
                         variant="standard"
                         name='dependents'
                         onChange={handleInputChange}
+                        color="warning"
                     />
                     <TextField
                         label="Ages"
                         multiline
                         variant="standard"
                         name='ages'
+                        color="warning"
                     />
                 </Box>
             </Box>
         </Paper>
-        <Paper sx={{width:"100%"}}>
+        <Paper elevation={3} sx={{width:"100%"}}>
             <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
                 <FormLabel>Current Address</FormLabel>
                 <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -266,12 +278,14 @@ export const PersonalInformation = () => {
                         name='street'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                     <TextField
                         label="Unit #"
                         name='unit'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                 </Box>
                 <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -281,12 +295,14 @@ export const PersonalInformation = () => {
                         name='city'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                     <TextField
                         label="State"
                         name='state'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                     <TextField
                         label="Zip"
@@ -294,12 +310,14 @@ export const PersonalInformation = () => {
                         onChange={handleInputChange}
                         variant="standard"
                         type="number"
+                        color="warning"
                     />
                     <TextField
                         label="Country"
                         name='country'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                 </Box>
                 <FormLabel>How long at Current Address?</FormLabel>
@@ -309,12 +327,14 @@ export const PersonalInformation = () => {
                         multiline
                         variant="standard"
                         name="years"
+                        color="warning"
                     />
                     <TextField
                         label="Months"
                         multiline
                         variant="standard"
                         name="months"
+                        color="warning"
                     />
                     <FormLabel sx={{m:2}}>Housing</FormLabel>
                     <RadioGroup row
@@ -329,7 +349,7 @@ export const PersonalInformation = () => {
                 </Box>
             </Box>
         </Paper>
-        <Paper sx={{width:"100%"}}>
+        <Paper elevation={3} sx={{width:"100%"}}>
             <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
                 <FormLabel>If at Current Address for LESS than 2 years, list Former Address</FormLabel>
                 <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -339,12 +359,14 @@ export const PersonalInformation = () => {
                         name='street1'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                     <TextField
                         label="Unit #"
                         name='unit1'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                 </Box>
                 <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -354,12 +376,14 @@ export const PersonalInformation = () => {
                         name='city1'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                     <TextField
                         label="State"
                         name='state1'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                     <TextField
                         label="Zip"
@@ -367,12 +391,14 @@ export const PersonalInformation = () => {
                         onChange={handleInputChange}
                         variant="standard"
                         type="number"
+                        color="warning"
                     />
                     <TextField
                         label="Country"
                         name='country1'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                 </Box>
                 <FormLabel>How long at Current Address?</FormLabel>
@@ -381,11 +407,13 @@ export const PersonalInformation = () => {
                         label="Years1"
                         multiline
                         variant="standard"
+                        color="warning"
                     />
                     <TextField
                         label="Months1"
                         multiline
                         variant="standard"
+                        color="warning"
                     />
                     <FormLabel sx={{m:2}}>Housing</FormLabel>
                     <RadioGroup row
@@ -400,7 +428,7 @@ export const PersonalInformation = () => {
                 </Box>
             </Box>
         </Paper>
-        <Paper sx={{width:"100%"}}>
+        <Paper elevation={3} sx={{width:"100%"}}>
             <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
                 <FormLabel>Mailing Address <em> if different from Current Address</em></FormLabel>
                 <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -410,12 +438,14 @@ export const PersonalInformation = () => {
                         name='street2'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                     <TextField
                         label="Unit #"
                         name='unit2'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                 </Box>
                 <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -425,12 +455,14 @@ export const PersonalInformation = () => {
                         name='city2'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                     <TextField
                         label="State"
                         name='state2'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                     <TextField
                         label="Zip"
@@ -438,12 +470,14 @@ export const PersonalInformation = () => {
                         onChange={handleInputChange}
                         variant="standard"
                         type="number"
+                        color="warning"
                     />
                     <TextField
                         label="Country"
                         name='country2'
                         onChange={handleInputChange}
                         variant="standard"
+                        color="warning"
                     />
                 </Box>
             </Box>

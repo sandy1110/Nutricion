@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Box, Tabs, Tab, Typography } from '@material-ui/core';
+import { Box, Tabs, Tab, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { DemographicInformation } from "../forms/DemographicInformation";
 
@@ -11,7 +11,7 @@ const AntTabs = styled(Tabs)({
 });
 
 const AntTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) => ({
-  textTransform: 'none',
+  textTransform: 'uppercase',
   minWidth: 0,
   [theme.breakpoints.up('sm')]: {
     minWidth: 0,
