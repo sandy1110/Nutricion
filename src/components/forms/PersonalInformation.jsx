@@ -65,9 +65,7 @@ export const PersonalInformation = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        
-
-        console.log(initialValues, formValues)
+        console.log(formValues)
     }
     
     const [name, setName] = useState('');
@@ -432,8 +430,8 @@ export const PersonalInformation = () => {
                                 value={formValues.creditType}
                                 onChange={onInputChange}
                             >
-                                <FormControlLabel checked={creditType==='individual'} value='individual' control={<Radio size='small'/>} label="I'm applying for individual credit." />
-                                <FormControlLabel checked={creditType==='joint'} value='joint' control={<Radio size='small'/>} label="I'm applying for joint credit" />
+                                <FormControlLabel checked={formValues.creditType==='individual'} value='individual' control={<Radio size='small'/>} label="I'm applying for individual credit." />
+                                <FormControlLabel checked={formValues.creditType==='joint'} value='joint' control={<Radio size='small'/>} label="I'm applying for joint credit" />
                             </RadioGroup>
                         </FormControl>
                     </Box>
@@ -460,9 +458,9 @@ export const PersonalInformation = () => {
                                 value={formValues.maritalStatus}
                                 onChange={onInputChange}
                             >
-                                <FormControlLabel value="married" checked={maritalStatus==="married"} control={<Radio size='small'/>} label="Married" />
-                                <FormControlLabel value="separated" checked={maritalStatus==="separated"} control={<Radio size='small'/>} label="Separated" />
-                                <FormControlLabel value="unmarried" checked={maritalStatus==="unmarried"} control={<Radio size='small'/>} label="Unmarried" />
+                                <FormControlLabel value="married" checked={formValues.maritalStatus==="married"} control={<Radio size='small'/>} label="Married" />
+                                <FormControlLabel value="separated" checked={formValues.maritalStatus==="separated"} control={<Radio size='small'/>} label="Separated" />
+                                <FormControlLabel value="unmarried" checked={formValues.maritalStatus==="unmarried"} control={<Radio size='small'/>} label="Unmarried" />
                                 <InputLabel>Single, Widowed, Divorced, Civil Union, Domestic Partnership</InputLabel>
                             </RadioGroup>
                         </FormControl>
@@ -571,9 +569,9 @@ export const PersonalInformation = () => {
                             value={formValues.currentHousing}
                             onChange={onInputChange}
                         >
-                            <FormControlLabel value="no" checked={currentHousing === "no"} control={<Radio />} label="No primary housing expense" />
-                            <FormControlLabel value="own" checked={currentHousing === "own"} control={<Radio />} label="Own" />
-                            <FormControlLabel value="rent" checked={currentHousing === "rent"} control={<Radio />} label="Rent" />
+                            <FormControlLabel value="no" checked={formValues.currentHousing === "no"} control={<Radio />} label="No primary housing expense" />
+                            <FormControlLabel value="own" checked={formValues.currentHousing === "own"} control={<Radio />} label="Own" />
+                            <FormControlLabel value="rent" checked={formValues.currentHousing === "rent"} control={<Radio />} label="Rent" />
                         </RadioGroup>
                     </Box>
                 </Box>
@@ -654,9 +652,9 @@ export const PersonalInformation = () => {
                             value={formValues.formerAddress}
                             onChange={onInputChange}
                         >
-                            <FormControlLabel value="no" checked={formerAddress==="no"} control={<Radio />} label="No primary housing expense" />
-                            <FormControlLabel value="own" checked={formerAddress==="own"} control={<Radio />} label="Own" />
-                            <FormControlLabel value="rent" checked={formerAddress==="rent"} control={<Radio />} label="Rent" />
+                            <FormControlLabel value="no" checked={formValues.formerAddress==="no"} control={<Radio />} label="No primary housing expense" />
+                            <FormControlLabel value="own" checked={formValues.formerAddress==="own"} control={<Radio />} label="Own" />
+                            <FormControlLabel value="rent" checked={formValues.formerAddress==="rent"} control={<Radio />} label="Rent" />
                         </RadioGroup>
                     </Box>
                 </Box>
