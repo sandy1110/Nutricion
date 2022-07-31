@@ -84,7 +84,7 @@ export const PersonalInformation = () => {
     }
     return (
         <Box sx={{display:'flex', flexDirection:'column', gridRowGap:25}}>
-        <Paper elevation={3} sx={{width:"100%", marginTop:3}}>
+        <Paper elevation={4} sx={{width:"100%", marginTop:3}}>
             <Box sx={{display:'flex', flexDirection:'row', gridColumnGap:35, m:3}}>
                 <Box sx={{display:'flex', flexDirection:'column', gridRowGap:8, width:"64%"}}>
                     <TextField
