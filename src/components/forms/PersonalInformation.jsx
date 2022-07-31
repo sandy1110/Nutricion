@@ -4,54 +4,71 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
-import { Box, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { Box, InputLabel, MenuItem, Select } from '@mui/material';
 import Radio from '@mui/material/Radio';
 import Button from '@mui/material/Button';
 
+const initialValues = {
+    name: '',
+    alternateNames: '',
+    sss: '',
+    citizenship: '',
+    dateOfBirth: '',
+    homePhone: '',
+    cellPhone: '',
+    workPhone: '',
+    ext: '',
+    email: '',
+    creditType: '',
+    otherBorrower: '',
+    maritalStatus: '',
+    borrower: '',
+    dependents: '',
+    ages: '',
+    currentStreet: '',
+    currentUnit: '',
+    currentCity: '',
+    currentState: '',
+    currentZip: '',
+    currentCountry: '',
+    currentYears: '',
+    currentMonths: '',
+    currentHousing: '',
+    formerStreet: '',
+    formerUnit: '',
+    formerCity: '',
+    formerState: '',
+    formerZip: '',
+    formerCountry: '',
+    formerYears: '',
+    formerMonths: '',
+    formerAddress: '',
+    mailinStreet: '',
+    mailinUnit: '',
+    mailinCity: '',
+    mailinState: '',
+    mailinZip: '',
+    mailinCountry: '',
+};
+
 export const PersonalInformation = () => {
 
-    const initialValues ={
-        name: '',
-        alternateNames: '',
-        sss: '',
-        citizenship: '',
-        dateOfBirth: '',
-        homePhone: '',
-        cellPhone: '',
-        workPhone: '',
-        ext: '',
-        email: '',
-        creditType: '',
-        otherBorrower: '',
-        maritalStatus: '',
-        borrower: '',
-        dependents: '',
-        ages: '',
-        currentStreet: '',
-        currentUnit: '',
-        currentCity: '',
-        currentState: '',
-        currentZip: '',
-        currentCountry: '',
-        currentYears: '',
-        currentMonths: '',
-        currentHousing: '',
-        formerStreet: '',
-        formerUnit: '',
-        formerCity: '',
-        formerState: '',
-        formerZip: '',
-        formerCountry: '',
-        formerYears: '',
-        formerMonths: '',
-        formerAddress: '',
-        mailinStreet: '',
-        mailinUnit: '',
-        mailinCity: '',
-        mailinState: '',
-        mailinZip: '',
-        mailinCountry: '',
-    };
+    const [ formValues, setFormValues ] = useState(initialValues);
+
+    const onInputChange = ({ target }) => {
+        const { name, value } = target;
+        setFormValues({
+            ...formValues,
+            [ name ] : value
+        });
+    }
+
+    const onSubmit = ( event ) => {
+        event.preventDefault();
+        
+
+        console.log(initialValues, formValues)
+    }
     
     const [name, setName] = useState('');
     const [alternateNames, setAleternateNames] = useState('');
@@ -296,17 +313,17 @@ export const PersonalInformation = () => {
     }    
     
     return (
+    <form onSubmit={onSubmit}>
         <Box display="flex" flexDirection="column" gridRowGap={25}>
             <Paper sx={{width:"100%", marginTop:3}} elevation={3}>
                 <Box display="flex" flexDirection="row" gridColumnGap={40} sx={{m:3}}>
                     <Box display="flex" flexDirection="column" gridRowGap={8} justifyContent="flex-end" sx={{ width:"64%"}}>
-                        <TextField
-                            fullWidth
+                        <TextField fullWidth
                             variant="standard"
                             label="Name"
-                            name='name'
-                            value={name}
-                            onChange={(e)=>handleName(e.target.value)}
+                            name="name"
+                            value={formValues.name}
+                            onChange={ onInputChange }
                             placeholder="(First, Middle, Last)"
                         />
                         <TextField
@@ -701,8 +718,9 @@ export const PersonalInformation = () => {
                 </Box>
             </Paper>
             <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
-                <Button variant="contained"> SAVE </Button>
+                <Button type="submit" variant="contained"> SAVE </Button>
             </Box>
         </Box>
+    </form>
     )
   }
