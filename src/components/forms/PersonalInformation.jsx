@@ -297,7 +297,7 @@ export const PersonalInformation = () => {
     
     return (
         <Box display="flex" flexDirection="column" gridRowGap={25}>
-            <Paper sx={{width:"100%", marginTop:3}}>
+            <Paper sx={{width:"100%", marginTop:3}} elevation={3}>
                 <Box display="flex" flexDirection="row" gridColumnGap={40} sx={{m:3}}>
                     <Box display="flex" flexDirection="column" gridRowGap={8} justifyContent="flex-end" sx={{ width:"64%"}}>
                         <TextField
@@ -407,7 +407,7 @@ export const PersonalInformation = () => {
                     </Box>
                 </Box>
             </Paper>
-            <Paper sx={{width:"100%"}}>
+            <Paper sx={{width:"100%"}} elevation={3}>
                 <Box display="flex" flexDirection="row">
                     <Box sx={{p:2, margin:2, width:"50%"}}>
                         <FormControl>
@@ -421,9 +421,6 @@ export const PersonalInformation = () => {
                                 <FormControlLabel checked={creditType==='joint'} value='joint' control={<Radio size='small'/>} label="I'm applying for joint credit" />
                             </RadioGroup>
                         </FormControl>
-
-
-
                     </Box>
                     <Box sx={{p:2, margin:2, width:"50%"}}>
                         <TextField
@@ -438,7 +435,7 @@ export const PersonalInformation = () => {
                     </Box>
                 </Box>
             </Paper>
-            <Paper sx={{width:"100%"}}>
+            <Paper sx={{width:"100%"}} elevation={3}>
                 <Box display="flex" flexDirection="row">
                     <Box sx={{p:2, margin:2, width:"70%"}}>
                         <FormControl>
@@ -483,7 +480,7 @@ export const PersonalInformation = () => {
                     </Box>
                 </Box>
             </Paper>
-            <Paper sx={{width:"100%"}}>
+            <Paper sx={{width:"100%"}} elevation={3}>
                 <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
                     <FormLabel>Current Address</FormLabel>
                     <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -566,7 +563,7 @@ export const PersonalInformation = () => {
                     </Box>
                 </Box>
             </Paper>
-            <Paper sx={{width:"100%"}}>
+            <Paper sx={{width:"100%"}} elevation={3}>
                 <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
                     <FormLabel>If at Current Address for LESS than 2 years, list Former Address</FormLabel>
                     <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
@@ -649,7 +646,7 @@ export const PersonalInformation = () => {
                     </Box>
                 </Box>
             </Paper>
-            <Paper sx={{width:"100%"}}>
+            <Paper sx={{width:"100%"}} elevation={3}>
                 <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
                     <FormLabel>Mailing Address <em> if different from Current Address</em></FormLabel>
                     <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
