@@ -5,7 +5,19 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLng }) => {
 
-    const { img, id, value, area, capRate, address, propertyLat, propertyLng } = propertyData
+    const {
+        img,
+        id,
+        value,
+        area,
+        capRate,
+        address,
+        propertyLat,
+        propertyLng,
+        creditScore,
+        downPayment,
+        debtIncomeRatio,
+    } = propertyData
 
     const handlePropertyClick = () => {
         setMapLat(propertyLat)
@@ -18,9 +30,12 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
             <div className='information'>
                 <div className='mortgageId'>Mortgage ID {id}</div>
                 <div className='propertyValue'>Value ${value} USD</div>
-                <div className='area'>Area {area}</div>
-                <div className='capRate'>Cap Rate: {capRate}</div>
+                <div className='area'>Dimension: {area} feat<sup>2</sup></div>
+                <div className='capRate'>Interest Rate: {capRate}%</div>
                 <div className='address'>Address: {address}</div>
+                <div className='creditScore'>Credit score: {creditScore}</div>
+                <div className='downPayment'>Down Payment: ${downPayment}</div>
+                <div className='debtIncomeRatio'>Debt Income Ratio: {debtIncomeRatio}%</div>
                 <div className='centerButton'>
                     <Button
                         style={{ backgroundColor: "orange", borderRadius: 35 }}
@@ -29,7 +44,7 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
                     >
                         Invest
                     </Button>
-                    <LocationOnIcon className='locationIcon' onClick={handlePropertyClick}/>
+                    <LocationOnIcon className='locationIcon' onClick={handlePropertyClick} />
                 </div>
             </div>
         </Box>

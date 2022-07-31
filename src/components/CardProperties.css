@@ -1,7 +1,7 @@
 .box {
     margin-top: 10px;
-    width: 90%;
-    height: 200px;
+    width: auto;
+    height: auto;
     display: flex;
     align-items: center;
     border: outset;
@@ -16,9 +16,10 @@
 
 .information {
     display: block;
-    width: 40%;
+    width: 50%;
     justify-content: space-between;
     margin-left: 5px;
+    margin-bottom: 10px;
 }
 
 .mortgageId {
