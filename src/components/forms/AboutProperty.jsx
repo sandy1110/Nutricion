@@ -4,6 +4,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import { Box, Paper, TextField } from '@material-ui/core';
+import Button from '@mui/material/Button';
 
 const initialValues ={
     type: '', 
@@ -213,6 +214,9 @@ export const AboutProperty = () => {
                             <FormControlLabel value="no" checked={lien==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
+                </Box>
+                <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
+                    <Button variant="contained"> SAVE </Button>
                 </Box>
             </Paper>
         </Box>

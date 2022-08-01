@@ -6,84 +6,313 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, InputLabel, MenuItem, Select } from '@mui/material';
 import Radio from '@mui/material/Radio';
+import Button from '@mui/material/Button';
 
-const initialValues ={
-   
+const initialValues = {
     name: '',
     alternateNames: '',
     sss: '',
     citizenship: '',
-    dateOfBirth: '',
+    dateOfBirth: new Date(),
     homePhone: '',
     cellPhone: '',
     workPhone: '',
     ext: '',
     email: '',
-    credit: '',
+    creditType: '',
     otherBorrower: '',
     maritalStatus: '',
     borrower: '',
     dependents: '',
     ages: '',
-    street: '',
-    unit: '',
-    city: '',
-    state: '',
-    zip: '',
-    country: '',
-    years: '',
-    months: '',
+    currentStreet: '',
+    currentUnit: '',
+    currentCity: '',
+    currentState: '',
+    currentZip: '',
+    currentCountry: '',
+    currentYears: '',
+    currentMonths: '',
     currentHousing: '',
-    street2: '',
-    unit2: '',
-    city2: '',
-    state2: '',
-    zip2: '',
-    country2: '',
-    street1: '',
-    unit1: '',
-    city1: '',
-    state1: '',
-    zip1: '',
-    country1: '',
-    years1: '',
-    months1: '',
-    currentHousing1: '',
-
-}
+    formerStreet: '',
+    formerUnit: '',
+    formerCity: '',
+    formerState: '',
+    formerZip: '',
+    formerCountry: '',
+    formerYears: '',
+    formerMonths: '',
+    formerAddress: '',
+    mailinStreet: '',
+    mailinUnit: '',
+    mailinCity: '',
+    mailinState: '',
+    mailinZip: '',
+    mailinCountry: '',
+};
 
 export const PersonalInformation = () => {
-    const [values, setValues] =useState(initialValues);
-    const [creditType, setCreditType] = useState('');
-    const [maritalStatus, setMaritalStatus] = useState('');
-    const [currentHousing, setCurrentHousing] = useState('');
-    const [formerAddress, setFormerAddress] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState(new Date());
 
-    const handleCreditTypeChange = (event) => {
-        setCreditType(event.target.value);
-    };
+    const [ formValues, setFormValues ] = useState(initialValues);
 
-    const handleMaritalStatusChange = (event) => {
-        setMaritalStatus(event.target.value);
-    };
-
-    const handleCurrentHousingChange = (event) => {
-        setCurrentHousing(event.target.value);
-    };
-
-    const handleFormerAddressChange = (event) => {
-        setFormerAddress(event.target.value);
-    };
-
-    const handleInputChange = event =>{
-        const [name, value] = event.target;
-        setValues([...values,
-            [name].value
-        ]);
+    const onInputChange = ({ target }) => {
+        const { name, value } = target;
+        setFormValues({
+            ...formValues,
+            [ name ] : value
+        });
     }
+
+    const onSubmit = ( event ) => {
+        event.preventDefault();
+        console.log(formValues)
+    }
+    
+    const [name, setName] = useState('');
+    const [alternateNames, setAleternateNames] = useState('');
+    const [sss, setSss] = useState('');
+    const [citizenship, setCitizenship] = useState('');
+    const [dateOfBirth, setDateOfBirth] = useState(new Date());
+    const [homePhone, setHomePhone] = useState('');
+    const [cellPhone, setCellPhone] = useState('');
+    const [workPhone, setWorkPhone] = useState('');
+    const [ext, setExt] = useState('');
+    const [email, setEmail] = useState('');
+    const [creditType, setCreditType] = useState('');
+    const [otherBorrower, setOtherBorrower] = useState('');
+    const [maritalStatus, setMaritalStatus] = useState('');
+    const [borrower, setBorrower] = useState('');
+    const [dependents, setDependents] = useState('');
+    const [ages, setAges] = useState('');
+    const [currentStreet, setCurrentStreet] = useState('');
+    const [currentUnit, setCurrentUnit] = useState('');
+    const [currentCity, setCurrentCity] = useState('');
+    const [currentState, setCurrentState] = useState('');
+    const [currentZip, setCurrentZip] = useState('');
+    const [currentCountry, setCurrentCountry] = useState('');
+    const [currentYears, setCurrentYears] = useState('');
+    const [currentMonths, setCurrentMonths] = useState('');
+    const [currentHousing, setCurrentHousing] = useState('');
+    const [formerStreet, setFormerStreet] = useState('');
+    const [formerUnit, setFormerUnit] = useState('');
+    const [formerCity, setFormerCity] = useState('');
+    const [formerState, setFormerState] = useState('');
+    const [formerZip, setFormerZip] = useState('');
+    const [formerCountry, setFormerCountry] = useState('');
+    const [formerYears, setFormerYears] = useState('');
+    const [formerMonths, setFormerMonths] = useState('');
+    const [formerAddress, setFormerAddress] = useState('');
+    const [mailingStreet, setMailingStreet] = useState('');
+    const [mailingUnit, setMailingUnit] = useState('');
+    const [mailingCity, setMailingCity] = useState('');
+    const [mailingState, setMailingState] = useState('');
+    const [mailingZip, setMailingZip] = useState('');
+    const [mailingCountry, setMailingCountry] = useState('');
+  
+
+    const handleName = (event) =>{
+        initialValues.name = event;
+        setName(event);
+    }   
+
+    const handleAlternateNames = (event) =>{
+        initialValues.alternateNames = event;
+        setAleternateNames(event);
+    }
+    
+    const handleSss = (event) =>{
+        initialValues.sss = event;
+        setSss(event);
+    }
+
+    const handleCitizenship = (event) =>{
+        initialValues.citizenship = event;
+        setCitizenship(event);
+    }
+
+    const handleDateOfBirth = (event) =>{
+        initialValues.dateOfBirth = event;
+        setDateOfBirth(event);
+    }
+
+    const handleHomePhone = (event) =>{
+        initialValues.homePhone = event;
+        setHomePhone(event);
+    }
+
+    const handleCellPhone = (event) =>{
+        initialValues.cellPhone = event;
+        setCellPhone(event);
+    }
+
+    const handleWorkPhone = (event) =>{
+        initialValues.workPhone = event;
+        setWorkPhone(event);
+    }
+
+    const handleExt = (event) =>{
+        initialValues.ext = event;
+        setExt(event);
+    }
+
+    const handleEmail = (event) =>{
+        initialValues.email = event;
+        setEmail(event);
+    }
+
+    const handleCreditType = (event) => {
+        initialValues.creditType = event;
+        setCreditType(event);
+    };
+
+    const handleOtherBorrower= (event) =>{
+        initialValues.otherBorrower = event;
+        setOtherBorrower(event);
+    }
+
+    const handleMaritalStatus = (event) =>{
+        initialValues.maritalStatus = event;
+        setMaritalStatus(event);
+    }
+
+    const handleBorrower = (event) =>{
+        initialValues.borrower = event;
+        setBorrower(event);
+    }
+
+    const handleDependents = (event) =>{
+        initialValues.dependents = event;
+        setDependents(event);
+    }
+
+    const handleAges = (event) =>{
+        initialValues.ages = event;
+        setAges(event);
+    }
+
+    const handleCurrentStreet = (event) =>{
+        initialValues.currentStreet = event;
+        setCurrentStreet(event);
+    }
+
+    const handleCurrentUnit = (event) =>{
+        initialValues.currentUnit = event;
+        setCurrentUnit(event);
+    }
+
+    const handleCurrentCity = (event) =>{
+        initialValues.currentCity = event;
+        setCurrentCity(event);
+    }
+
+    const handleCurrentState = (event) =>{
+        initialValues.currentState = event;
+        setCurrentState(event);
+    }
+
+    const handleCurrentZip = (event) =>{
+        initialValues.currentZip = event;
+        setCurrentZip(event);
+    }
+
+    const handleCurrentCountry= (event) =>{
+        initialValues.currentCountry = event;
+        setCurrentCountry(event);
+    }
+
+    const handleCurrentYears = (event) =>{
+        initialValues.currentYears = event;
+        setCurrentYears(event);
+    }
+
+    const handleCurrentMonths = (event) =>{
+        initialValues.currentMonths = event;
+        setCurrentMonths(event);
+    }
+
+    const handleCurrentHousing = (event) =>{
+        initialValues.currentHousing = event;
+        setCurrentHousing(event);
+    }
+
+    const handleFormerStreet = (event) =>{
+        initialValues.formerStreet = event;
+        setFormerStreet(event);
+    }
+
+    const handleFormerUnit = (event) =>{
+        initialValues.formerUnit = event;
+        setFormerUnit(event);
+    }
+
+    const handleFormerCity = (event) =>{
+        initialValues.formerCity = event;
+        setFormerCity(event);
+    }
+
+    const handleFormerState = (event) =>{
+        initialValues.formerState = event;
+        setFormerState(event);
+    }
+
+    const handleFormerZip = (event) =>{
+        initialValues.formerZip = event;
+        setFormerZip(event);
+    }
+
+    const handleFormerCountry = (event) =>{
+        initialValues.formerCountry = event;
+        setFormerCountry(event);
+    }
+
+    const handleFormerYears = (event) =>{
+        initialValues.formerYears = event;
+        setFormerYears(event);
+    }
+
+    const handleFormerMonths = (event) =>{
+        initialValues.formerMonths = event;
+        setFormerMonths(event);
+    }
+
+    const handleFormerAddress = (event) =>{
+        initialValues.formerAddress = event;
+        setFormerAddress(event);
+    }
+
+    const handleMailingStreet = (event) =>{
+        initialValues.mailingStreet = event;
+        setMailingStreet(event);
+    }
+
+    const handleMailingUnit = (event) =>{
+        initialValues.mailingUnit = event;
+        setMailingUnit(event);
+    }
+
+    const handleMailingCity = (event) =>{
+        initialValues.mailingCity = event;
+        setMailingCity(event);
+    }
+
+    const handleMailingState = (event) =>{
+        initialValues.mailingState = event;
+        setMailingState(event);
+    }
+
+    const handleMailingZip = (event) =>{
+        initialValues.mailingZip = event;
+        setMailingZip(event);
+    }
+
+    const handleMailingCountry = (event) =>{
+        initialValues.MailingCountry = event;
+        setMailingCountry(event);
+    }    
+    
     return (
-        <Box sx={{display:'flex', flexDirection:'column', gridRowGap:25}}>
+        <form onSubmit={onSubmit}>
+        <Box sx={{display:'flex', flexDirection:'column', gridRowGap:35}}>
         <Paper elevation={4} sx={{width:"100%", marginTop:3}}>
             <Box sx={{display:'flex', flexDirection:'row', gridColumnGap:35, m:3}}>
                 <Box sx={{display:'flex', flexDirection:'column', gridRowGap:8, width:"64%"}}>
@@ -91,14 +320,16 @@ export const PersonalInformation = () => {
                         variant="standard"
                         label="Name"
                         name='name'
-                        onChange={handleInputChange}
+                        value={formValues.name}
+                        onChange={ onInputChange }
                         placeholder="(First, Middle, Last)"
                     />
                     <TextField
                         fullWidth
                         label="Alternate Names"
                         name='alternateNames'
-                        onChange={handleInputChange}
+                        value={formValues.alternateNames}
+                        onChange={onInputChange}
                         placeholder="Any names under which credit was previously received"
                         variant="standard"
                         color="warning"
@@ -107,7 +338,8 @@ export const PersonalInformation = () => {
                         fullWidth
                         label="Social Security Number"
                         name='sss'
-                        onChange={handleInputChange}
+                        value={formValues.sss}
+                        onChange={onInputChange}
                         placeholder="or Individual Taxpayer Identification Number"
                         variant="standard"  
                         color="warning"          
@@ -118,7 +350,8 @@ export const PersonalInformation = () => {
                             <Select
                             label="citizenship"
                             name='citizenship'
-                            onChange={handleInputChange}
+                            value={formValues.citizenship}
+                            onChange={onInputChange}
                             >
                             <MenuItem value={1}>U.S Citizen</MenuItem>
                             <MenuItem value={2}>Permanent Resident Alien</MenuItem>
@@ -145,7 +378,8 @@ export const PersonalInformation = () => {
                         fullWidth
                         label="Home phone"
                         name='homePhone'
-                        onChange={handleInputChange}
+                        value={formValues.homePhone}
+                        onChange={onInputChange}
                         placeholder="(___)___-_______"
                         variant="standard"
                         color="warning"
@@ -154,7 +388,8 @@ export const PersonalInformation = () => {
                         fullWidth
                         label="Cell phone"
                         name='cellPhone'
-                        onChange={handleInputChange}
+                        value={formValues.cellPhone}
+                        onChange={onInputChange}
                         placeholder="(___)___-_______"
                         variant="standard"
                         color="warning"
@@ -164,7 +399,8 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="Work phone"
                             name='workPhone'
-                            onChange={handleInputChange}
+                            value={formValues.workPhone}
+                            onChange={onInputChange}
                             placeholder="(___)___-_______"
                             variant="standard"
                             color="warning"
@@ -173,17 +409,18 @@ export const PersonalInformation = () => {
                             fullWidth
                             label="Ext."
                             name='ext'
-                            onChange={handleInputChange}
+                            value={formValues.ext}
+                            onChange={onInputChange}
                             placeholder="(___)___-_______"
                             variant="standard"
-                            color="warning"
                         />
                     </Box>
                     <TextField
                         fullWidth
                         label="Email"
                         name='email'
-                        onChange={handleInputChange}
+                        value={formValues.email}
+                        onChange={onInputChange}
                         variant="standard"
                         color="warning"
                     />
@@ -197,288 +434,296 @@ export const PersonalInformation = () => {
                         <FormLabel>Type of Credit</FormLabel>
                         <RadioGroup
                             name='creditType'
-                            value={creditType}
-                            onChange={handleCreditTypeChange}
+                            value={formValues.creditType}
+                                onChange={onInputChange}
+                            >
+                                <FormControlLabel checked={formValues.creditType==='individual'} value='individual' control={<Radio size='small'/>} label="I'm applying for individual credit." />
+                                <FormControlLabel checked={formValues.creditType==='joint'} value='joint' control={<Radio size='small'/>} label="I'm applying for joint credit" />
+                            </RadioGroup>
+                        </FormControl>
+                    </Box>
+                    <Box sx={{p:2, margin:2, width:"50%"}}>
+                        <TextField
+                            fullWidth
+                            label="Names of Other Borrower(s)"
+                            placeholder="(First, Middle, Last, Suffix)"
+                            variant="standard"
+                            name='otherBorrower'
+                            value={formValues.otherBorrower}
+                            onChange={onInputChange}
+                        />
+                    </Box>
+                </Box>
+            </Paper>
+            <Paper sx={{width:"100%"}} elevation={3}>
+                <Box display="flex" flexDirection="row">
+                    <Box sx={{p:2, margin:2, width:"70%"}}>
+                        <FormControl>
+                            <FormLabel>Marital Status</FormLabel>
+                            <RadioGroup
+                                name='maritalStatus'
+                                value={formValues.maritalStatus}
+                                onChange={onInputChange}
+                            >
+                                <FormControlLabel value="married" checked={formValues.maritalStatus==="married"} control={<Radio size='small'/>} label="Married" />
+                                <FormControlLabel value="separated" checked={formValues.maritalStatus==="separated"} control={<Radio size='small'/>} label="Separated" />
+                                <FormControlLabel value="unmarried" checked={formValues.maritalStatus==="unmarried"} control={<Radio size='small'/>} label="Unmarried" />
+                                <FormLabel>Single, Widowed, Divorced, Civil Union, Domestic Partnership</FormLabel>
+                            </RadioGroup>
+                        </FormControl>
+                        <TextField
+                            fullWidth
+                            label="Total Number of Borrowers: "
+                            name='borrower'
+                            value={formValues.borrower}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                    </Box>
+                    <Box sx={{p:2, margin:2, width:"30%"}}>
+                        <InputLabel>Dependents (not listed by another borrower)</InputLabel>
+                        <TextField
+                            label="Number"
+                            variant="standard"
+                            name='dependents'
+                            value={formValues.dependents}
+                            onChange={onInputChange}
+                        />
+                        <TextField
+                            label="Ages"
+                            multiline
+                            variant="standard"
+                            name='ages'
+                            value={formValues.ages}
+                            onChange={onInputChange}
+                        />
+                    </Box>
+                </Box>
+            </Paper>
+            <Paper sx={{width:"100%"}} elevation={3}>
+                <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
+                    <FormLabel>Current Address</FormLabel>
+                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                        <TextField
+                            fullWidth
+                            label="Street"
+                            name='currentStreet'
+                            value={formValues.currentStreet}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                        <TextField
+                            label="Unit #"
+                            name='currentUnit'
+                            value={formValues.currentUnit}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                    </Box>
+                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                        <TextField
+                            fullWidth
+                            label="City"
+                            name='currentCity'
+                            value={formValues.currentCity}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                        <TextField
+                            label="State"
+                            name='currentState'
+                            value={formValues.currentState}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                        <TextField
+                            label="Zip"
+                            name='currentZip'
+                            value={formValues.currentZip}
+                            onChange={onInputChange}
+                            variant="standard"
+                            type="number"
+                        />
+                        <TextField
+                            label="Country"
+                            name='currentCountry'
+                            value={formValues.currentCountry}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                    </Box>
+                    <FormLabel>How long at Current Address?</FormLabel>
+                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                        <TextField
+                            label="Years"
+                            multiline
+                            variant="standard"
+                            name="currentYears"
+                            value={formValues.currentYears}
+                            onChange={onInputChange}
+                        />
+                        <TextField
+                            label="Months"
+                            multiline
+                            variant="standard"
+                            name="currentMonths"
+                            value={formValues.currentMonths}
+                            onChange={onInputChange}
+                        />
+                        <FormLabel sx={{m:2}}>Housing</FormLabel>
+                        <RadioGroup row
+                            name="currentHousing"
+                            value={formValues.currentHousing}
+                            onChange={onInputChange}
                         >
-                            <FormControlLabel checked={creditType==='individual'} value='individual' control={<Radio size='small'/>} label="I'm applying for individual credit." />
-                            <FormControlLabel checked={creditType==='joint'} value='joint' control={<Radio size='small'/>} label="I'm applying for joint credit" />
+                            <FormControlLabel value="no" checked={formValues.currentHousing === "no"} control={<Radio />} label="No primary housing expense" />
+                            <FormControlLabel value="own" checked={formValues.currentHousing === "own"} control={<Radio />} label="Own" />
+                            <FormControlLabel value="rent" checked={formValues.currentHousing === "rent"} control={<Radio />} label="Rent" />
                         </RadioGroup>
-                    </FormControl>
-
-
-
+                    </Box>
                 </Box>
-                <Box sx={{p:2, margin:2, width:"50%"}}>
-                    <TextField
-                        fullWidth
-                        label="Names of Other Borrower(s)"
-                        placeholder="(First, Middle, Last, Suffix)"
-                        variant="standard"
-                        name='otherBorrowers'
-                        onChange={handleInputChange}
-                        color="warning"
-                    />
-                </Box>
-            </Box>
-        </Paper>
-        <Paper elevation={3} sx={{width:"100%"}}>
-            <Box display="flex" flexDirection="row">
-                <Box sx={{p:2, margin:2, width:"70%"}}>
-                    <FormControl>
-                        <FormLabel>Marital Status</FormLabel>
-                        <RadioGroup
-                            name='maritalStatus'
-                            value={maritalStatus}
-                            onChange={(e) => handleMaritalStatusChange(e)}
+            </Paper>
+            <Paper sx={{width:"100%"}} elevation={3}>
+                <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
+                    <FormLabel>If at Current Address for LESS than 2 years, list Former Address</FormLabel>
+                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                        <TextField
+                            fullWidth
+                            label="Street"
+                            name='formerStreet'
+                            value={formValues.formerStreet}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                        <TextField
+                            label="Unit #"
+                            name='formerUnit'
+                            value={formValues.formerUnit}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                    </Box>
+                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                        <TextField
+                            fullWidth
+                            label="City"
+                            name='formerCity'
+                            value={formValues.formerCity}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                        <TextField
+                            label="State"
+                            name='formerState'
+                            value={formValues.formerState}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                        <TextField
+                            label="Zip"
+                            name='formerZip'
+                            value={formValues.formerZip}
+                            onChange={onInputChange}
+                            variant="standard"
+                            type="number"
+                        />
+                        <TextField
+                            label="Country"
+                            name='formerCountry'
+                            value={formValues.formerCountry}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                    </Box>
+                    <FormLabel>How long at Current Address?</FormLabel>
+                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                        <TextField
+                            label="Years"
+                            name='formerYears'
+                            value={formValues.formerYears}
+                            multiline
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                        <TextField
+                            label="Months"
+                            name='formerMonths'
+                            value={formValues.formerMonths}
+                            onChange={onInputChange}
+                            multiline
+                            variant="standard"
+                        />
+                        <FormLabel sx={{m:2}}>Housing</FormLabel>
+                        <RadioGroup row
+                            name="formerAddress"
+                            value={formValues.formerAddress}
+                            onChange={onInputChange}
                         >
-                            <FormControlLabel value="married" checked={maritalStatus==="married"} control={<Radio size='small'/>} label="Married" />
-                            <FormControlLabel value="separated" checked={maritalStatus==="separated"} control={<Radio size='small'/>} label="Separated" />
-                            <FormControlLabel value="unmarried" checked={maritalStatus==="unmarried"} control={<Radio size='small'/>} label="Unmarried" />
-                            <FormLabel>Single, Widowed, Divorced, Civil Union, Domestic Partnership</FormLabel>
+                            <FormControlLabel value="no" checked={formValues.formerAddress==="no"} control={<Radio />} label="No primary housing expense" />
+                            <FormControlLabel value="own" checked={formValues.formerAddress==="own"} control={<Radio />} label="Own" />
+                            <FormControlLabel value="rent" checked={formValues.formerAddress==="rent"} control={<Radio />} label="Rent" />
                         </RadioGroup>
-                    </FormControl>
-                    <TextField
-                        fullWidth
-                        label="Total Number of Borrowers: "
-                        name='borrowers'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
+                    </Box>
                 </Box>
-                <Box sx={{p:2, margin:2, width:"30%"}}>
-                    <InputLabel>Dependents (not listed by another borrower)</InputLabel>
-                    <TextField
-                        label="Number"
-                        variant="standard"
-                        name='dependents'
-                        onChange={handleInputChange}
-                        color="warning"
-                    />
-                    <TextField
-                        label="Ages"
-                        multiline
-                        variant="standard"
-                        name='ages'
-                        color="warning"
-                    />
+            </Paper>
+            <Paper sx={{width:"100%"}} elevation={3}>
+                <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
+                    <FormLabel>Mailing Address <em> if different from Current Address</em></FormLabel>
+                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                        <TextField
+                            fullWidth
+                            label="Street"
+                            name='mailingStreet'
+                            value={formValues.mailingStreet}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                        <TextField
+                            label="Unit #"
+                            name='mailingUnit'
+                            value={formValues.mailingUnit}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                    </Box>
+                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                        <TextField
+                            fullWidth
+                            label="City"
+                            name='mailingCity'
+                            value={formValues.mailingCity}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                        <TextField
+                            label="State"
+                            name='mailingState'
+                            value={formValues.mailingState}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                        <TextField
+                            label="Zip"
+                            name='mailingZip'
+                            value={formValues.mailingZip}
+                            onChange={onInputChange}
+                            variant="standard"
+                            type="number"
+                        />
+                        <TextField
+                            label="Country"
+                            name='mailingCountry'
+                            value={formValues.mailingCountry}
+                            onChange={onInputChange}
+                            variant="standard"
+                        />
+                    </Box>
                 </Box>
+            </Paper>
+            <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
+                <Button type="submit" variant="contained"> SAVE </Button>
             </Box>
-        </Paper>
-        <Paper elevation={3} sx={{width:"100%"}}>
-            <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
-                <FormLabel>Current Address</FormLabel>
-                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
-                    <TextField
-                        fullWidth
-                        label="Street"
-                        name='street'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                    <TextField
-                        label="Unit #"
-                        name='unit'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                </Box>
-                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
-                    <TextField
-                        fullWidth
-                        label="City"
-                        name='city'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                    <TextField
-                        label="State"
-                        name='state'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                    <TextField
-                        label="Zip"
-                        name='zip'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        type="number"
-                        color="warning"
-                    />
-                    <TextField
-                        label="Country"
-                        name='country'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                </Box>
-                <FormLabel>How long at Current Address?</FormLabel>
-                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
-                    <TextField
-                        label="Years"
-                        multiline
-                        variant="standard"
-                        name="years"
-                        color="warning"
-                    />
-                    <TextField
-                        label="Months"
-                        multiline
-                        variant="standard"
-                        name="months"
-                        color="warning"
-                    />
-                    <FormLabel sx={{m:2}}>Housing</FormLabel>
-                    <RadioGroup row
-                        name="currentHousing"
-                        value={currentHousing}
-                        onChange={(e) => handleCurrentHousingChange(e)}
-                    >
-                        <FormControlLabel value="no" checked={currentHousing === "no"} control={<Radio />} label="No primary housing expense" />
-                        <FormControlLabel value="own" checked={currentHousing === "own"} control={<Radio />} label="Own" />
-                        <FormControlLabel value="rent" checked={currentHousing === "rent"} control={<Radio />} label="Rent" />
-                    </RadioGroup>
-                </Box>
-            </Box>
-        </Paper>
-        <Paper elevation={3} sx={{width:"100%"}}>
-            <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
-                <FormLabel>If at Current Address for LESS than 2 years, list Former Address</FormLabel>
-                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
-                    <TextField
-                        fullWidth
-                        label="Street"
-                        name='street1'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                    <TextField
-                        label="Unit #"
-                        name='unit1'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                </Box>
-                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
-                    <TextField
-                        fullWidth
-                        label="City"
-                        name='city1'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                    <TextField
-                        label="State"
-                        name='state1'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                    <TextField
-                        label="Zip"
-                        name='zip1'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        type="number"
-                        color="warning"
-                    />
-                    <TextField
-                        label="Country"
-                        name='country1'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                </Box>
-                <FormLabel>How long at Current Address?</FormLabel>
-                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
-                    <TextField
-                        label="Years1"
-                        multiline
-                        variant="standard"
-                        color="warning"
-                    />
-                    <TextField
-                        label="Months1"
-                        multiline
-                        variant="standard"
-                        color="warning"
-                    />
-                    <FormLabel sx={{m:2}}>Housing</FormLabel>
-                    <RadioGroup row
-                        name="formerAddress"
-                        value={formerAddress}
-                        onChange={(e) => handleFormerAddressChange(e)}
-                    >
-                        <FormControlLabel value="no" checked={formerAddress==="no"} control={<Radio />} label="No primary housing expense" />
-                        <FormControlLabel value="own" checked={formerAddress==="own"} control={<Radio />} label="Own" />
-                        <FormControlLabel value="rent" checked={formerAddress==="rent"} control={<Radio />} label="Rent" />
-                    </RadioGroup>
-                </Box>
-            </Box>
-        </Paper>
-        <Paper elevation={3} sx={{width:"100%"}}>
-            <Box display="flex" flexDirection="column" sx={{p:2, margin:2}}>
-                <FormLabel>Mailing Address <em> if different from Current Address</em></FormLabel>
-                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
-                    <TextField
-                        fullWidth
-                        label="Street"
-                        name='street2'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                    <TextField
-                        label="Unit #"
-                        name='unit2'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                </Box>
-                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
-                    <TextField
-                        fullWidth
-                        label="City"
-                        name='city2'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                    <TextField
-                        label="State"
-                        name='state2'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                    <TextField
-                        label="Zip"
-                        name='zip2'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        type="number"
-                        color="warning"
-                    />
-                    <TextField
-                        label="Country"
-                        name='country2'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        color="warning"
-                    />
-                </Box>
-            </Box>
-        </Paper>
         </Box>
+    </form>
     )
   }

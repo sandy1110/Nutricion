@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, TextField } from '@material-ui/core';
 import Radio from '@mui/material/Radio';
+import Button from '@mui/material/Button';
 
 
 
@@ -164,6 +165,9 @@ export const OtherMortgageLoans = () => {
                     </Box>
                 </Box>
             </Paper>
+            <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
+                <Button variant="contained"> SAVE </Button>
+            </Box>
         </Box>
     )
 }
