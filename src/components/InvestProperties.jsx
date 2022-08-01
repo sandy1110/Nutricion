@@ -25,11 +25,7 @@ export const InvestProperties = () => {
     return (
         <div className="container">
             <nav>
-                <h2>where do you want to invest?</h2>
-                <div className="searchBar">
-                    <input />
-                    <SearchIcon />
-                </div>
+                <h2>Where do you want to invest?</h2>
             </nav>
             <main>
                 <MapComponent lat={mapLat} lng={mapLng} />
