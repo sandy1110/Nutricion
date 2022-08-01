@@ -87,14 +87,12 @@ export const PersonalInformation = () => {
         <Paper elevation={4} sx={{width:"100%", marginTop:3}}>
             <Box sx={{display:'flex', flexDirection:'row', gridColumnGap:35, m:3}}>
                 <Box sx={{display:'flex', flexDirection:'column', gridRowGap:8, width:"64%"}}>
-                    <TextField
-                        fullWidth
+                    <TextField fullWidth color="warning"
                         variant="standard"
                         label="Name"
                         name='name'
                         onChange={handleInputChange}
                         placeholder="(First, Middle, Last)"
-                        color="warning"
                     />
                     <TextField
                         fullWidth
