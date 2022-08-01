@@ -114,7 +114,7 @@ export const PersonalInformation = () => {
                         variant="standard"  
                         color="warning"          
                     />
-                    <Box display="flex" flexDirection="row" gridColumnGap={15} sx={{py:2}}>
+                    <Box sx={{ display:"flex", flexDirection:"row", gridColumnGap:15, py:1}}>
                         <FormControl variant="standard" color="warning" sx={{minWidth: 200 }} fullWidth>
                             <InputLabel>Citizenship</InputLabel>
                             <Select
@@ -128,8 +128,7 @@ export const PersonalInformation = () => {
                             </Select>
                         </FormControl>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker color="warning"
-                            disableFuture
+                            <DatePicker disableFuture
                             label="Date of Birth"
                             openTo="year"
                             views={['year', 'month', 'day']}
@@ -142,7 +141,7 @@ export const PersonalInformation = () => {
                         </LocalizationProvider>
                     </Box>
                 </Box>
-                <Box display="flex" flexDirection="column" gridRowGap={18} sx={{width:"36%"}}>
+                <Box sx={{ display:"flex", flexDirection:"column", gridRowGap:18, width:"36%"}}>
                     <FormLabel>Contact Information</FormLabel>
                     <TextField
                         fullWidth
