@@ -4,6 +4,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import { Box, Paper } from '@material-ui/core';
+import Button from '@mui/material/Button';
 
 const initialValues ={
     cosigner: '',
@@ -207,6 +208,9 @@ export const AboutFinances = () => {
                             <FormControlLabel value="no" checked={bankrupticity==="no"} control={<Radio size='small'/>} label="No" />
                         </RadioGroup> 
                     </Box> 
+                </Box>
+                <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
+                    <Button variant="contained"> SAVE </Button>
                 </Box>
             </Paper>
         </Box>

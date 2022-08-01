@@ -4,6 +4,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import { Box, Paper, TextField, Typography } from '@material-ui/core';
+import Button from '@mui/material/Button';
 
 const initialValues ={
     nationality: '',
@@ -175,6 +176,9 @@ export const DemographicInformation = () => {
                         </RadioGroup>                       
                     </Box>
                 </Box>
+                </Box>
+                <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
+                    <Button variant="contained"> SAVE </Button>
                 </Box>
             </Paper>
         </Box>
