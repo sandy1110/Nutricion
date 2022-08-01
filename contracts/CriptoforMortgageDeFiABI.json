@@ -1,0 +1,121 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_mortgageId",
+				"type": "uint256"
+			}
+		],
+		"name": "Invest",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_mortgageId",
+				"type": "uint256"
+			}
+		],
+		"name": "approveMortgage",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_mortgageId",
+				"type": "uint256"
+			}
+		],
+		"name": "listMortgageRequest",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_mortgageId",
+				"type": "uint256"
+			}
+		],
+		"name": "payMortgage",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_propertyValue",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_mortgageAmount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_downPayment",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_debtIncomeRatio",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_area",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_interestRate",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_latitude",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_longitude",
+				"type": "uint256"
+			}
+		],
+		"name": "requestMortgage",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "x",
+				"type": "uint256"
+			}
+		],
+		"name": "test",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	}
+]
