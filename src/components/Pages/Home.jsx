@@ -48,15 +48,15 @@ export const Home = () => {
     return (
         <>
             <div className="homeTitle">Criptofor Mortgage</div>
-            <div className="valueProposition">We connect mortgage companies, consumers and investors, without too much paper work.</div>
+            <div className="valueProposition">We connect mortgage companies, consumers and investors, paperless.</div>
             <Box textAlign='center'>
-              
+
                 <a href="https://546vypkn49k.typeform.com/to/ZtrgEeFd"  target="_blank" className={classes.link}>
                   <Button  variant="contained" sx={boxSX}>
                     Apply
                   </Button>
                 </a>
-                
+
                 <Link to="/invest" className={classes.link} >
                     <Button variant="contained" sx={boxSX}>
                         Invest
