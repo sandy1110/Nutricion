@@ -42,8 +42,8 @@ export const Contact = () => {
         }
 
         try{
-            fetch("http://localhost:8080/api/v1/contactEmail/sendContactEmail", requestOptions).then( console.log("email sent."));
-
+            fetch(process.env.REACT_APP_MORTGAGE_API, requestOptions).then( console.log("email sent."));
+            
         }
         catch{
             alert("Error");
