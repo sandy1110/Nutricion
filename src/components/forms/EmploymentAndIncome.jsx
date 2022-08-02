@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField } from '@mui/material';
-import { Box, Paper } from '@material-ui/core';
+import { FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, TextField } from '@mui/material';
+import { Box } from '@material-ui/core';
 import Button from '@mui/material/Button';
 
 const initialValues = {
@@ -100,12 +100,13 @@ export const EmploymentAndIncome = () => {
     };
 
     return (
-        <Box display="flex" flexDirection="column" gridRowGap={25}>
-        <Paper sx={{backgroundColor:"black"}}>
-            <Box display="flex" flexDirection="row">
-                <Box sx={{p:2, margin:2, width:"70%"}}>
-                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
-                        <TextField fullWidth
+        <Box sx={{display:'flex', flexDirection:'column', gridRowGap:25}}>
+        <Paper elevation={4} sx={{width:"100%", marginTop:3}}>
+            <Box sx={{display:'flex', flexDirection:'row', gridColumnGap:35, m:3}}>
+                <Box sx={{display:'flex', flexDirection:'column', gridRowGap:8, width:"70%"}}>
+                    <Box sx={{ display:"flex", gridColumnGap:10, flexDirection:"row"}}>
+                        <TextField
+                            fullWidth
                             variant="standard"
                             label="Employer or Business Name"
                             name='employer'
@@ -117,7 +118,7 @@ export const EmploymentAndIncome = () => {
                             variant="standard"
                         />
                     </Box>
-                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                    <Box sx={{ display:"flex", gridColumnGap:10, flexDirection:"row"}}>
                         <TextField
                             fullWidth
                             variant="standard"
@@ -130,7 +131,7 @@ export const EmploymentAndIncome = () => {
                             variant="standard"
                         />
                     </Box>
-                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                    <Box sx={{ display:"flex", gridColumnGap:10, flexDirection:"row"}}>
                         <TextField
                             fullWidth
                             label="City"
@@ -154,7 +155,7 @@ export const EmploymentAndIncome = () => {
                             variant="standard"
                         />
                     </Box>
-                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                    <Box sx={{ display:"flex", gridColumnGap:10, flexDirection:"row"}}>
                         <TextField
                             fullWidth
                             label="Position or Title"
@@ -176,7 +177,7 @@ export const EmploymentAndIncome = () => {
                         </LocalizationProvider>
                     </Box>
                     <FormLabel>How long in this line of work?</FormLabel>
-                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                    <Box sx={{ display:"flex", gridColumnGap:10, flexDirection:"row"}}>
                         <TextField
                             label="Years"
                             variant="standard"
@@ -200,7 +201,7 @@ export const EmploymentAndIncome = () => {
                             />
                         </RadioGroup>
                     </FormControl>
-                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"column"}}>
+                    <Box sx={{ display:"flex", gridColumnGap:10, flexDirection:"column"}}>
                         <FormControl>
                             <FormLabel>Check if you are the Business Owner or Self-Employed</FormLabel>
                             <RadioGroup name='businessOwner' 
@@ -272,7 +273,7 @@ export const EmploymentAndIncome = () => {
                 </Box>
             </Box>
         </Paper>
-        <Paper sx={{backgroundColor:"black"}}>
+        <Paper elevation={3} sx={{width:"100%"}}>
             <FormLabel sx={{m:3}}>Complete Information for Additional Employmet / Self-Employment and Income</FormLabel>
             <Box display="flex" flexDirection="row">
                 <Box sx={{p:2, margin:2, width:"70%"}}>
@@ -443,7 +444,7 @@ export const EmploymentAndIncome = () => {
                 </Box>
             </Box>
         </Paper>
-        <Paper sx={{backgroundColor:"black"}}>
+        <Paper elevation={3} sx={{width:"100%"}}>
             <FormLabel sx={{m:3}}>Complete Information for Previous Employmet / Self-Employment and Income</FormLabel>
             <Box display="flex" flexDirection="row">
                 <Box sx={{p:2, margin:2, width:"70%"}}>

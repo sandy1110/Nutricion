@@ -311,123 +311,130 @@ export const PersonalInformation = () => {
     }    
     
     return (
-    <form onSubmit={onSubmit}>
-        <Box display="flex" flexDirection="column" gridRowGap={25}>
-            <Paper sx={{width:"100%", marginTop:3}} elevation={3}>
-                <Box display="flex" flexDirection="row" gridColumnGap={40} sx={{m:3}}>
-                    <Box display="flex" flexDirection="column" gridRowGap={8} justifyContent="flex-end" sx={{ width:"64%"}}>
-                        <TextField fullWidth
-                            variant="standard"
-                            label="Name"
-                            name="name"
-                            value={formValues.name}
-                            onChange={ onInputChange }
-                            placeholder="(First, Middle, Last)"
-                        />
-                        <TextField
-                            fullWidth
-                            label="Alternate Names"
-                            name='alternateNames'
-                            value={formValues.alternateNames}
+        <form onSubmit={onSubmit}>
+        <Box sx={{display:'flex', flexDirection:'column', gridRowGap:35}}>
+        <Paper elevation={4} sx={{width:"100%", marginTop:3}}>
+            <Box sx={{display:'flex', flexDirection:'row', gridColumnGap:35, m:3}}>
+                <Box sx={{display:'flex', flexDirection:'column', gridRowGap:8, width:"64%"}}>
+                    <TextField fullWidth color="warning"
+                        variant="standard"
+                        label="Name"
+                        name='name'
+                        value={formValues.name}
+                        onChange={ onInputChange }
+                        placeholder="(First, Middle, Last)"
+                    />
+                    <TextField
+                        fullWidth
+                        label="Alternate Names"
+                        name='alternateNames'
+                        value={formValues.alternateNames}
+                        onChange={onInputChange}
+                        placeholder="Any names under which credit was previously received"
+                        variant="standard"
+                        color="warning"
+                    />
+                    <TextField
+                        fullWidth
+                        label="Social Security Number"
+                        name='sss'
+                        value={formValues.sss}
+                        onChange={onInputChange}
+                        placeholder="or Individual Taxpayer Identification Number"
+                        variant="standard"  
+                        color="warning"          
+                    />
+                    <Box sx={{ display:"flex", flexDirection:"row", gridColumnGap:15, py:1}}>
+                        <FormControl variant="standard" color="warning" sx={{minWidth: 200 }} fullWidth>
+                            <InputLabel>Citizenship</InputLabel>
+                            <Select
+                            label="citizenship"
+                            name='citizenship'
+                            value={formValues.citizenship}
                             onChange={onInputChange}
-                            placeholder="Any names under which credit was previously received"
-                            variant="standard"
-                        />
-                        <TextField
-                            fullWidth
-                            label="Social Security Number"
-                            name='sss'
-                            value={formValues.sss}
-                            onChange={onInputChange}
-                            placeholder="or Individual Taxpayer Identification Number"
-                            variant="standard"            
-                        />
-                        <Box display="flex" flexDirection="row" gridColumnGap={15} sx={{py:2}}>
-                            <FormControl variant="standard" sx={{minWidth: 200 }} fullWidth>
-                                <InputLabel>Citizenship</InputLabel>
-                                <Select
-                                label="citizenship"
-                                name='citizenship'
-                                value={formValues.citizenship}
-                                onChange={onInputChange}
-                                >
-                                <MenuItem value={1}>U.S Citizen</MenuItem>
-                                <MenuItem value={2}>Permanent Resident Alien</MenuItem>
-                                <MenuItem value={3}>Non-Permanent Resident Alien</MenuItem>
-                                </Select>
-                            </FormControl>
-                            <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                <DatePicker
-                                disableFuture
-                                label="Date of Birth"
-                                openTo="year"
-                                views={['year', 'month', 'day']}
-                                value={formValues.dateOfBirth}
-                                onChange={onInputChange}
-                                renderInput={(params) => <TextField {...params} />}
-                                />
-                            </LocalizationProvider>
-                        </Box>
-                    </Box>
-                    <Box display="flex" flexDirection="column" gridRowGap={18} sx={{width:"36%"}}>
-                        <FormLabel>Contact Information</FormLabel>
-                        <TextField
-                            fullWidth
-                            label="Home phone"
-                            name='homePhone'
-                            value={formValues.homePhone}
-                            onChange={onInputChange}
-                            placeholder="(___)___-_______"
-                            variant="standard"
-                        />
-                        <TextField
-                            fullWidth
-                            label="Cell phone"
-                            name='cellPhone'
-                            value={formValues.cellPhone}
-                            onChange={onInputChange}
-                            placeholder="(___)___-_______"
-                            variant="standard"
-                        />
-                        <Box display="flex" flexDirection="row" gridColumnGap={15}>
-                            <TextField
-                                fullWidth
-                                label="Work phone"
-                                name='workPhone'
-                                value={formValues.workPhone}
-                                onChange={onInputChange}
-                                placeholder="(___)___-_______"
-                                variant="standard"
+                            >
+                            <MenuItem value={1}>U.S Citizen</MenuItem>
+                            <MenuItem value={2}>Permanent Resident Alien</MenuItem>
+                            <MenuItem value={3}>Non-Permanent Resident Alien</MenuItem>
+                            </Select>
+                        </FormControl>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker disableFuture
+                            label="Date of Birth"
+                            openTo="year"
+                            views={['year', 'month', 'day']}
+                            value={dateOfBirth}
+                            onChange={(newValue) => {
+                                setDateOfBirth(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
                             />
-                            <TextField
-                                fullWidth
-                                label="Ext."
-                                name='ext'
-                                value={formValues.ext}
-                                onChange={onInputChange}
-                                placeholder="(___)___-_______"
-                                variant="standard"
-                            />
-                        </Box>
-                        <TextField
-                            fullWidth
-                            label="Email"
-                            name='email'
-                            value={formValues.email}
-                            onChange={onInputChange}
-                            variant="standard"
-                        />
+                        </LocalizationProvider>
                     </Box>
                 </Box>
-            </Paper>
-            <Paper sx={{width:"100%"}} elevation={3}>
-                <Box display="flex" flexDirection="row">
-                    <Box sx={{p:2, margin:2, width:"50%"}}>
-                        <FormControl>
-                            <FormLabel>Type of Credit</FormLabel>
-                            <RadioGroup
-                                name='creditType'
-                                value={formValues.creditType}
+                <Box sx={{ display:"flex", flexDirection:"column", gridRowGap:18, width:"36%"}}>
+                    <FormLabel>Contact Information</FormLabel>
+                    <TextField
+                        fullWidth
+                        label="Home phone"
+                        name='homePhone'
+                        value={formValues.homePhone}
+                        onChange={onInputChange}
+                        placeholder="(___)___-_______"
+                        variant="standard"
+                        color="warning"
+                    />
+                    <TextField
+                        fullWidth
+                        label="Cell phone"
+                        name='cellPhone'
+                        value={formValues.cellPhone}
+                        onChange={onInputChange}
+                        placeholder="(___)___-_______"
+                        variant="standard"
+                        color="warning"
+                    />
+                    <Box display="flex" flexDirection="row" gridColumnGap={15}>
+                        <TextField
+                            fullWidth
+                            label="Work phone"
+                            name='workPhone'
+                            value={formValues.workPhone}
+                            onChange={onInputChange}
+                            placeholder="(___)___-_______"
+                            variant="standard"
+                            color="warning"
+                        />
+                        <TextField
+                            fullWidth
+                            label="Ext."
+                            name='ext'
+                            value={formValues.ext}
+                            onChange={onInputChange}
+                            placeholder="(___)___-_______"
+                            variant="standard"
+                        />
+                    </Box>
+                    <TextField
+                        fullWidth
+                        label="Email"
+                        name='email'
+                        value={formValues.email}
+                        onChange={onInputChange}
+                        variant="standard"
+                        color="warning"
+                    />
+                </Box>
+            </Box>
+        </Paper>
+        <Paper elevation={3} sx={{width:"100%"}}>
+            <Box display="flex" flexDirection="row">
+                <Box sx={{p:2, margin:2, width:"50%"}}>
+                    <FormControl>
+                        <FormLabel>Type of Credit</FormLabel>
+                        <RadioGroup
+                            name='creditType'
+                            value={formValues.creditType}
                                 onChange={onInputChange}
                             >
                                 <FormControlLabel checked={formValues.creditType==='individual'} value='individual' control={<Radio size='small'/>} label="I'm applying for individual credit." />
@@ -461,7 +468,7 @@ export const PersonalInformation = () => {
                                 <FormControlLabel value="married" checked={formValues.maritalStatus==="married"} control={<Radio size='small'/>} label="Married" />
                                 <FormControlLabel value="separated" checked={formValues.maritalStatus==="separated"} control={<Radio size='small'/>} label="Separated" />
                                 <FormControlLabel value="unmarried" checked={formValues.maritalStatus==="unmarried"} control={<Radio size='small'/>} label="Unmarried" />
-                                <InputLabel>Single, Widowed, Divorced, Civil Union, Domestic Partnership</InputLabel>
+                                <FormLabel>Single, Widowed, Divorced, Civil Union, Domestic Partnership</FormLabel>
                             </RadioGroup>
                         </FormControl>
                         <TextField
