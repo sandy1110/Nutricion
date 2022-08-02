@@ -29,6 +29,94 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "getMortgage",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "propertyValue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "mortgageAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "downPayment",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "debtIncomeRatio",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "area",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "interestRate",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "latitude",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "longitude",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct MortgageDefi.Location",
+						"name": "location",
+						"type": "tuple"
+					},
+					{
+						"internalType": "enum MortgageDefi.Status",
+						"name": "status",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fund",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct MortgageDefi.Mortgage",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
 				"name": "_mortgageId",
 				"type": "uint256"
 			}
