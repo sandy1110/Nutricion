@@ -537,7 +537,7 @@ export const PersonalInformation = () => {
                             variant="standard"
                         />
                         <TextField
-                            label="Zip"
+                            label="ZIP"
                             name='currentZip'
                             value={formValues.currentZip}
                             onChange={onInputChange}
@@ -620,7 +620,7 @@ export const PersonalInformation = () => {
                             variant="standard"
                         />
                         <TextField
-                            label="Zip"
+                            label="ZIP"
                             name='formerZip'
                             value={formValues.formerZip}
                             onChange={onInputChange}
@@ -703,7 +703,7 @@ export const PersonalInformation = () => {
                             variant="standard"
                         />
                         <TextField
-                            label="Zip"
+                            label="ZIP"
                             name='mailingZip'
                             value={formValues.mailingZip}
                             onChange={onInputChange}
