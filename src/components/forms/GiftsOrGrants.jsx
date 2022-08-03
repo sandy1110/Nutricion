@@ -6,20 +6,37 @@ import Button from '@mui/material/Button';
 
 
 const initialValues ={
-
-    aType: '',
+    type: '',
+    deposited: '',
     source: '',
     cash: '',
-    type: '',
+    type1: '',
+    deposited1: '',
+    source1: '',
+    cash1: '',
+    type2: '',
+    deposited2: '',
     source2: '',
     cash2: '',
-    type2: '',
-    source3: '',
-    cash3: '',
-
 }
 
 export const GiftsOrGrants = () => {
+
+    const [ formValues, setFormValues ] = useState(initialValues);
+
+    const onInputChange = ({ target }) => {
+        const { name, value } = target;
+        setFormValues({
+            ...formValues,
+            [ name ] : value
+        });
+    }
+
+    const onSubmit = ( event ) => {
+        event.preventDefault();
+        console.log(formValues)
+    }
+
     const [deposited, setDeposited] = useState('');
     const [deposited1, setDeposited1] = useState('');
     const [deposited2, setDeposited2] = useState('');
@@ -37,110 +54,130 @@ export const GiftsOrGrants = () => {
     };
 
     return(
-        <Box display="flex" flexDirection="column" gridRowGap={25}>
-            <Paper sx={{backgroundColor:"black"}}>
-                <Box display="flex" flexDirection="column" gridRowGap={10} sx={{p:3, margin:2}}>
-                    <TextField fullWidth
-                        label="Asset Type"
-                        name='aType'
-                        variant="standard"
-                    />
-                    <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
-                        <FormLabel sx={{width:"20%"}}>Desposited / Not Deposited</FormLabel>
-                        <RadioGroup row
-                            name="deposited"
-                            value={deposited}
-                            onChange={handleDepositedChange}
-                        >
-                            <FormControlLabel value="deposited" checked={deposited==="deposited"} control={<Radio size='small'/>} label="Deposited" />
-                            <FormControlLabel value="notDeposited" checked={deposited==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
-                        </RadioGroup>
-                    </Box>
-                    <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
+        <form onSubmit={onSubmit}>
+            <Box display="flex" flexDirection="column" gridRowGap={25}>
+                <Paper sx={{backgroundColor:"black"}}>
+                    <Box display="flex" flexDirection="column" gridRowGap={10} sx={{p:3, margin:2}}>
                         <TextField fullWidth
-                            label="Source"
-                            name='source'
+                            label="Asset Type"
+                            name='type'
+                            value={formValues.type}
+                            onChange={ onInputChange }
                             variant="standard"
                         />
+                        <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
+                            <FormLabel sx={{width:"20%"}}>Desposited / Not Deposited</FormLabel>
+                            <RadioGroup row
+                                name="deposited"
+                                value={formValues.deposited}
+                                onChange={ onInputChange }
+                            >
+                                <FormControlLabel value="deposited" checked={deposited==="deposited"} control={<Radio size='small'/>} label="Deposited" />
+                                <FormControlLabel value="notDeposited" checked={deposited==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
+                            </RadioGroup>
+                        </Box>
+                        <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
+                            <TextField fullWidth
+                                label="Source"
+                                name='source'
+                                value={formValues.source}
+                                onChange={ onInputChange }
+                                variant="standard"
+                            />
+                            <TextField fullWidth
+                                label="Cash or Market value"
+                                name='cash'
+                                value={formValues.cash}
+                                onChange={ onInputChange }
+                                placeholder='$'
+                                variant="standard"
+                            />
+                        </Box>
+                    </Box>
+                </Paper>
+                <Paper sx={{backgroundColor:"black"}}>
+                    <Box display="flex" flexDirection="column" gridRowGap={10} sx={{p:3, margin:2}}>
                         <TextField fullWidth
-                            label="Cash or Market value"
-                            name='cash'
-                            placeholder='$'
+                            label="Asset Type"
+                            name='type1'
+                            value={formValues.type1}
+                            onChange={ onInputChange }
                             variant="standard"
                         />
+                        <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
+                            <FormLabel sx={{width:"20%"}}>Desposited / Not Deposited</FormLabel>
+                            <RadioGroup row
+                                name="deposited1"
+                                value={formValues.deposited1}
+                            onChange={ onInputChange }
+                            >
+                                <FormControlLabel value="deposited" checked={deposited1==="deposited"} control={<Radio size='small'/>} label="Deposited" />
+                                <FormControlLabel value="notDeposited" checked={deposited1==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
+                            </RadioGroup>
+                        </Box>
+                        <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
+                            <TextField fullWidth
+                                label="Source"
+                                name='source1'
+                                value={formValues.source1}
+                                onChange={ onInputChange }
+                                variant="standard"
+                            />
+                            <TextField fullWidth
+                                label="Cash or Market value"
+                                name='cash1'
+                                value={formValues.cash1}
+                                onChange={ onInputChange }
+                                placeholder='$'
+                                variant="standard"
+                            />
+                        </Box>
                     </Box>
+                </Paper>
+                <Paper sx={{backgroundColor:"black"}}>
+                    <Box display="flex" flexDirection="column" gridRowGap={10} sx={{p:3, margin:2}}>
+                        <TextField fullWidth
+                            label="Asset Type"
+                            name='type2'
+                            value={formValues.type2}
+                            onChange={ onInputChange }
+                            variant="standard"
+                        />
+                        <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
+                            <FormLabel sx={{width:"20%"}}>Desposited / Not Deposited</FormLabel>
+                            <RadioGroup row
+                                name="deposited2"
+                                value={formValues.deposited2}
+                            onChange={ onInputChange }
+                            >
+                                <FormControlLabel value="deposited" checked={deposited2==="deposited"} control={<Radio size='small'/>} label="Deposited" />
+                                <FormControlLabel value="notDeposited" checked={deposited2==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
+                            </RadioGroup>
+                        </Box>
+                        <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
+                            <TextField fullWidth
+                                label="Source"
+                                name='source2'
+                                value={formValues.source2}
+                                onChange={ onInputChange }
+                                variant="standard"
+                            />
+                            <TextField fullWidth
+                                label="Cash or Market value"
+                                name='cash2'
+                                value={formValues.cash2}
+                                onChange={ onInputChange }
+                                placeholder='$'
+                                variant="standard"
+                            />
+                        </Box>
+                    </Box>
+                </Paper>
+                <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
+                    <Button type="submit" variant="contained"> SAVE </Button>
                 </Box>
-            </Paper>
-            <Paper sx={{backgroundColor:"black"}}>
-                <Box display="flex" flexDirection="column" gridRowGap={10} sx={{p:3, margin:2}}>
-                    <TextField fullWidth
-                        label="Asset Type"
-                        name='type'
-                        variant="standard"
-                    />
-                    <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
-                        <FormLabel sx={{width:"20%"}}>Desposited / Not Deposited</FormLabel>
-                        <RadioGroup row
-                            name="deposited1"
-                            value={deposited1}
-                            onChange={handleDeposited1Change}
-                        >
-                            <FormControlLabel value="deposited" checked={deposited1==="deposited"} control={<Radio size='small'/>} label="Deposited" />
-                            <FormControlLabel value="notDeposited" checked={deposited1==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
-                        </RadioGroup>
-                    </Box>
-                    <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
-                        <TextField fullWidth
-                            label="Source"
-                            name='source2'
-                            variant="standard"
-                        />
-                        <TextField fullWidth
-                            label="Cash or Market value"
-                            name='cash2'
-                            placeholder='$'
-                            variant="standard"
-                        />
-                    </Box>
-                </Box>
-            </Paper>
-            <Paper sx={{backgroundColor:"black"}}>
-                <Box display="flex" flexDirection="column" gridRowGap={10} sx={{p:3, margin:2}}>
-                    <TextField fullWidth
-                        label="Asset Type"
-                        name='type2'
-                        variant="standard"
-                    />
-                    <Box display="flex" gridColumnGap={15} alignItems="center" nsx={{ flexDirection:"row"}}>
-                        <FormLabel sx={{width:"20%"}}>Desposited / Not Deposited</FormLabel>
-                        <RadioGroup row
-                            name="deposited2"
-                            value={deposited2}
-                            onChange={handleDeposited2Change}
-                        >
-                            <FormControlLabel value="deposited" checked={deposited2==="deposited"} control={<Radio size='small'/>} label="Deposited" />
-                            <FormControlLabel value="notDeposited" checked={deposited2==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
-                        </RadioGroup>
-                    </Box>
-                    <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
-                        <TextField fullWidth
-                            label="Source"
-                            name='source3'
-                            variant="standard"
-                        />
-                        <TextField fullWidth
-                            label="Cash or Market value"
-                            name='cash3'
-                            placeholder='$'
-                            variant="standard"
-                        />
-                    </Box>
-                </Box>
-            </Paper>
-            <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
-                <Button variant="contained"> SAVE </Button>
             </Box>
-        </Box>
+        </form>
     )
 }
 
