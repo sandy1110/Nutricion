@@ -1,10 +1,9 @@
 import React from 'react'
 import { Box, Button } from "@mui/material"
 import "./CardProperties.css"
-import { useMoralis } from "react-moralis";
 import jsonMetadata from '../contracts/CriptoforMortgageDeFiABI.json';
 import Moralis from "moralis";
-
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -17,10 +16,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import HomeIcon from '@mui/icons-material/Home';
 
 
 
@@ -85,29 +81,14 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
         setExpanded(!expanded);
     };
 
+    const [favorite, setFavorite] = useState(false)
+
+    const handleFavorite = () => {
+        setFavorite(!favorite)
+    }
+
     return (
         <Box className='box' onClick={handlePropertyClick}>
-            {/* <img className="cardImg" src={img} alt="Property card" />
-            <div className='information'>
-                <div className='mortgageId'>Mortgage ID {id}</div>
-                <div className='propertyValue'>Value ${value} USD</div>
-                <div className='area'>Dimension: {area} feat<sup>2</sup></div>
-                <div className='capRate'>Interest Rate: {capRate}%</div>
-                <div className='address'>Address: {address}</div>
-                <div className='creditScore'>Credit score: {creditScore}</div>
-                <div className='downPayment'>Down Payment: ${downPayment}</div>
-                <div className='debtIncomeRatio'>Debt Income Ratio: {debtIncomeRatio}%</div>
-                <div className='centerButton'>
-                    <Button
-                        style={{ backgroundColor: "orange", borderRadius: 35 }}
-                        variant='contained'
-                        className='buttonInvest'
-                        onClick={callMortgageContractTest}
-                    >
-                        Invest
-                    </Button>
-                </div>
-            </div> */}
             <Card sx={{ maxWidth: 345 }}>
                 <CardHeader
                     avatar={
@@ -133,9 +114,9 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
                         </div>
                     </Typography>
                 </CardContent>
-                <CardActions disableSpacing className='buttons-actions'>
+                <CardActions disableSpacing>
                     <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
+                        <FavoriteIcon onClick={handleFavorite} className={(favorite ? "favorite-added":"")}/>
                     </IconButton>
                     <div className='centerButton'>
                         <Button

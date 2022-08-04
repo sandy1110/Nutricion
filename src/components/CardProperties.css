@@ -10,58 +10,13 @@
     cursor: pointer;
 }
 
-.cardImg {
-    width: 55%;
-    margin-left: 5px;
-}
-
-.information {
-    display: block;
-    width: 50%;
-    justify-content: space-between;
-    margin-left: 5px;
-    margin-bottom: 10px;
-}
-
-.mortgageId {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.propertyValue {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.area {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.capRate {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.address {
-    display: flex;
-    justify-content: flex-start;
-    overflow: hidden;
-}
-
 .buttonInvest {
     width: 100px;
 }
 
 .centerButton {
     margin-bottom: 5px;
-    margin-left: 17%;
-    display: flex;
-}
-
-.buttons-actions {
-    display: flex;
-    justify-content: space-around;
+    margin-left: 20%;
 }
 
 
@@ -103,4 +58,8 @@
     display: flex;
     justify-content: center;
     box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.favorite-added {
+    color: red;
 }
