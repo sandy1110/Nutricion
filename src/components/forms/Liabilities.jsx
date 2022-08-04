@@ -142,8 +142,9 @@ export const Liabilities = () => {
                             </FormControl>
                             <TextField 
                                     label="Monthly Payment"
+                                    value={formValues.belowPayment}
                                     name='belowPayment'
-                                    onChange={handleInputChange}
+                                    onChange={ onInputChange }
                                     variant="standard"
                                     placeholder='$'
                                 />
