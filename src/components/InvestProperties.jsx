@@ -14,15 +14,15 @@ export const InvestProperties = () => {
 
     const [mapLat, setMapLat] = useState(32.803963)
     const [mapLng, setMapLng] = useState(-117.130824)
-    const [busqueda, setBusqueda] = useState("");
+    const [search, setSearch] = useState("");
 
     const handleChange = (event) => {
-        setBusqueda(event.target.value);
+        setSearch(event.target.value);
     };
   
 
     const datosPropiedades = images.map((property) => {
-        if(property.address.toLowerCase().includes(busqueda.toLowerCase())){
+        if(property.address.toLowerCase().includes(search.toLowerCase())){
             console.log(property.address)
             return (
                 <CardProperty
@@ -44,7 +44,7 @@ export const InvestProperties = () => {
                     >
                     <InputBase
                         sx={{ ml: 1, flex: 1 }}
-                        value={busqueda}
+                        value={search}
                         onChange={handleChange}
                         placeholder="Search..."
                         inputProps={{ 'aria-label': 'search google maps' }}
