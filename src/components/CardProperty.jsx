@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box, Button } from "@mui/material"
 import "./CardProperties.css"
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useMoralis } from "react-moralis";
 import jsonMetadata from '../contracts/CriptoforMortgageDeFiABI.json';
 import Moralis from "moralis";
@@ -50,7 +49,7 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
     }
 
     return (
-        <Box className='box'>
+        <Box className='box' onClick={handlePropertyClick}>
             <img className="cardImg" src={img} alt="Property card" />
             <div className='information'>
                 <div className='mortgageId'>Mortgage ID {id}</div>
@@ -70,7 +69,6 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
                     >
                         Invest
                     </Button>
-                    <LocationOnIcon className='locationIcon' onClick={handlePropertyClick} />
                 </div>
             </div>
         </Box>
