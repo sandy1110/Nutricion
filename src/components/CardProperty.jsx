@@ -48,8 +48,9 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
 
     Moralis.start({ serverUrl, appId });
 
-    async function callMortgageContractTest(amount) {
-        const eth = amount / 1750;
+    async function callMortgageContractTest(amount, mortgageId) {
+        let eth = amount / 1750;
+        eth = eth.toFixed(2);
         const wei = eth * 1000000000000000000;
         const ABI = jsonMetadata;
         const OPTIONS = {
@@ -58,7 +59,7 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
             abi: ABI,
             msgValue: wei,
             params: {
-                _mortgageId: 0
+                _mortgageId: mortgageId
             }
         }
         console.log("send started")
@@ -155,7 +156,7 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
                             style={{ backgroundColor: "orange", borderRadius: 35 }}
                             variant='contained'
                             className='buttonInvest'
-                            onClick={() => callMortgageContractTest(amount)}
+                            onClick={() => callMortgageContractTest(amount, id)}
                             disabled={amount == 0}
                         >
                             Invest
