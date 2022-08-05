@@ -10,7 +10,7 @@ import Redmond from "../assets/Redmon.jpg";
 export const images = [
     {
         img: SanDiego,
-        id: 13009,
+        id: 0,
         value: 200000,
         dimension: 120,
         capRate: 7.5,
@@ -25,7 +25,7 @@ export const images = [
     },
     {
         img: Orlando,
-        id: 32000,
+        id: 1,
         value: 300000,
         dimension: 150,
         capRate: 8.5,
@@ -39,7 +39,7 @@ export const images = [
     },
     {
         img: Austin,
-        id: 45226,
+        id: 2,
         value: 400000,
         dimension: 100,
         capRate: 7.2,
@@ -53,7 +53,7 @@ export const images = [
     },
     {
         img: Atlanta,
-        id: 4526,
+        id: 3,
         value: 400000,
         dimension: 110,
         capRate: 6.4,
@@ -68,7 +68,7 @@ export const images = [
 
     {
         img: Carolina,
-        id: 45267,
+        id: 4,
         value: 400000,
         dimension: 115,
         capRate: 6.4,
@@ -82,7 +82,7 @@ export const images = [
     },
     {
         img: Clinton,
-        id: 45268,
+        id: 5,
         value: 350000,
         dimension: 140,
         capRate: 6.5,
@@ -96,7 +96,7 @@ export const images = [
     },
     {
         img: Missouri,
-        id: 45269,
+        id: 6,
         value: 250000,
         dimension: 100,
         capRate: 5.4,
@@ -110,7 +110,7 @@ export const images = [
     },
     {
         img: Redmond,
-        id: 45270,
+        id: 7,
         value: 400000,
         dimension: 160,
         capRate: 7.4,
@@ -124,7 +124,7 @@ export const images = [
     },
     {
         img: Atlanta,
-        id: 45271,
+        id: 8,
         value: 380000,
         dimension: 125,
         capRate: 6.6,
@@ -138,7 +138,7 @@ export const images = [
     },
     {
         img: Austin,
-        id: 45272,
+        id: 9,
         value: 400000,
         dimension: 137,
         capRate: 6.2,
@@ -152,7 +152,7 @@ export const images = [
     },
     {
         img: Carolina,
-        id: 452673,
+        id: 10,
         value: 230000,
         dimension: 105,
         capRate: 5.4,
@@ -166,7 +166,7 @@ export const images = [
     },
     {
         img: Clinton,
-        id: 452674,
+        id: 11,
         value: 410000,
         dimension: 165,
         capRate: 6.8,
@@ -180,7 +180,7 @@ export const images = [
     },
     {
         img: Missouri,
-        id: 452675,
+        id: 12,
         value: 320000,
         dimension: 140,
         capRate: 7.2,
@@ -194,7 +194,7 @@ export const images = [
     },
     {
         img: Orlando,
-        id: 452676,
+        id: 13,
         value: 210000,
         dimension: 145,
         capRate: 4.4,
@@ -208,7 +208,7 @@ export const images = [
     },
     {
         img: Redmond,
-        id: 452677,
+        id: 14,
         value: 295000,
         dimension: 130,
         capRate: 5.8,
@@ -222,7 +222,7 @@ export const images = [
     },
     {
         img: SanDiego,
-        id: 452678,
+        id: 15,
         value: 400000,
         dimension: 127,
         capRate: 7.7,
@@ -236,7 +236,7 @@ export const images = [
     },
     {
         img: Atlanta,
-        id: 452679,
+        id: 16,
         value: 370000,
         dimension: 120,
         capRate: 6.4,
@@ -250,7 +250,7 @@ export const images = [
     },
     {
         img: Austin,
-        id: 452680,
+        id: 17,
         value: 415000,
         dimension: 139,
         capRate: 6.9,
@@ -264,7 +264,7 @@ export const images = [
     },
     {
         img: Clinton,
-        id: 452681,
+        id: 18,
         value: 205000,
         dimension: 102,
         capRate: 6.1,
@@ -278,7 +278,7 @@ export const images = [
     },
     {
         img: Missouri,
-        id: 452682,
+        id: 19,
         value: 360000,
         dimension: 125,
         capRate: 6.0,
@@ -292,7 +292,7 @@ export const images = [
     },
     {
         img: Redmond,
-        id: 452683,
+        id: 20,
         value: 400000,
         dimension: 160,
         capRate: 7.3,

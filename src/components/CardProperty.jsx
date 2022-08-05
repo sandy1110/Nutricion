@@ -44,11 +44,12 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
 
     const serverUrl = process.env.REACT_APP_MORALIS_SERVER_URL;
     const appId = process.env.REACT_APP_MORALIS_APPLICATION_ID;
-    const mortgageAddres = process.env.REACT_APP_MORTGAGE_CONTRACT_ADDRESS;
+    const mortgageAddress = process.env.REACT_APP_MORTGAGE_CONTRACT_ADDRESS;
 
     Moralis.start({ serverUrl, appId });
 
     async function callMortgageContractTest(amount, mortgageId) {
+        console.log("id", mortgageId)
         let eth = amount / 1750;
         // TODO: Evaluate if 2 decimals is what we need
         eth = eth.toFixed(2);
@@ -56,12 +57,12 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
         const wei = (eth * 1000000000000000000)/100000;
         const ABI = jsonMetadata;
         const OPTIONS = {
-            contractAddress: mortgageAddres,
+            contractAddress: mortgageAddress,
             functionName: "Invest",
             abi: ABI,
             msgValue: wei,
             params: {
-                _mortgageId: 0
+                _mortgageId: mortgageId
             }
         }
         console.log("send started")
