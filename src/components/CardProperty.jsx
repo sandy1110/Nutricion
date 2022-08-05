@@ -49,13 +49,14 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
     Moralis.start({ serverUrl, appId });
 
     async function callMortgageContractTest(amount) {
-        console.log(amount);
+        const eth = amount / 1750;
+        const wei = eth * 1000000000000000000;
         const ABI = jsonMetadata;
         const OPTIONS = {
             contractAddress: mortgageAddres,
             functionName: "Invest",
             abi: ABI,
-            msgValue: 100000000000000,
+            msgValue: wei,
             params: {
                 _mortgageId: 0
             }
