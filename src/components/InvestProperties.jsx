@@ -7,6 +7,8 @@ import { useState } from 'react'
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
+import { Typography } from "@mui/material";
+import { Box } from "@mui/system";
 
 
 
@@ -36,11 +38,12 @@ export const InvestProperties = () => {
     })
         
     return (
-        <div className="container">
+        <div>
             <nav>
-                <h2>Where do you want to invest?</h2>
-                <Paper elevation={7}
-                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 325, my: 2}}
+                <Paper elevation={7} sx={{display:"flex", flexDirection:"row", alignItems:"center", gridColumnGap:40, p: '4px 4px', my:4 }}>
+                <Typography variant="h6" sx={{color: "#ffa500", px:10}}>WHERE DO YOU WANT TO INVEST?</Typography>
+                <Paper elevation={1}
+                    sx={{ display: 'flex', alignItems: 'center', width: "45%", pr:2}}
                     >
                     <InputBase
                         sx={{ ml: 1, flex: 1 }}
@@ -53,7 +56,9 @@ export const InvestProperties = () => {
                         <SearchIcon />
                     </IconButton>
                 </Paper>
+                </Paper>
             </nav>
+        <div className="container">
             <main>
                 <MapComponent lat={mapLat} lng={mapLng} />
             </main>  
@@ -61,6 +66,7 @@ export const InvestProperties = () => {
             <div className="sidebar">
                 {datosPropiedades}
             </div>
+        </div>
         </div>
     )
 }

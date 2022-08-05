@@ -1,6 +1,11 @@
-import Austin from "../assets/Austin.jpeg"
-import Orlando from "../assets/Orlando.jpeg"
-import SanDiego from "../assets/SanDiego.jpeg"
+import Austin from "../assets/Austin.jpeg";
+import Orlando from "../assets/Orlando.jpeg";
+import SanDiego from "../assets/SanDiego.jpeg";
+import Atlanta from "../assets/Atlanta.jpg";
+import Carolina from "../assets/Carolina.jpg";
+import Clinton from "../assets/Clinton.jpg";
+import Missouri from "../assets/Missouri.jpg";
+import Redmond from "../assets/Redmon.jpg";
 
 export const images = [
     {
@@ -47,7 +52,7 @@ export const images = [
         description: "Big house close to the university with malls around"
     },
     {
-        img: Austin,
+        img: Atlanta,
         id: 4526,
         value: 400000,
         dimension: 110,
@@ -59,5 +64,244 @@ export const images = [
         downPayment: 30000,
         debtIncomeRatio: 5,
         description: "Property close to the town mall, located in front of a golf club"
+    },
+
+    {
+        img: Carolina,
+        id: 45267,
+        value: 400000,
+        dimension: 115,
+        capRate: 6.4,
+        address: "2301 Hillview Street, Cayce South Carolina",
+        propertyLat: 34.971490,
+        propertyLng: -81.890730,
+        creditScore: 650,
+        downPayment: 28000,
+        debtIncomeRatio: 20,
+        description: "From the outside this house looks intimate and cozy with marble decorations"
+    },
+    {
+        img: Clinton,
+        id: 45268,
+        value: 350000,
+        dimension: 140,
+        capRate: 6.5,
+        address: "329 American Drive, Pensacola, Florida",
+        propertyLat: 29.164090,
+        propertyLng: -81.049960,
+        creditScore: 550,
+        downPayment: 30000,
+        debtIncomeRatio: 30,
+        description: "The house is equipped with a modern kitchen and two modern bathrooms, it also has four bedrooms, and a spacious dining room"
+    },
+    {
+        img: Missouri,
+        id: 45269,
+        value: 250000,
+        dimension: 100,
+        capRate: 5.4,
+        address: "1361 Cambridge Court, Springdale, Arkansas",
+        propertyLat: 40.551510,
+        propertyLng: -79.804160,
+        creditScore: 850,
+        downPayment: 22000,
+        debtIncomeRatio: 5,
+        description: "The house itself is surrounded by a gorgeous garden, including a pond and many different flowers."
+    },
+    {
+        img: Redmond,
+        id: 45270,
+        value: 400000,
+        dimension: 160,
+        capRate: 7.4,
+        address: "1928 Stanley Avenue Levittown, New York",
+        propertyLat: 40.661890,
+        propertyLng: -73.878010,
+        creditScore: 900,
+        downPayment: 50000,
+        debtIncomeRatio: 50,
+        description: "This home is ideally positioned to enjoy the proximity to beaches, cafes and restaurants"
+    },
+    {
+        img: Atlanta,
+        id: 45271,
+        value: 380000,
+        dimension: 125,
+        capRate: 6.6,
+        address: "3079 Brighton Circle Road, Minneapolis, Minnesota",
+        propertyLat: 45.022990,
+        propertyLng: -93.209230,
+        creditScore: 670,
+        downPayment: 38500,
+        debtIncomeRatio: 25,
+        description: "The floor plan encompasses four spacious bedrooms with plenty of room for study, sleep and storage"
+    },
+    {
+        img: Austin,
+        id: 45272,
+        value: 400000,
+        dimension: 137,
+        capRate: 6.2,
+        address: "2605 Pinnickinick Street, Redmond Washington",
+        propertyLat: 30.796500,
+        propertyLng: -89.853900,
+        creditScore: 850,
+        downPayment: 30000,
+        debtIncomeRatio: 15,
+        description: "Residence with lake and ocean views, located within a level stroll to the sand and surf."
+    },
+    {
+        img: Carolina,
+        id: 452673,
+        value: 230000,
+        dimension: 105,
+        capRate: 5.4,
+        address: "2169 Mount Olive Road, Atlanta, Georgia",
+        propertyLat: 33.664380,
+        propertyLng: -84.477560,
+        creditScore: 600,
+        downPayment: 25000,
+        debtIncomeRatio: 22,
+        description: "Superbly maintained and presented home set on a sprawling 1/2 acre parcel of land occupying a peaceful street position."
+    },
+    {
+        img: Clinton,
+        id: 452674,
+        value: 410000,
+        dimension: 165,
+        capRate: 6.8,
+        address: "2079 Allison Avenue, Melbourne Florida",
+        propertyLat: 30.182080,
+        propertyLng: -85.786630,
+        creditScore: 850,
+        downPayment: 45000,
+        debtIncomeRatio: 45,
+        description: "Cool, calm and sophisticated with a youthful edge, this functional home is enveloped in light and comfort"
+    },
+    {
+        img: Missouri,
+        id: 452675,
+        value: 320000,
+        dimension: 140,
+        capRate: 7.2,
+        address: " 2879 Fairfax Drive, Fullerton California",
+        propertyLat: 34.143000,
+        propertyLng: -117.257110,
+        creditScore: 650,
+        downPayment: 32000,
+        debtIncomeRatio: 38,
+        description: "Set amongst manicured grounds within a private and secure complex"
+    },
+    {
+        img: Orlando,
+        id: 452676,
+        value: 210000,
+        dimension: 145,
+        capRate: 4.4,
+        address: "4301 Farnum Road New York New York",
+        propertyLat: 42.028770,
+        propertyLng: -78.025600,
+        creditScore: 750,
+        downPayment: 25000,
+        debtIncomeRatio: 15,
+        description: "Charming three bedroom residence plus study on a lush, leafy oasis."
+    },
+    {
+        img: Redmond,
+        id: 452677,
+        value: 295000,
+        dimension: 130,
+        capRate: 5.8,
+        address: "4445 Dogwood Lane Gilbert Arizona",
+        propertyLat: 33.300410,
+        propertyLng: -111.753330,
+        creditScore: 700,
+        downPayment: 30000,
+        debtIncomeRatio: 5,
+        description: "Original cottage occupying a peaceful street position"
+    },
+    {
+        img: SanDiego,
+        id: 452678,
+        value: 400000,
+        dimension: 127,
+        capRate: 7.7,
+        address: "584 Southside Lane Los Angeles California",
+        propertyLat: 34.052240,
+        propertyLng: -118.243340,
+        creditScore: 800,
+        downPayment: 40000,
+        debtIncomeRatio: 45,
+        description: "This stylish residence is nestled on a large level block in a desirably tranquil cul-de-sac location."
+    },
+    {
+        img: Atlanta,
+        id: 452679,
+        value: 370000,
+        dimension: 120,
+        capRate: 6.4,
+        address: "2782 Glenwood Avenue, Cleveland Ohio",
+        propertyLat: 41.500260,
+        propertyLng: -81.604440,
+        creditScore: 930,
+        downPayment: 40000,
+        debtIncomeRatio: 25,
+        description: "The house retains the value of peaceful living while being conveniently close to shops, school and transport."
+    },
+    {
+        img: Austin,
+        id: 452680,
+        value: 415000,
+        dimension: 139,
+        capRate: 6.9,
+        address: "4640 Meadow Lane, San Francisco California",
+        propertyLat: 35.551480,
+        propertyLng: -120.503190,
+        creditScore: 820,
+        downPayment: 50000,
+        debtIncomeRatio: 30,
+        description: "you will have access to lifestyle amenities including a lap pool, gymnasium, communal terraces, concierge service and basement parking."
+    },
+    {
+        img: Clinton,
+        id: 452681,
+        value: 205000,
+        dimension: 102,
+        capRate: 6.1,
+        address: " 2459 Harvest Lane, Clinton Missouri",
+        propertyLat: 42.598980,
+        propertyLng: -82.923980,
+        creditScore: 590,
+        downPayment: 20000,
+        debtIncomeRatio: 12,
+        description: "Constructed over two levels, this home enjoys abundant natural light and a layout designed for easy living and entertaining. "
+    },
+    {
+        img: Missouri,
+        id: 452682,
+        value: 360000,
+        dimension: 125,
+        capRate: 6.0,
+        address: "2394 Deercove Drive, Philadelphia Pennsylvania",
+        propertyLat: 40.024010,
+        propertyLng: -75.192350,
+        creditScore: 620,
+        downPayment: 38000,
+        debtIncomeRatio: 20,
+        description: "Perfect for a family, espacious, ensures parents have a private space where they can enjoy the view"
+    },
+    {
+        img: Redmond,
+        id: 452683,
+        value: 400000,
+        dimension: 160,
+        capRate: 7.3,
+        address: "1045 Prospect Valley Road, Beverly Hills California",
+        propertyLat: 34.121550,
+        propertyLng: -118.403420,
+        creditScore: 850,
+        downPayment: 45000,
+        debtIncomeRatio: 35,
+        description: "Contemplate life from the balcony off the second-floor living room of this 2-story townhome"
     }
 ]
