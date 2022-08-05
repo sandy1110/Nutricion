@@ -17,7 +17,7 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 
 export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLng }) => {
@@ -48,15 +48,18 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
 
     Moralis.start({ serverUrl, appId });
 
-    async function callMortgageContractTest() {
+    async function callMortgageContractTest(amount, mortgageId) {
+        let eth = amount / 1750;
+        eth = eth.toFixed(2);
+        const wei = eth * 1000000000000000000;
         const ABI = jsonMetadata;
         const OPTIONS = {
             contractAddress: mortgageAddres,
             functionName: "Invest",
             abi: ABI,
-            msgValue: 100000000000000,
+            msgValue: wei,
             params: {
-                _mortgageId: 0
+                _mortgageId: mortgageId
             }
         }
         console.log("send started")
@@ -87,6 +90,16 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
         setFavorite(!favorite)
     }
 
+    const [percentage, setPercentage] = useState();
+    const [amount, setAmount] = useState(0);
+
+    const handlePercentage = (e) => {
+        const op = e * propertyData.value;
+        setAmount(op);
+        setPercentage(e);
+        console.log(op);
+    }
+
     return (
         <Box className='box' onClick={handlePropertyClick}>
             <Card sx={{ maxWidth: 345 }}>
@@ -113,6 +126,26 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
                             <div className='down-right'>Down payment: <br /> ${downPayment} USD</div>
                         </div>
                     </Typography>
+                    <Box display="flex" flexDirection="column" sx={{pt:2}}>
+                        <Typography variant="body2" color="text.secondary">SELECT A PERCENTAGE TO INVEST</Typography>
+                        <Box display="flex" flexDirection="row" alignItems="end">
+                            <FormControl variant="standard" sx={{width:"40%"}}>
+                                <Select
+                                label="Percentage"
+                                name='percentage'
+                                value={percentage}
+                                onChange={(e)=>handlePercentage(e.target.value)}
+                                >
+                                    <MenuItem value={0.1}>10%</MenuItem>
+                                    <MenuItem value={0.25}>25%</MenuItem>
+                                    <MenuItem value={0.5}>50%</MenuItem>
+                                    <MenuItem value={0.75}>75%</MenuItem>
+                                    <MenuItem value={1}>100%</MenuItem>
+                                </Select>
+                            </FormControl>
+                            <InputLabel sx={{pl:4}}>Amount: ${amount}</InputLabel>
+                        </Box>
+                    </Box>
                 </CardContent>
                 <CardActions disableSpacing>
                     <IconButton aria-label="add to favorites">
@@ -123,7 +156,8 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
                             style={{ backgroundColor: "orange", borderRadius: 35 }}
                             variant='contained'
                             className='buttonInvest'
-                            onClick={callMortgageContractTest}
+                            onClick={() => callMortgageContractTest(amount, id)}
+                            disabled={amount == 0}
                         >
                             Invest
                         </Button>
