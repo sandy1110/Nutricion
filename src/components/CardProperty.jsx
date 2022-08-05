@@ -50,8 +50,10 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
 
     async function callMortgageContractTest(amount, mortgageId) {
         let eth = amount / 1750;
+        // TODO: Evaluate if 2 decimals is what we need
         eth = eth.toFixed(2);
-        const wei = eth * 1000000000000000000;
+        // TODO: Replace division by 100,000. Put this only for demo purposes
+        const wei = (eth * 1000000000000000000)/100000;
         const ABI = jsonMetadata;
         const OPTIONS = {
             contractAddress: mortgageAddres,
@@ -59,7 +61,7 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
             abi: ABI,
             msgValue: wei,
             params: {
-                _mortgageId: mortgageId
+                _mortgageId: 0
             }
         }
         console.log("send started")
