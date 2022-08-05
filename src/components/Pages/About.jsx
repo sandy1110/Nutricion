@@ -1,10 +1,14 @@
-import "./About.css"
+import "./About.css";
+import CryptoImage from "../../assets/CryptoImage.jpg"
 
 export const About = () => {
     return (
         <div className="about-container">
             <div className="header-line">
-                We are criptofor
+                <img className="about-background" src={CryptoImage}/>
+                <h1 className="about-title">
+                    We are criptofor <br/> mortgage
+                </h1>
             </div>
             <div className="story">
                 Our Story
