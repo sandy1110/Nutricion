@@ -50,7 +50,7 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
 
     async function callMortgageContractTest(amount, mortgageId) {
         console.log("id", mortgageId)
-        let eth = amount / 1750;
+        let eth = amount / 25;
         // TODO: Evaluate if 2 decimals is what we need
         eth = eth.toFixed(2);
         // TODO: Replace division by 100,000. Put this only for demo purposes
