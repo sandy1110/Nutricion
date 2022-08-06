@@ -1,8 +1,24 @@
 import "./About.css";
 import CryptoImage from "../../assets/CryptoImage.jpg"
+import ArticleIcon from '@mui/icons-material/Article';
+import { WeDoCard } from "../WeDoCard";
+import { tasks } from "../../helpers/WhatWeDo"
 
 
 export const About = () => {
+
+    const WhatWeDo = tasks.map((task) => {
+
+            return (
+                <WeDoCard
+                    key={task.id}
+                    tasks={task}
+                />
+            )
+        }
+    )
+
+
     return (
         <div className="about-container">
             <div className="header-line">
@@ -28,6 +44,10 @@ export const About = () => {
                 <h1 className="we-do-title">
                     What we do
                 </h1>
+                <div className="we-do-cards">
+                    {WhatWeDo}
+                </div>
+
             </div>
             <div className="testimony">
                 Testimony here

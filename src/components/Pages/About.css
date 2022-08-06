@@ -15,6 +15,7 @@
     font-size: 54px;
     color: black;
     font-weight: bold;
+
 }
 
 .about-background {
@@ -57,13 +58,19 @@
 .we-do {
     background-color: whitesmoke;
     height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
 }
 
 .we-do-title {
+    text-align: center;
+    width: 100%;
+}
 
+.we-do-cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    background-color: blue;
 }
 
 .testimony {
