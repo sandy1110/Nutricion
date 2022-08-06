@@ -28,25 +28,25 @@ export const About = () => {
             <div className="header-line">
                 <img className="about-background" src={CryptoImage} />
                 <h1 className="about-title">
-                    We are criptofor <br /> mortgage
+                    We are <br/>
+                    Criptofor Mortgage
                 </h1>
             </div>
             <div className="story">
                 <h1 className="story-title">
-                    Our Story
+                    Our Why
                 </h1>
                 <h2 className="story-text">
                     How have people survived all this time with a
                     traditional mortgage system? <br />
                     We have experienced the difficulties to request a mortgage, also we  <br />
-                    have experienced the pain to invest in Real Estate <br /> <br /> <br />
-                    This is the reason we built a platform where people can invest in Real Estate <br />
-                    and also request a mortgage in the same place using crypto
+                    have experienced the pain to invest in real estate. <br /> <br /> <br />
+                    This is the reason why we built this platform, to leverage crypto <br /> and create a more inclusive ecosystem, from the people and for the people.
                 </h2>
             </div>
             <div className="we-do">
                 <h1 className="we-do-title">
-                    What we do
+                    We have strong technical capabilities
                 </h1>
                 <div className="icons">
                     <HistoryEduIcon  />
@@ -59,9 +59,6 @@ export const About = () => {
                     {WhatWeDo}
                 </div>
 
-            </div>
-            <div className="our-team">
-                Our team
             </div>
 
         </div>

@@ -23,7 +23,7 @@ export const tasks = [
         id: 3,
         title: "Web development",
         img: Web,
-        description: "We have capabilities to develoop platforms using technology as ReactJs and NodeJs"
+        description: "We have capabilities to develop platforms using technologies such as ReactJs and NodeJs."
     },
     {
         id: 4,
