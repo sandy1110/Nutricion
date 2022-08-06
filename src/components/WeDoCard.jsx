@@ -10,7 +10,7 @@ export const WeDoCard = ({tasks}) => {
     } = tasks
   return (
     <div>
-        {img}
+
         <div>{id}</div>
         <div>{description}</div>
     </div>
