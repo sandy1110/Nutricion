@@ -1,0 +1,18 @@
+.weDoCard-container {
+    width: 20%;
+    text-align: center;
+    border: 1px solid;
+}
+
+.what-we-do-card {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.what-we-do-card-description {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
