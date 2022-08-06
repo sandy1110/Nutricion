@@ -3,19 +3,23 @@ import CryptoImage from "../../assets/CryptoImage.jpg"
 import ArticleIcon from '@mui/icons-material/Article';
 import { WeDoCard } from "../WeDoCard";
 import { tasks } from "../../helpers/WhatWeDo"
+import CloudIcon from '@mui/icons-material/Cloud';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import WebIcon from '@mui/icons-material/Web';
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 
 
 export const About = () => {
 
     const WhatWeDo = tasks.map((task) => {
 
-            return (
-                <WeDoCard
-                    key={task.id}
-                    tasks={task}
-                />
-            )
-        }
+        return (
+            <WeDoCard
+                key={task.id}
+                tasks={task}
+            />
+        )
+    }
     )
 
 
@@ -44,6 +48,13 @@ export const About = () => {
                 <h1 className="we-do-title">
                     What we do
                 </h1>
+                <div className="icons">
+                    <HistoryEduIcon  />
+                    <CloudIcon />
+                    <WebIcon/>
+                    <CurrencyBitcoinIcon/>
+                </div>
+
                 <div className="we-do-cards">
                     {WhatWeDo}
                 </div>

@@ -58,6 +58,7 @@
 .we-do {
     background-color: whitesmoke;
     height: 60vh;
+    display: block;
 }
 
 .we-do-title {
@@ -86,4 +87,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }

@@ -5,12 +5,13 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { IconButton } from "@mui/material";
 
 
 export const WeDoCard = ({tasks}) => {
 
     const {
-        img,
+        taskImage,
         title,
         id,
         description
@@ -19,6 +20,7 @@ export const WeDoCard = ({tasks}) => {
   return (
     <Card className="what-we-do-card"  sx={{ width: 275, height: 300 }}>
       <CardContent>
+        <taskImage/>
         <Typography variant="h5" component="div">
           {title}
         </Typography>

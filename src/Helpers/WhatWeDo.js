@@ -3,12 +3,14 @@ import Contract from "../assets/Contract.svg"
 import Ether from "../assets/Ether.svg"
 import Web from "../assets/Web.svg"
 
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import CloudIcon from '@mui/icons-material/Cloud';
 
 export const tasks = [
     {
         id: 1,
         title: "Smart Contract development",
-        img: Contract,
+        taskImage: HistoryEduIcon,
         description: "We are solidity developers experienced in multiple EVM compatible blockchains. Focused on best practices, secure coding and working with the latest frameworks and tools in the market to deliver high quality and performance of code."
     },
     {
