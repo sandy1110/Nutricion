@@ -70,7 +70,7 @@ contract MortgageDefi {
         mortgages[_mortgageId].status = Status.Listed;
     }
 
-    function Invest(uint256 _mortgageId) public payable {
+    function invest(uint256 _mortgageId) public payable {
 
         mortgages[_mortgageId].fund += msg.value;
 
@@ -93,7 +93,7 @@ contract MortgageDefi {
         mortgages[_mortgageId].status = Status.Paid;
     }
 
-    function test(uint256 x) public pure returns(uint256){
-        return x;
+    function getMortgage(uint256 id) public view returns(Mortgage memory) {
+        return mortgages[id];
     }
 }

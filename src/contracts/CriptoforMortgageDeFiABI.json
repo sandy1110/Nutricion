@@ -7,19 +7,6 @@
 				"type": "uint256"
 			}
 		],
-		"name": "Invest",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_mortgageId",
-				"type": "uint256"
-			}
-		],
 		"name": "approveMortgage",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -121,6 +108,19 @@
 				"type": "uint256"
 			}
 		],
+		"name": "invest",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_mortgageId",
+				"type": "uint256"
+			}
+		],
 		"name": "listMortgageRequest",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -185,25 +185,6 @@
 		"name": "requestMortgage",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "x",
-				"type": "uint256"
-			}
-		],
-		"name": "test",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "pure",
 		"type": "function"
 	}
 ]
