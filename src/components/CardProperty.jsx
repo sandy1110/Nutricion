@@ -58,7 +58,7 @@ export const CardProperty = ({ propertyData, mapLat, mapLng, setMapLat, setMapLn
         const ABI = jsonMetadata;
         const OPTIONS = {
             contractAddress: mortgageAddress,
-            functionName: "Invest",
+            functionName: "invest",
             abi: ABI,
             msgValue: wei,
             params: {
