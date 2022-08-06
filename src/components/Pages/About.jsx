@@ -49,9 +49,6 @@ export const About = () => {
                 </div>
 
             </div>
-            <div className="testimony">
-                Testimony here
-            </div>
             <div className="our-team">
                 Our team
             </div>
