@@ -152,7 +152,7 @@ const ResponsiveAppBar = () => {
                 About
               </Button>
             </Link>
-          <Link to="/about" className={classes.link}>
+          <Link to="/policies" className={classes.link}>
               <Button
                 key="policies"
                 sx={{ my: 2, color: 'white', display: 'block' }}

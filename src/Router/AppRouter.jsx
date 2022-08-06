@@ -2,6 +2,7 @@ import {Route, Routes} from "react-router-dom";
 import { About } from "../components/Pages/About";
 import { Contact } from "../components/Pages/Contact";
 import { Invest } from "../components/Pages/Invest";
+import { Policies } from "../components/Pages/Policies";
 import { Home } from "../components/Pages/Home";
 import { Layout } from "../components/Pages/Layout";
 
@@ -14,6 +15,7 @@ export const AppRouter = () =>{
                 <Route path="/apply" element={<Layout />}></Route>
                 <Route path="/contact" element={<Contact />}></Route>
                 <Route path="/invest" element={<Invest />}></Route>
+                <Route path="/policies" element={<Policies />}></Route>
             </Routes>
         </>
     )
