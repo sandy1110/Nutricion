@@ -15,8 +15,8 @@ contract MortgageDefi {
     enum Status { Review, Listed, ReadyToLend, Approved, Paid }
 
     struct Location {
-        uint256 latitude;
-        uint256 longitude;
+        int256 latitude;
+        int256 longitude;
     }
 
     struct Mortgage {
@@ -43,8 +43,8 @@ contract MortgageDefi {
         uint256 _debtIncomeRatio,
         uint256 _area,
         uint256 _interestRate,
-        uint256 _latitude,
-        uint256 _longitude
+        int256 _latitude,
+        int256 _longitude
         )
         public {
 
