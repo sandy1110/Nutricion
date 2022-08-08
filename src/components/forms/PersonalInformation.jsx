@@ -65,7 +65,20 @@ export const PersonalInformation = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_FIRST_SECTION, requestOptions).then( console.log("information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
     
     const [name, setName] = useState('');
