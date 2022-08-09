@@ -6,8 +6,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 
 const initialValues ={
-   
-    notProperty:'',
+    notProperty: false,
     street:'',
     unit:'',
     city:'',
@@ -23,24 +22,40 @@ const initialValues ={
     type:'',
     monthlyMortgage:'',
     unpaidBalance:'',
+    paidOff: false,
     creditLimit:'',
-
 }
 
 export const PropertyYouOwn = () => {
-    const [values, setValues] = useState(initialValues);
+
+    const [ formValues, setFormValues ] = useState(initialValues);
+
+    const onInputChange = ({ target }) => {
+        const { name, value } = target;
+        setFormValues({
+            ...formValues,
+            [ name ] : value
+        });
+    }
+
+    const onSubmit = ( event ) => {
+        event.preventDefault();
+        console.log(formValues)
+    }
+
     const [state, setState] = useState('');
     const [paid, setPaid] = useState('');
     const [notProperty, setNotProperty] = useState(false);
     const [paidOff, setPaidOff] = useState(false);
 
-    const handleProperty = () => {
+    const handleNotProperty = () => {
         setNotProperty(!notProperty);
     };
 
     const handlePaidOff = () => {
         setPaidOff(!paidOff);
     };
+
 
     const handleStateChange = event => {
         setState(event.target.value);
@@ -50,177 +65,186 @@ export const PropertyYouOwn = () => {
         setPaid(event.target.value);
     };
 
-    const handleInputChange = event =>{
-        const [name, value] = event.target;
-        setValues([...values,
-            [name].value
-        ]);
-    }
-
     return (
-        <Box display="flex" flexDirection="column" gridRowGap={25}>
-            <Paper sx={{backgroundColor:'#000'}}>
-                <Box sx={{m:1}}>
-                    <FormGroup sx={{p:3}}>
-                        <FormControlLabel control={<Checkbox 
-                            checked={notProperty}
-                            onChange={handleProperty} />} label="I don´t own any Real Estate" />
-                    </FormGroup>
-                </Box>
-            </Paper>
-            <Paper sx={{backgroundColor:"black"}}>
-                <Box display="flex" flexDirection="column" sx={{p:2, margin:2}} gridRowGap={15}>
-                <Typography variant='subtitle'>If you are refinancing, list the property FIRST</Typography>
-                <FormLabel sx={{p:3}}>Address</FormLabel>
-                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
-                    <TextField
-                        fullWidth
-                        variant="standard"
-                        label="Street"
-                        name='street'
-                        onChange={handleInputChange}
-                    />
-                    <TextField
-                        label="Unit #"
-                        name='unit'
-                        onChange={handleInputChange}
-                        variant="standard"
-                    />
-                </Box>
-                <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
-                    <TextField
-                        fullWidth
-                        label="City"
-                        name='city'
-                        onChange={handleInputChange}
-                        variant="standard"
-                    />
-                    <TextField
-                        label="State"
-                        name='state'
-                        onChange={handleInputChange}
-                        variant="standard"
-                    />
-                    <TextField
-                        label="Zip"
-                        name='zip'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        type="number"
-                    />
-                    <TextField
-                        label="Country"
-                        name='country'
-                        onChange={handleInputChange}
-                        variant="standard"
-                    />
-                </Box>
-                <Box display="flex" flexDirection="row" gridColumnGap={20} gridRowGap={20}>
-                    <Box sx={{width:"33%"}}>
-                        <InputLabel>Status</InputLabel>
+        <form onSubmit={onSubmit}>
+            <Box display="flex" flexDirection="column" gridRowGap={25}>
+                <Paper sx={{backgroundColor:'#000'}}>
+                    <Box sx={{m:1}}>
+                        <FormGroup sx={{p:3}}>
+                            <FormControlLabel control={<Checkbox 
+                                checked={notProperty}
+                                value={notProperty}
+                                onChange={handleNotProperty} />} label="I don´t own any Real Estate" />
+                        </FormGroup>
+                    </Box>
+                </Paper>
+                <Paper sx={{backgroundColor:"black"}}>
+                    <Box display="flex" flexDirection="column" sx={{p:2, margin:2}} gridRowGap={15}>
+                    <Typography variant='subtitle'>If you are refinancing, list the property FIRST</Typography>
+                    <FormLabel sx={{p:3}}>Address</FormLabel>
+                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                        <TextField
+                            fullWidth
+                            variant="standard"
+                            label="Street"
+                            name='street'
+                            value={formValues.street}
+                            onChange={ onInputChange }
+                        />
+                        <TextField
+                            label="Unit #"
+                            name='unit'
+                            value={formValues.unit}
+                            onChange={ onInputChange }
+                            variant="standard"
+                        />
+                    </Box>
+                    <Box display="flex" gridColumnGap={10} sx={{ flexDirection:"row"}}>
+                        <TextField
+                            fullWidth
+                            label="City"
+                            name='city'
+                            value={formValues.city}
+                            onChange={ onInputChange }
+                            variant="standard"
+                        />
+                        <TextField
+                            label="State"
+                            name='state'
+                            value={formValues.state}
+                            onChange={ onInputChange }
+                            variant="standard"
+                        />
+                        <TextField
+                            label="ZIP"
+                            name='zip'
+                            value={formValues.zip}
+                            onChange={ onInputChange }
+                            variant="standard"
+                            type="number"
+                        />
+                        <TextField
+                            label="Country"
+                            name='country'
+                            value={formValues.country}
+                            onChange={ onInputChange }
+                            variant="standard"
+                        />
+                    </Box>
+                    <Box display="flex" flexDirection="row" gridColumnGap={20} gridRowGap={20}>
+                        <Box sx={{width:"33%"}}>
+                            <InputLabel>Status</InputLabel>
+                            <Select fullWidth
+                                label="Status"
+                                name='status'
+                                value={formValues.status}
+                                onChange={ onInputChange }
+                            >
+                                <MenuItem value={1}>Sold</MenuItem>
+                                <MenuItem value={2}>Pending Sale</MenuItem>
+                                <MenuItem value={3}>Retained</MenuItem>
+                            </Select>
+                        </Box>
+                        <Box sx={{width:"33%"}}>
+                            <InputLabel>Intended Occupancy</InputLabel>
+                            <Select fullWidth
+                                label="Occupancy"
+                                name='occupancy'
+                                value={formValues.occupancy}
+                                onChange={ onInputChange }
+                            >
+                                <MenuItem value={1}>Investment</MenuItem>
+                                <MenuItem value={2}>Primary Residence</MenuItem>
+                                <MenuItem value={3}>Second Home</MenuItem>
+                                <MenuItem value={3}>Other</MenuItem>
+                            </Select>
+                        </Box>
+                        <TextField fullWidth
+                            label="Monthly Insurance, Taxes, etc."
+                            name='taxes'
+                            value={formValues.taxes}
+                            onChange={ onInputChange }
+                            variant="standard"
+                        />
+                    </Box>
+                    <Typography variant='subtitle'>For 2-4 Unit Primary or Investment Property</Typography>
+                    <Box display="flex" flexDirection="row" gridColumnGap={20} gridRowGap={20}>
+                        <TextField fullWidth
+                            label="Monthly Rental Income"
+                            name='rentalIncome'
+                            value={formValues.rentalIncome}
+                            onChange={ onInputChange }
+                            variant="standard"
+                            placeholder="$"
+                        />
+                        <Typography variant='subtitle'>Lender will calculate the New Monthly Rental Income</Typography>
+                    </Box>
+                    <Box display="flex" flexDirection="row" gridColumnGap={20}>
+                        <TextField fullWidth
+                            label="Creditor Name"
+                            name='creditor'
+                            value={formValues.creditor}
+                            onChange={ onInputChange }
+                            variant="standard"
+                        />
+                        <TextField fullWidth
+                            label="Account Number"
+                            name='accountNum'
+                            value={formValues.accountNum}
+                            onChange={ onInputChange }
+                            variant="standard"
+                        />
+                        <InputLabel>Type</InputLabel>
                         <Select fullWidth
-                            label="Status"
-                            name='status'
-                            onChange={handleInputChange}
+                            label="Type"
+                            name='type'
+                            value={formValues.type}
+                            onChange={ onInputChange }
                         >
-                            <MenuItem value={1}>Sold</MenuItem>
-                            <MenuItem value={2}>Pending Sale</MenuItem>
-                            <MenuItem value={3}>Retained</MenuItem>
+                            <MenuItem value={1}>FHA</MenuItem>
+                            <MenuItem value={2}>VA</MenuItem>
+                            <MenuItem value={3}>Conventional</MenuItem>
+                            <MenuItem value={4}>USDA-RD</MenuItem>
+                            <MenuItem value={5}>Other</MenuItem>
                         </Select>
                     </Box>
-                    <Box sx={{width:"33%"}}>
-                        <InputLabel>Intended Occupancy</InputLabel>
-                        <Select fullWidth
-                            label="Occupancy"
-                            name='occupancy'
-                            onChange={handleInputChange}
-                        >
-                            <MenuItem value={1}>Investment</MenuItem>
-                            <MenuItem value={2}>Primary Residence</MenuItem>
-                            <MenuItem value={3}>Second Home</MenuItem>
-                            <MenuItem value={3}>Other</MenuItem>
-                        </Select>
+                    <Box display="flex" flexDirection="row" gridColumnGap={20}>
+                        <TextField fullWidth
+                            label="Monthly Mortgage Payment"
+                            name='monthlyMortgage'
+                            value={formValues.monthlyMortgage}
+                            onChange={ onInputChange }
+                            variant="standard"
+                            placeholder="$"
+                        />
+                        <TextField fullWidth
+                            label="Unpaid Balance"
+                            name='unpaidBalance'
+                            value={formValues.unpaidBalance}
+                            onChange={ onInputChange }
+                            variant="standard"
+                            placeholder="$"
+                        />
+                        <FormGroup sx={{width:"20%", p:3}}>
+                            <FormControlLabel control={<Checkbox 
+                                checked={paidOff}
+                                onChange={handlePaidOff} />} label="To be paid off at or before closing" />
+                        </FormGroup>
+                        <TextField fullWidth
+                            label="Credit Limit"
+                            name='creditLimit'
+                            value={formValues.creditLimit}
+                            onChange={ onInputChange }
+                            variant="standard"
+                            placeholder="$"
+                        />
                     </Box>
-                    <TextField fullWidth
-                        label="Monthly Insurance, Taxes, etc."
-                        name='taxes'
-                        onChange={handleInputChange}
-                        variant="standard"
-                    />
                 </Box>
-                <Typography variant='subtitle'>For 2-4 Unit Primary or Investment Property</Typography>
-                <Box display="flex" flexDirection="row" gridColumnGap={20} gridRowGap={20}>
-                    <TextField fullWidth
-                        label="Monthly Rental Income"
-                        name='rentalIncome'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        placeholder="$"
-                    />
-                    <Typography variant='subtitle'>Lender will calculate the New Monthly Rental Income</Typography>
-                </Box>
-                <Box display="flex" flexDirection="row" gridColumnGap={20}>
-                    <TextField fullWidth
-                        label="Creditor Name"
-                        name='creditor'
-                        onChange={handleInputChange}
-                        variant="standard"
-                    />
-                    <TextField fullWidth
-                        label="Account Number"
-                        name='accountNum'
-                        onChange={handleInputChange}
-                        variant="standard"
-                    />
-                    <InputLabel>Type</InputLabel>
-                    <Select fullWidth
-                        label="Type"
-                        name='type'
-                        onChange={handleInputChange}
-                    >
-                        <MenuItem value={1}>FHA</MenuItem>
-                        <MenuItem value={2}>VA</MenuItem>
-                        <MenuItem value={3}>Conventional</MenuItem>
-                        <MenuItem value={4}>USDA-RD</MenuItem>
-                        <MenuItem value={5}>Other</MenuItem>
-                    </Select>
-                </Box>
-                <Box display="flex" flexDirection="row" gridColumnGap={20}>
-                    <TextField fullWidth
-                        label="Monthly Mortgage Payment"
-                        name='monthlyMortgage'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        placeholder="$"
-                    />
-                    <TextField fullWidth
-                        label="Unpaid Balance"
-                        name='unpaidBalance'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        placeholder="$"
-                    />
-                    <FormGroup sx={{width:"20%", p:3}}>
-                        <FormControlLabel control={<Checkbox 
-                            checked={paidOff}
-                            onChange={handlePaidOff} />} label="To be paid off at or before closing" />
-                    </FormGroup>
-                    <RadioGroup name='paid' value={paid} onChange={handlePaidChange}>
-                        <FormControlLabel value="paid" checked={paid==="paid"} control={<Radio size='small'/>} />
-                    </RadioGroup>
-                    <TextField fullWidth
-                        label="Credit Limit"
-                        name='creditLimit'
-                        onChange={handleInputChange}
-                        variant="standard"
-                        placeholder="$"
-                    />
+                </Paper>
+                <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
+                    <Button type="submit" variant="contained"> SAVE </Button>
                 </Box>
             </Box>
-            </Paper>
-            <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
-                <Button variant="contained"> SAVE </Button>
-            </Box>
-        </Box>
+        </form>
     )
   }
