@@ -74,7 +74,7 @@ export const PersonalInformation = () => {
             }
         }
         try{
-            fetch(process.env.REACT_APP_MORTGAGE_FIRST_SECTION, requestOptions).then( console.log("information sent."));    
+            fetch(process.env.REACT_APP_MORTGAGE_PERSONAL_INFORMATION, requestOptions).then( console.log("information sent."));    
         }
         catch{
             alert("Error");
