@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { Box, Paper, Typography } from '@material-ui/core';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
-
-const initialValues ={  
-    agree: '',
-}
 
 export const Acknowledgments = () => {
     const [agree, setAgree] =useState(false);
@@ -16,6 +10,11 @@ export const Acknowledgments = () => {
     const handleAgreeChange = () => {
         setAgree(!agree);
     };
+
+    const onSubmit = ( event ) => {
+        event.preventDefault();
+        console.log(agree)
+    }
 
     return (
         <Box display="flex" flexDirection="column" gridRowGap={25}>
@@ -27,9 +26,9 @@ export const Acknowledgments = () => {
                         </Typography>
                         <br></br>
                         <Typography variant = 'subtitle1'>
-                            ° "Lender" icnludes the Lender's agents, service providers and any of their successors and assigns.
+                            ° "Lender" includes the Lender's agents, service providers and any of their sucessors and assigns.
                         <br></br>
-                            ° "Other Loan Participants" includes (i) any actual or potential owners of a loan resulting from this application (the "Loan"), (ii) acquirers of any beneficial or other interest in the Loan, (iii) any mortgage insurer, (iv) any guarantor, (v) any servicer of the Loan, and (vi) any of these parties' services providers, successors or assigns.     
+                            ° "Other Loan Participants" includes (i) any actual or potential owners of a loan resulting from this application (the "Loan"), (ii) acquirers of any beneficial or other interest in the Loan, (iii) any mortgage insurer, (iv) any guarantor, (v) any servicer of the Loan, and (vi) any of these parties' services providers, sucessors or assigns.     
                         </Typography>
                         <br></br>
                         <br></br>
@@ -41,13 +40,13 @@ export const Acknowledgments = () => {
                         </Typography>
                         <br></br>
                         <Typography variant = 'subtitle1'>
-                            ° The information i have provided in this application is true, accurate, and complete as of the date I signed this application.
+                            ° The information I have provided in this application is true, accurate, and complete as of the date I signed this application.
                             <br></br>
                             ° If the information I submitted changes or I have new information before closing of the Loan, I must change and supplement this application, including providing any update/supplemented real estate sales contract.
                             <br></br>
-                            ° For purchase transactions: The terms and conditions of any real state sales contract signed by me in connection with this application are true, accurate, and complete to the best of my knowledge and belief. I have not entered into other agreement, written or oral, in connection with this real estate transaction.
+                            ° For purchase transactions: The terms and conditions of any real estate sales contract signed by me in connection with this application are true, accurate, and complete to the best of my knowledge and belief. I have not entered into other agreement, written or oral, in connection with this real estate transaction.
                             <br></br>
-                            ° The Lender and Other Loan Participants may rely on the information contained in the application before and after closing of the Loan.
+                            ° The Lender and Other Loan Participants may rely on the information contained in the application before and after closing off the Loan.
                             <br></br>
                             ° Any intentional or negligent misrepresentation of information may result in the imposition of:
                             <br></br>
@@ -116,7 +115,8 @@ export const Acknowledgments = () => {
                         </Typography>
                         <br></br>
                         <Typography variant = 'subtitle1'>
-                            By signing below , in addition By signing below, in addition to the representations and agreementsmade above, I expressly authorize the Lender and Other Loan Participants to obtain, use, and share with each other (i) the loan application and related loan information and documentation, (ii) a consumer credit report on me, and (iii) my tax return information, as necessary to perform the actions listed below, for so long as they have an interest in my loan or its servicing:
+                            By signing below , in addition to the representations and agreementsmade above, I expressly authorize the Lender and Other Loan Participants to obtain, use, and share with each other (i) the loan application and related loan information and documentation, 
+                            (ii) a consumer credit report on me, and (iii) my tax return information, as necessary to perform the actions listed below, for so long as they have an interest in my loan or its servicing:
                             <ul>
                                 (a) process and underwrite my loan;
                                 <br></br>
@@ -135,16 +135,18 @@ export const Acknowledgments = () => {
                         </Typography>              
                     </Box>
                 </Box>
-                <Box sx={{p:2, margin:2}}>
-                    <FormControlLabel control={<Checkbox 
-                        checked={agree}
-                        onChange={handleAgreeChange} />} label="I hereby accept the Terms and Conditions, Acknoledgements and Agreements." 
-                    />
+                <form onSubmit={onSubmit}> 
+                    <Box sx={{p:2, margin:2}}>
+                        <FormControlLabel control={<Checkbox 
+                            checked={agree}
+                            onChange={handleAgreeChange} />} label="I hereby accept the Terms and Conditions, Acknoledgements and Agreements." 
+                        />
 
-                </Box>
-                <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
-                    <Button variant="contained"> SAVE </Button>
-                </Box>
+                    </Box>
+                    <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
+                        <Button type="submit" variant="contained"> SAVE </Button>
+                    </Box>
+                </form>
             </Paper>
         </Box>     
     )
