@@ -11,6 +11,7 @@ const initialValues ={
     latin: '',
     nationality: '',
     sex: '',
+    race:'',
     american: '',
     asian: '',
     other: '',
