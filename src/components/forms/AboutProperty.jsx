@@ -33,44 +33,21 @@ export const AboutProperty = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_THIS_PROPERTY_INFORMATION, requestOptions).then( console.log("About this property information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
-
-    const [primaryResidence, setPrimaryResidence] =useState('');
-    const [ownershipInterest, setOwnershipInterest] =useState('');
-    const [familyRelationship, setFamilyRelationship] =useState('');
-    const [borrowMoney, setBorrowMoney] =useState('');
-    const [mortgage, setMortgage] =useState('');
-    const [credit, setCredit] =useState('');
-    const [lien, setLien] =useState('');
-
-    const handlePrimaryResidenceChange = (event) => {
-        setPrimaryResidence(event.target.value);
-    };
-
-    const handleOwnershipInterestChange = (event) => {
-        setOwnershipInterest(event.target.value);
-    };
-
-    const handleFamilyRelationshipChange = (event) => {
-        setFamilyRelationship(event.target.value);
-    };
-
-    const handleBorrowMoney = (event) => {
-        setBorrowMoney(event.target.value);
-    };
-
-    const handleMortgageChange = (event) => {
-        setMortgage(event.target.value);
-    };
-
-    const handleCredit = (event) => {
-        setCredit(event.target.value);
-    };
-
-    const handleLienChange = (event) => {
-        setLien(event.target.value);
-    };
 
     return (
         <form onSubmit={onSubmit}>
