@@ -37,37 +37,6 @@ export const DemographicInformation = () => {
         console.log(formValues)
     }
 
-    const [ethnicity, setEthnicity] =useState('');
-    const [race, setRace] =useState('');
-    const [asian, setAsian] =useState('');
-    const [hawaiian, setHawaiian] =useState('');
-    const [latin, setLatin] =useState('');
-    const [sex, setSex] =useState('');
-
-    const handleEthnicityChange = (event) => {
-        setEthnicity(event.target.value);
-    };
-
-    const handleRaceChange = (event) => {
-        setRace(event.target.value);
-    };
-
-    const handleAsianChange = (event) => {
-        setAsian(event.target.value);
-    };
-
-    const handleHawaiianChange = (event) => {
-        setHawaiian(event.target.value);
-    };
-
-    const handleLatinChange = (event) => {
-        setLatin(event.target.value);
-    };
-
-    const handleSexChange = (event) => {
-        setSex(event.target.value);
-    };
-
     return(
         <form onSubmit={onSubmit}>
             <Box display="flex" flexDirection="column" gridRowGap={25}>
