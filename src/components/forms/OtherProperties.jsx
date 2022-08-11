@@ -57,11 +57,22 @@ export const OtherProperties = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_ADDITIONAL_PROPERTY_INFORMATION, requestOptions).then( console.log("Other property information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
 
-    const [state, setState] = useState('');
-    const [paid, setPaid] = useState('');
     const [notProperty, setNotProperty] = useState(false);
     const [paidOff, setPaidOff] = useState(false);
     const [paidOff1, setPaidOff1] = useState(false);
@@ -76,14 +87,6 @@ export const OtherProperties = () => {
 
     const handlePaidOff1 = () => {
         setPaidOff1(!paidOff1);
-    };
-
-    const handleStateChange = event => {
-        setState(event.target.value);
-    };
-
-    const handlePaidChange = event => {
-        setPaid(event.target.value);
     };
 
     return (
