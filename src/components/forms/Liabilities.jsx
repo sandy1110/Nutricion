@@ -28,20 +28,21 @@ export const Liabilities = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_LIABILITIES_INFORMATION, requestOptions).then( console.log("Liabilities information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
-
-    const [values, setValues] =useState(initialValues);
-    const [select, setSelect] =useState(initialValues);
-    const [type, setType] =useState(initialValues);
-
-    const handleSelectChange = (event) => {
-        setSelect(event.target.value);
-    };
-
-    const handleTypeChange = (event) => {
-        setType(event.target.value);
-    };
 
     return (
         <form onSubmit={onSubmit}>
