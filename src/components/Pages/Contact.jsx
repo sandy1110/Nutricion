@@ -1,12 +1,19 @@
+import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import useForm from '../../hooks/useForm'
 import "../Forms.css"
 import { Typography, Paper } from '@mui/material';
-
+import Collapse from '@mui/material/Collapse';
+import Alert from '@mui/material/Alert';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 export const Contact = () => {
+
+    const [successAlert, setSuccessAlert] = React.useState(false);
+    const [errorAlert, setErrorAlert] = React.useState(false);
 
     const boxSX = {
         backgroundColor: "#ff914d",
@@ -19,8 +26,8 @@ export const Contact = () => {
         m: 2
       };
 
-    const [form, setForm, handleChange] = useForm({ 
-        subject: "", 
+    const [form, setForm, handleChange] = useForm({
+        subject: "",
         email: "",
         message: "",
     })
@@ -42,11 +49,10 @@ export const Contact = () => {
         }
 
         try{
-            fetch(process.env.REACT_APP_MORTGAGE_API, requestOptions).then( console.log("email sent."));
-            
+            fetch(process.env.REACT_APP_MORTGAGE_API, requestOptions).then( setSuccessAlert(true) );
         }
         catch{
-            alert("Error");
+            setErrorAlert(true);
         }
     }
 
@@ -76,6 +82,44 @@ export const Contact = () => {
                             value={form.message}
                             onChange={handleChange}
                         />
+                        <Collapse in={successAlert}>
+                            <Alert
+                                action={
+                                    <IconButton
+                                    aria-label="close"
+                                    color="inherit"
+                                    size="small"
+                                    onClick={() => {
+                                        setSuccessAlert(false);
+                                    }}
+                                    >
+                                    <CloseIcon fontSize="inherit" />
+                                    </IconButton>
+                                }
+
+                                severity="success"
+                            >
+                                Email sent, we'll contact you ASAP!</Alert>
+                        </Collapse>
+                        <Collapse in={errorAlert}>
+                            <Alert
+                                action={
+                                    <IconButton
+                                    aria-label="close"
+                                    color="inherit"
+                                    size="small"
+                                    onClick={() => {
+                                        setErrorAlert(false);
+                                    }}
+                                    >
+                                    <CloseIcon fontSize="inherit" />
+                                    </IconButton>
+                                }
+
+                                severity="error"
+                            >
+                                Error on sending email, please contact hello@criptofor.com!</Alert>
+                        </Collapse>
                         <Button sx={boxSX} onClick={submit} variant="contained" >Submit</Button>
                     </Box>
                 </Paper>

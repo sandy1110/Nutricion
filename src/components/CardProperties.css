@@ -7,45 +7,7 @@
     border: outset;
     border-radius: 10px;
     box-shadow: 5px 5px lightgray;
-}
-
-.cardImg {
-    width: 55%;
-    margin-left: 5px;
-}
-
-.information {
-    display: block;
-    width: 50%;
-    justify-content: space-between;
-    margin-left: 5px;
-    margin-bottom: 10px;
-}
-
-.mortgageId {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.propertyValue {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.area {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.capRate {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.address {
-    display: flex;
-    justify-content: flex-start;
-    overflow: hidden;
+    cursor: pointer;
 }
 
 .buttonInvest {
@@ -53,12 +15,51 @@
 }
 
 .centerButton {
-    padding-top: 10px;
-    display: flex;
-    justify-content: space-around;
+    margin-bottom: 5px;
+    margin-left: 20%;
 }
 
-.locationIcon {
-    padding-top: 10px;
-    cursor: pointer;
+
+.container-cardProperty {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "up-left up-right"
+        "down-left down-right";
+    grid-gap: 0.2rem;
+    /* background-color: rgb(70, 72, 72); */
+}
+
+.up-left {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.down-left {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.up-right {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.down-right {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.favorite-added {
+    color: red;
 }
