@@ -40,11 +40,22 @@ export const PropertyYouOwn = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_YOUR_PROPERTY_INFORMATION, requestOptions).then( console.log("Your property information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
 
-    const [state, setState] = useState('');
-    const [paid, setPaid] = useState('');
     const [notProperty, setNotProperty] = useState(false);
     const [paidOff, setPaidOff] = useState(false);
 
@@ -54,15 +65,6 @@ export const PropertyYouOwn = () => {
 
     const handlePaidOff = () => {
         setPaidOff(!paidOff);
-    };
-
-
-    const handleStateChange = event => {
-        setState(event.target.value);
-    };
-
-    const handlePaidChange = event => {
-        setPaid(event.target.value);
     };
 
     return (
