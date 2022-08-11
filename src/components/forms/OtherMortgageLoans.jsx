@@ -37,24 +37,21 @@ export const OtherMortgageLoans = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_OTHER_MORTGAGE_INFORMATION, requestOptions).then( console.log("Other mortgage information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
-
-    const [firstLien, setFirstLien] = useState('');
-    const [firstLien1, setFirstLien1] = useState('');
-    const [firstLien2, setFirstLien2] = useState('');
-  
-    const handleFirstLienChange = (event) => {
-        setFirstLien(event.target.value);
-    };
-
-    const handleFirstLien1Change = (event) => {
-        setFirstLien1(event.target.value);
-    };
-
-    const handleFirstLien2Change = (event) => {
-        setFirstLien2(event.target.value);
-    };
 
     return(
         <form onSubmit={onSubmit}>
