@@ -28,30 +28,21 @@ export const Assets = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_ASSETS_INFORMATION, requestOptions).then( console.log("Assets information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
-    
-    const [values, setValues] =useState(initialValues);
-    const [type, setType] = React.useState('');
-    const [select, setSelect] = React.useState('');
-    const [asset, setAsset] = React.useState('');
-    const [credit, setCredit] = React.useState('');
-
-    const handleTypeChange = (event) => {
-        setType(event.target.value);
-    };
-
-    const handleSelectChange = (event) => {
-        setSelect(event.target.value);
-    };
-
-    const handleAssetChange = (event) => {
-        setAsset(event.target.value);
-    };
-       
-    const handleCreditChange = (event) => {
-        setCredit(event.target.value);
-    };
 
     return (
         <form onSubmit={onSubmit}>
