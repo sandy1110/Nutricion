@@ -36,29 +36,23 @@ export const LoanAndProperty = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_LOAN_PROPERTY_INFORMATION, requestOptions).then( console.log("Loan and Property information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
 
     const [loanPurpose, setLoanPurpose] = useState('');
-    const [occupancy, setOccupancy] = useState('');
-    const [bussinesProperty, setBussinesProperty] = useState('');
-    const [manufacturedHome, setManufacturedHome] = useState('');
-
-    const handleLoanPurposeChange = (event) => {
-        setLoanPurpose(event.target.value);
-    };
-
-    const handleOccupancyChange = (event) => {
-        setOccupancy(event.target.value);
-    };
-
-    const handleBussinesPropertyChange = (event) => {
-        setBussinesProperty(event.target.value);
-    };
-
-    const handleManufacturedHome = (event) => {
-        setManufacturedHome(event.target.value);
-    };
     
     return(
         <form onSubmit={onSubmit}>
