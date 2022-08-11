@@ -29,20 +29,24 @@ export const MilitaryService = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_MILITARY_SERVICE_INFORMATION, requestOptions).then( console.log("Military service information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
 
-    const [everServed, setEverServed] = useState('');
-    const [servingType, setServingType] = useState('');
     const [endDate, setEndDate] = useState(new Date());
 
-    const handleEverServedChange = (event) => {
-        setEverServed(event.target.value);
-    };
-
-    const handleServingTypeChange = (event) => {
-        setServingType(event.target.value);
-    };
     return(
         <form onSubmit={onSubmit}>
             <Box display="flex" flexDirection="column" gridRowGap={25}>
