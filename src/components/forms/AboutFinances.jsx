@@ -32,54 +32,21 @@ export const AboutFinances = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_YOUR_FINANCES_INFORMATION, requestOptions).then( console.log("About your finances information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
-
-    const [cosigner, setCosigner] = useState('');
-    const [judgements, setJudgements] = useState('');
-    const [delinquent, setDelinquent] = useState('');
-    const [financialLiability, setFinancialLiability] = useState('');
-    const [conveyedTitle, setConveyedTitle] = useState('');
-    const [bankruptcy, setBankruptcy] = useState('');
-    const [bankruptcyType, setBankruptcyType] = useState('');
-    const [foreclosedProperty, setForeclosedProperty] = useState('');
-    const [acceptLessMortgage, setAcceptLessMortgage] = useState('');
-
-    const handlecosignerChange = (event) => {
-        setCosigner(event.target.value);
-    };
-
-    const handleJudgementsChange = (event) => {
-        setJudgements(event.target.value);
-    };
-
-    const handleDelinquentChange = (event) => {
-        setDelinquent(event.target.value);
-    };
-
-    const handleFinancialLiabilityChange = (event) => {
-        setFinancialLiability(event.target.value);
-    };
-
-    const handleConveyedTitle = (event) => {
-        setConveyedTitle(event.target.value);
-    };
-
-    const handleForeclosedPropertyChange = (event) => {
-        setForeclosedProperty(event.target.value);
-    };
-
-    const handleAcceptLessMortgage = (event) => {
-        setAcceptLessMortgage(event.target.value);
-    };
-
-    const handleBankruptcyChange = (event) => {
-        setBankruptcy(event.target.value);
-    };
-
-    const handleBankruptcyTypeChange = (event) => {
-        setBankruptcyType(event.target.value);
-    };
 
     return (
         <form onSubmit={onSubmit}>
