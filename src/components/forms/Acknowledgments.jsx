@@ -13,7 +13,20 @@ export const Acknowledgments = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(agree)
+        console.log(agree);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({agree}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_ACKNOWLEDGMENTS_INFORMATION, requestOptions).then( console.log("Acknowledgments information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
 
     return (
