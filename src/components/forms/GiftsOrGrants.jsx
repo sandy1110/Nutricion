@@ -34,24 +34,25 @@ export const GiftsOrGrants = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_GIFTS_GRANTS_INFORMATION, requestOptions).then( console.log("Gifts and grants information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
 
     const [deposited, setDeposited] = useState('');
     const [deposited1, setDeposited1] = useState('');
     const [deposited2, setDeposited2] = useState('');
-
-    const handleDepositedChange = (event) => {
-        setDeposited(event.target.value);
-    };
-
-    const handleDeposited1Change = (event) => {
-        setDeposited1(event.target.value);
-    };
-
-    const handleDeposited2Change = (event) => {
-        setDeposited2(event.target.value);
-    };
 
     return(
         <form onSubmit={onSubmit}>
