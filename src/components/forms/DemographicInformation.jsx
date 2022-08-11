@@ -3,7 +3,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
-import { Box, Paper, TextField, Typography } from '@material-ui/core';
+import { Box, Paper, TextField } from '@material-ui/core';
 import Button from '@mui/material/Button';
 
 const initialValues ={
@@ -34,7 +34,20 @@ export const DemographicInformation = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_DEMOGRAPHIC_INFORMATION, requestOptions).then( console.log("information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
 
     return(
