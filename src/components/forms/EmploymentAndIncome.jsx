@@ -82,7 +82,20 @@ export const EmploymentAndIncome = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_EMPLOYMENT_INFORMATION, requestOptions).then( console.log("Employment information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
 
 
@@ -236,7 +249,7 @@ export const EmploymentAndIncome = () => {
                                     value={formValues.employedByFamily}
                                     onChange={ onInputChange }
                                 >
-                                    <FormControlLabel value="yes" checked={employedByFamily==="yes"}
+                                    <FormControlLabel value="yes" checked={formValues.employedByFamily==="yes"}
                                         control={<Radio size='small'/>} 
                                         label="I'm employed by a family member, property seller, real estate agent, or other party transaction." 
                                     />
@@ -446,7 +459,7 @@ export const EmploymentAndIncome = () => {
                                     value={formValues.additionalEmployedByFamily}
                                     onChange={ onInputChange }
                                 >
-                                    <FormControlLabel value="yes" checked={additionalEmployedByFamily==="yes"}
+                                    <FormControlLabel value="yes" checked={formValues.additionalEmployedByFamily==="yes"}
                                         control={<Radio size='small'/>} 
                                         label="I'm employed by a family member, property seller, real estate agent, or other party transaction." />
                                 </RadioGroup>
@@ -665,8 +678,8 @@ export const EmploymentAndIncome = () => {
                     </Box>
                 </Paper>
                 <Box display="flex" justifyContent="flex-end" sx={{m:2}}>
-                        <Button type="submit" variant="contained"> SAVE </Button>
-                    </Box>
+                    <Button type="submit" variant="contained"> SAVE </Button>
+                </Box>
             </Box>
         </form>
     )
