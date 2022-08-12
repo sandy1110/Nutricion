@@ -12,7 +12,6 @@ const initialValues ={
     nationality: '',
     sex: '',
     race:'',
-    american: '',
     asian: '',
     other: '',
     example: '',
@@ -124,8 +123,8 @@ export const DemographicInformation = () => {
                             </FormLabel>  
                             <br></br> 
                             <RadioGroup
-                                name='american'
-                                value={formValues.american}
+                                name='race'
+                                value={formValues.race}
                                 onChange={ onInputChange }
                             >
                                 <FormControlLabel value="american" control={<Radio size='small'/>} label="American Indian or Alaska Native - Print name of enrolled or principal tribe:"/>
