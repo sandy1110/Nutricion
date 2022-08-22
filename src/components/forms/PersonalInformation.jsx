@@ -54,6 +54,7 @@ const initialValues = {
 export const PersonalInformation = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [ dateOfBirth, setDateOfBirth ] = useState(new Date());
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -65,10 +66,11 @@ export const PersonalInformation = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
+        formValues.dateOfBirth = dateOfBirth;
         console.log(formValues);
         const requestOptions = {
             method: 'POST',
-            body: JSON.stringify({formValues}),
+            body: JSON.stringify({formValues}, new Date()),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -134,9 +136,9 @@ export const PersonalInformation = () => {
                             label="Date of Birth"
                             openTo="year"
                             views={['year', 'month', 'day']}
-                            value={formValues.dateOfBirth}
+                            value={dateOfBirth}
                             onChange={(newValue) => {
-                                onInputChange(newValue);
+                                setDateOfBirth(newValue);
                             }}
                             renderInput={(params) => <TextField {...params} />}
                             />
