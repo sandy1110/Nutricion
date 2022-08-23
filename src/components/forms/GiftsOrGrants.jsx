@@ -50,10 +50,6 @@ export const GiftsOrGrants = () => {
         }
     }
 
-    const [deposited, setDeposited] = useState('');
-    const [deposited1, setDeposited1] = useState('');
-    const [deposited2, setDeposited2] = useState('');
-
     return(
         <form onSubmit={onSubmit}>
             <Box display="flex" flexDirection="column" gridRowGap={25}>
@@ -73,8 +69,8 @@ export const GiftsOrGrants = () => {
                                 value={formValues.deposited}
                                 onChange={ onInputChange }
                             >
-                                <FormControlLabel value="deposited" checked={deposited==="deposited"} control={<Radio size='small'/>} label="Deposited" />
-                                <FormControlLabel value="notDeposited" checked={deposited==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
+                                <FormControlLabel value="deposited" checked={formValues.deposited==="deposited"} control={<Radio size='small'/>} label="Deposited" />
+                                <FormControlLabel value="notDeposited" checked={formValues.deposited==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
                             </RadioGroup>
                         </Box>
                         <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
@@ -112,8 +108,8 @@ export const GiftsOrGrants = () => {
                                 value={formValues.deposited1}
                             onChange={ onInputChange }
                             >
-                                <FormControlLabel value="deposited" checked={deposited1==="deposited"} control={<Radio size='small'/>} label="Deposited" />
-                                <FormControlLabel value="notDeposited" checked={deposited1==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
+                                <FormControlLabel value="deposited" checked={formValues.deposited1==="deposited"} control={<Radio size='small'/>} label="Deposited" />
+                                <FormControlLabel value="notDeposited" checked={formValues.deposited1==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
                             </RadioGroup>
                         </Box>
                         <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
@@ -151,8 +147,8 @@ export const GiftsOrGrants = () => {
                                 value={formValues.deposited2}
                             onChange={ onInputChange }
                             >
-                                <FormControlLabel value="deposited" checked={deposited2==="deposited"} control={<Radio size='small'/>} label="Deposited" />
-                                <FormControlLabel value="notDeposited" checked={deposited2==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
+                                <FormControlLabel value="deposited" checked={formValues.deposited2==="deposited"} control={<Radio size='small'/>} label="Deposited" />
+                                <FormControlLabel value="notDeposited" checked={formValues.deposited2==="notDeposited"} control={<Radio size='small'/>} label="Not Deposited" />
                             </RadioGroup>
                         </Box>
                         <Box display="flex" gridColumnGap={15} sx={{ flexDirection:"row"}}>
