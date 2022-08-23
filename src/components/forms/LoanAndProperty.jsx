@@ -25,6 +25,7 @@ const initialValues={
 export const LoanAndProperty = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [ loanPurpose, setLoanPurpose ] = useState('');
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -51,8 +52,6 @@ export const LoanAndProperty = () => {
             alert("Error");
         }
     }
-
-    const [loanPurpose, setLoanPurpose] = useState('');
     
     return(
         <form onSubmit={onSubmit}>
@@ -73,9 +72,9 @@ export const LoanAndProperty = () => {
                                 value={formValues.loanPurpose}
                                 onChange={ onInputChange }
                             >
-                                <FormControlLabel value="purchase" checked={loanPurpose=="purchase"} control={<Radio size='small'/>} label="Purchase" />
-                                <FormControlLabel value="refinance" checked={loanPurpose=="refinance"} control={<Radio size='small'/>} label="Refinance" />
-                                <FormControlLabel value="other" checked={loanPurpose=="other"} control={<Radio size='small'/>} label="Other (specify)" />
+                                <FormControlLabel value="purchase" checked={formValues.loanPurpose=="purchase"} control={<Radio size='small'/>} label="Purchase" />
+                                <FormControlLabel value="refinance" checked={formValues.loanPurpose=="refinance"} control={<Radio size='small'/>} label="Refinance" />
+                                <FormControlLabel value="other" checked={formValues.loanPurpose=="other"} control={<Radio size='small'/>} label="Other (specify)" />
                             </RadioGroup>
                             <TextField 
                                 label=""
@@ -203,7 +202,7 @@ export const LoanAndProperty = () => {
                                 onChange={ onInputChange }
                             >
                                 <FormControlLabel value="no" checked={formValues.manufacturedHome=="no"} control={<Radio size='small'/>} label="No" />
-                                <FormControlLabel value="yes" checked={formValues.businessProperty=="yes"} control={<Radio size='small'/>} label="Yes" />
+                                <FormControlLabel value="yes" checked={formValues.manufacturedHome=="yes"} control={<Radio size='small'/>} label="Yes" />
                             </RadioGroup>
                         </Box>
                     </Box>
