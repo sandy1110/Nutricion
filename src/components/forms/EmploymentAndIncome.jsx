@@ -71,6 +71,10 @@ const initialValues = {
 export const EmploymentAndIncome = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [currentStartDate, setCurrentStartDate] = useState(new Date());
+    const [additionalStartDate, setAdditionalStartDate] = useState(new Date());
+    const [previousStartDate, setPreviousStartDate] = useState(new Date());
+    const [previousEndDate, setPreviousEndDate] = useState(new Date());
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -80,8 +84,16 @@ export const EmploymentAndIncome = () => {
         });
     }
 
+    const addDatesToForm = () => {
+        formValues.currentStartDate = currentStartDate;
+        formValues.additionalStartDate = additionalStartDate;
+        formValues.previousStartDate = previousStartDate;
+        formValues.previousEndDate = previousEndDate;
+    }
+
     const onSubmit = ( event ) => {
         event.preventDefault();
+        addDatesToForm();
         console.log(formValues);
         const requestOptions = {
             method: 'POST',
@@ -97,37 +109,6 @@ export const EmploymentAndIncome = () => {
             alert("Error");
         }
     }
-
-
-    const [currentStartDate, setCurrentStartDate] = useState(new Date());
-    const [additionalStartDate, setAdditionalStartDate] = useState(new Date());
-    const [previousStartDate, setPreviousStartDate] = useState(new Date());
-    const [previousEndDate, setPreviousEndDate] = useState(new Date());
-    const [previousBusinessOwner, setPreviousBusinessOwner] = useState('');
-    const [employedByFamily, setEmployedByFamily] = useState('');
-    const [businessOwner, setBusinessOwner] = useState('');
-    const [additionalEmployedByFamily, setAdditionalEmployedByFamily] = useState('');
-    const [additionalBusinessOwner, setAdditionalBusinessOwner] = useState('');
-
-    const handleBusinessOwner = (event) => {
-        setBusinessOwner(event.target.value);
-    };
-
-    const handlePreviousBusinessOwner = (event) => {
-        setPreviousBusinessOwner(event.target.value);
-    };
-
-    const handleEmployedByFamily = (event) => {
-        setEmployedByFamily(event.target.value);
-    };
-
-    const handleAdditionalEmployedByFamily = (event) => {
-        setAdditionalEmployedByFamily(event.target.value);
-    };
-
-    const handleAdditionalBusinessOwner = (event) => {
-        setAdditionalBusinessOwner(event.target.value);
-    };
 
     return (
         <form onSubmit={onSubmit}>
@@ -654,10 +635,10 @@ export const EmploymentAndIncome = () => {
                             <FormControl sx={{py:3}}>
                                 <RadioGroup name='previousBussinesOwner' 
                                 value={formValues.previousBusinessOwner} 
-                                onChange={handlePreviousBusinessOwner}
+                                onChange={ onInputChange }
                             >
                                     <FormControlLabel value="yes"
-                                        checked={previousBusinessOwner==="yes"} 
+                                        checked={formValues.previousBusinessOwner==="yes"} 
                                         control={<Radio size='small'/>} 
                                         label="Check if you were the Business Owner or Self-Employed." />
                                 </RadioGroup>
