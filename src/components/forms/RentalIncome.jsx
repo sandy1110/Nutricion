@@ -24,14 +24,22 @@ export const RentalIncome = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log(formValues)
+        console.log(formValues);
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({formValues}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            fetch(process.env.REACT_APP_MORTGAGE_RENTAL_INCOME_INFORMATION, requestOptions).then( console.log("information sent."));    
+        }
+        catch{
+            alert("Error");
+        }
     }
 
-    const [apply, setApply] = useState('');
-
-    const handleApplyChange = event => {
-        setApply(event.target.value);
-    };
     return(
         <form onSubmit={onSubmit}>
             <Box display="flex" flexDirection="column" gridRowGap={25}>
