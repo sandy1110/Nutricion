@@ -11,13 +11,14 @@ import Button from '@mui/material/Button';
 const initialValues={
     everServed: '',
     servingType: '',
-    endDate: '',
+    endDate: new Date(),
 }
 
 
 export const MilitaryService = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [ endDate, setEndDate ] = useState(new Date());
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -29,6 +30,7 @@ export const MilitaryService = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
+        formValues.endDate = endDate;
         console.log(formValues);
         const requestOptions = {
             method: 'POST',
@@ -44,8 +46,6 @@ export const MilitaryService = () => {
             alert("Error");
         }
     }
-
-    const [endDate, setEndDate] = useState(new Date());
 
     return(
         <form onSubmit={onSubmit}>
@@ -86,8 +86,7 @@ export const MilitaryService = () => {
                         </Box> 
                         <Box sx={{width: "15%"}}>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                <DatePicker
-                                disableFuture
+                                <DatePicker disablePast
                                 label="End Date"
                                 openTo="year"
                                 views={['year', 'month', 'day']}
