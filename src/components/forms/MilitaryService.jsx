@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -7,18 +7,47 @@ import { Box, Paper, TextField } from '@material-ui/core';
 import Radio from '@mui/material/Radio';
 import Button from '@mui/material/Button';
 
-
 const initialValues={
     everServed: '',
     servingType: '',
     endDate: new Date(),
 }
 
-
 export const MilitaryService = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [ firstForm, setFirstForm ] = useState(true);
     const [ endDate, setEndDate ] = useState(new Date());
+    const [ requestType, setRequestType ] = useState('POST');
+
+    const onLoadingForm = async () => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            console.log("fetching information");
+            fetch(process.env.REACT_APP_MORTGAGE_MILITARY_SERVICE_INFORMATION, requestOptions)
+            .then((response) => response.json())
+            .then((militaryRecord) => {
+                const militaryServiceData = militaryRecord["military-service"];
+                militaryServiceData.endDate = new Date(militaryServiceData.endDate);
+                setEndDate(militaryServiceData.endDate);
+                console.log(militaryServiceData);
+                setFormValues(militaryServiceData);
+                setFirstForm(false);
+                setRequestType('PATCH');
+            });
+        }catch (error){
+            console.log ("error requesting information", error);
+        }  
+    }
+
+    useEffect(() => {
+        onLoadingForm();
+    },[]);
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -33,7 +62,7 @@ export const MilitaryService = () => {
         formValues.endDate = endDate;
         console.log(formValues);
         const requestOptions = {
-            method: 'POST',
+            method: requestType,
             body: JSON.stringify({formValues}),
             headers: {
                 'Content-Type': 'application/json'
