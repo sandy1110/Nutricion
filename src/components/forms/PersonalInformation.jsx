@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Paper } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -54,7 +54,40 @@ const initialValues = {
 export const PersonalInformation = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [ firstForm, setFirstForm ] = useState(true);
+    const [ requestType, setRequestType ] = useState('POST');
     const [ dateOfBirth, setDateOfBirth ] = useState(new Date());
+
+    const url = process.env.REACT_APP_MORTGAGE_PERSONAL_INFORMATION;
+
+    const onLoadingForm = async () => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            console.log("fetching information");
+            fetch(url, requestOptions)
+            .then((response) => response.json())
+            .then((personalInformationRecord) => {
+                const personalData = personalInformationRecord["personal-information"];
+                personalData.dateOfBirth = new Date(personalData.dateOfBirth);
+                setDateOfBirth(personalData.dateOfBirth);
+                console.log(personalData);
+                setFormValues(personalData);
+                setFirstForm(false);
+                setRequestType('PATCH');
+            });
+        }catch (error){
+            console.log ("error requesting information", error);
+        }  
+    }
+
+    useEffect(() => {
+        onLoadingForm();
+    },[]);
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -69,14 +102,14 @@ export const PersonalInformation = () => {
         formValues.dateOfBirth = dateOfBirth;
         console.log(formValues);
         const requestOptions = {
-            method: 'POST',
+            method: requestType,
             body: JSON.stringify({formValues}, new Date()),
             headers: {
                 'Content-Type': 'application/json'
             }
         }
         try{
-            fetch(process.env.REACT_APP_MORTGAGE_PERSONAL_INFORMATION, requestOptions).then( console.log("information sent."));    
+            fetch(url, requestOptions).then( console.log("information sent."));    
         }
         catch{
             alert("Error");
