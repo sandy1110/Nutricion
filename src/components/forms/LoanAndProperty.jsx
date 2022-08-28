@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { Box, Paper, TextField, Typography } from '@material-ui/core';
 import Radio from '@mui/material/Radio';
@@ -25,7 +25,37 @@ const initialValues={
 export const LoanAndProperty = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
-    const [ loanPurpose, setLoanPurpose ] = useState('');
+    const [ firstForm, setFirstForm ] = useState(true);
+    const [ requestType, setRequestType ] = useState('POST');
+
+    const url = process.env.REACT_APP_MORTGAGE_LOAN_PROPERTY_INFORMATION;
+    const onLoadingForm = async () => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        try{
+            console.log("fetching information");
+            fetch(url, requestOptions)
+            .then((response) => response.json())
+            .then((loanPropertyRecord) => {
+                const loanPropertyData = loanPropertyRecord["loan-and-property"];
+                console.log(loanPropertyData);
+                setFormValues(loanPropertyData);
+                setFirstForm(false);
+                setRequestType('PATCH');
+            });
+        }catch (error){
+            console.log ("error requesting information", error);
+        }  
+    }
+
+    useEffect(() => {
+        onLoadingForm();
+    },[]);
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -39,14 +69,15 @@ export const LoanAndProperty = () => {
         event.preventDefault();
         console.log(formValues);
         const requestOptions = {
-            method: 'POST',
+            method: requestType,
             body: JSON.stringify({formValues}),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{
-            fetch(process.env.REACT_APP_MORTGAGE_LOAN_PROPERTY_INFORMATION, requestOptions).then( console.log("Loan and Property information sent."));    
+            fetch(url, requestOptions).then( console.log("Loan and Property information sent."));    
         }
         catch{
             alert("Error");
