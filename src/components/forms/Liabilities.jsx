@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Paper, TextField, Typography } from '@material-ui/core';
 import { FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
 
@@ -17,6 +17,35 @@ const initialValues ={
 export const Liabilities = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [ requestType, setRequestType ] = useState('POST');
+
+    const url = process.env.REACT_APP_MORTGAGE_LIABILITIES_INFORMATION;
+
+    const onLoadingForm = async () => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            console.log("fetching information");
+            fetch(url, requestOptions).then((response) => response.json())
+            .then((liabilitiesRecord) => {
+                setRequestType('PATCH');
+                const liabilitiesData = liabilitiesRecord["liabilities"];
+                console.log(liabilitiesData);
+                setFormValues(liabilitiesData);
+                setRequestType('PATCH');
+            });
+        }catch (error){
+            console.log ("error requesting information", error);
+        }  
+    }
+
+    useEffect(() => {
+        onLoadingForm();
+    },[]);
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -30,14 +59,14 @@ export const Liabilities = () => {
         event.preventDefault();
         console.log(formValues);
         const requestOptions = {
-            method: 'POST',
+            method: requestType,
             body: JSON.stringify({formValues}),
             headers: {
                 'Content-Type': 'application/json'
             }
         }
         try{
-            fetch(process.env.REACT_APP_MORTGAGE_LIABILITIES_INFORMATION, requestOptions).then( console.log("Liabilities information sent."));    
+            fetch(url, requestOptions).then( console.log("Liabilities information sent."));    
         }
         catch{
             alert("Error");
