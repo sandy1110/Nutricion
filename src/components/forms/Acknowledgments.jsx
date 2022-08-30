@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { Box, Paper, Typography } from '@material-ui/core';
 import Checkbox from '@mui/material/Checkbox';
@@ -6,6 +6,38 @@ import Button from '@mui/material/Button';
 
 export const Acknowledgments = () => {
     const [agree, setAgree] =useState(false);
+    const [ firstForm, setFirstForm ] = useState(true);
+    const [ requestType, setRequestType ] = useState('POST');
+
+    const url = process.env.REACT_APP_MORTGAGE_ACKNOWLEDGMENTS_INFORMATION;
+    const onLoadingForm = async () => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        try{
+            console.log("fetching information");
+            fetch(url, requestOptions).then((response) => response.json())
+            .then((acknowledgmentsRecord) => {
+                const acknowledgmentsData = acknowledgmentsRecord["acknowledgments-agreements"];
+                setFirstForm(false);
+                setRequestType('PATCH');
+                if(acknowledgmentsData.agree == true){
+                    console.log(acknowledgmentsData);
+                    setAgree(acknowledgmentsData.agree);
+                }
+            });
+        }catch (error){
+            console.log ("error requesting information", error);
+        }  
+    }
+
+    useEffect(() => {
+        onLoadingForm();
+    },[]);
 
     const handleAgreeChange = () => {
         setAgree(!agree);
@@ -15,14 +47,15 @@ export const Acknowledgments = () => {
         event.preventDefault();
         console.log(agree);
         const requestOptions = {
-            method: 'POST',
+            method: requestType,
             body: JSON.stringify({agree}),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{
-            fetch(process.env.REACT_APP_MORTGAGE_ACKNOWLEDGMENTS_INFORMATION, requestOptions).then( console.log("Acknowledgments information sent."));    
+            fetch(url, requestOptions).then( console.log("Acknowledgments information sent."));    
         }
         catch{
             alert("Error");
