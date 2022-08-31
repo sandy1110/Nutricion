@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormControlLabel, FormGroup, FormLabel, Typography } from '@mui/material';
 import { Box, InputLabel, MenuItem, Paper, Select, TextField } from '@material-ui/core';
 import Checkbox from '@mui/material/Checkbox';
@@ -46,6 +46,43 @@ const initialValues ={
 export const OtherProperties = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [ firstForm, setFirstForm ] = useState(true);
+    const [ requestType, setRequestType ] = useState('POST');
+    const [notProperty, setNotProperty] = useState(false);
+    const [paidOff, setPaidOff] = useState(false);
+    const [paidOff1, setPaidOff1] = useState(false);
+
+    const url = process.env.REACT_APP_MORTGAGE_ADDITIONAL_PROPERTY_INFORMATION;
+    const onLoadingForm = async () => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        try{
+            console.log("fetching information");
+            fetch(url, requestOptions)
+            .then((response) => response.json())
+            .then((additionalPropertyRecord) => {
+                const additionalPropertyData = additionalPropertyRecord["additional-property"];
+                setNotProperty(additionalPropertyData.notProperty);
+                setPaidOff(additionalPropertyData.paidOff);
+                setPaidOff1(additionalPropertyData.paidOff1);
+                console.log(additionalPropertyData);
+                setFormValues(additionalPropertyData);
+                setFirstForm(false);
+                setRequestType('PATCH');
+            });
+        }catch (error){
+            console.log ("error requesting information", error);
+        }  
+    }
+
+    useEffect(() => {
+        onLoadingForm();
+    },[]);
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -57,25 +94,25 @@ export const OtherProperties = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
+        formValues.notProperty=notProperty;
+        formValues.paidOff = paidOff;
+        formValues.paidOff1 = paidOff1;
         console.log(formValues);
         const requestOptions = {
-            method: 'POST',
+            method: requestType,
             body: JSON.stringify({formValues}),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{
-            fetch(process.env.REACT_APP_MORTGAGE_ADDITIONAL_PROPERTY_INFORMATION, requestOptions).then( console.log("Other property information sent."));    
+            fetch(url, requestOptions).then( console.log("Other property information sent."));    
         }
         catch{
             alert("Error");
         }
     }
-
-    const [notProperty, setNotProperty] = useState(false);
-    const [paidOff, setPaidOff] = useState(false);
-    const [paidOff1, setPaidOff1] = useState(false);
 
     const handleNotProperty = () => {
         setNotProperty(!notProperty);
