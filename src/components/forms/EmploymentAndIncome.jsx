@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -71,6 +71,49 @@ const initialValues = {
 export const EmploymentAndIncome = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [ firstForm, setFirstForm ] = useState(true);
+    const [ requestType, setRequestType ] = useState('POST');
+    const [currentStartDate, setCurrentStartDate] = useState(new Date());
+    const [additionalStartDate, setAdditionalStartDate] = useState(new Date());
+    const [previousStartDate, setPreviousStartDate] = useState(new Date());
+    const [previousEndDate, setPreviousEndDate] = useState(new Date());
+
+    const url = process.env.REACT_APP_MORTGAGE_EMPLOYMENT_INFORMATION;
+
+    const onLoadingForm = async () => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            console.log("fetching information");
+            fetch(url, requestOptions)
+            .then((response) => response.json())
+            .then((employmentRecord) => {
+                const employmentData = employmentRecord["employment-and-income"];
+                employmentData.currentStartDate = new Date(employmentData.currentStartDate);
+                employmentData.additionalStartDate = new Date(employmentData.additionalStartDate);
+                employmentData.previousStartDate = new Date(employmentData.previousStartDate);
+                employmentData.previousEndDate = new Date(employmentData.previousEndDate);
+                setCurrentStartDate(employmentData.currentStartDate);
+                setCurrentStartDate(employmentData.additionalStartDate);
+                setCurrentStartDate(employmentData.previousStartDate);
+                setCurrentStartDate(employmentData.previousEndDate);
+                console.log(employmentData);
+                setFormValues(employmentData);
+                setFirstForm(false);
+                setRequestType('PATCH');
+            });
+        }catch (error){
+            console.log ("error requesting information", error);
+        }  
+    }
+
+    useEffect(() => {
+        onLoadingForm();
+    },[]);
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -80,54 +123,31 @@ export const EmploymentAndIncome = () => {
         });
     }
 
+    const addDatesToForm = () => {
+        formValues.currentStartDate = currentStartDate;
+        formValues.additionalStartDate = additionalStartDate;
+        formValues.previousStartDate = previousStartDate;
+        formValues.previousEndDate = previousEndDate;
+    }
+
     const onSubmit = ( event ) => {
         event.preventDefault();
+        addDatesToForm();
         console.log(formValues);
         const requestOptions = {
-            method: 'POST',
+            method: requestType,
             body: JSON.stringify({formValues}),
             headers: {
                 'Content-Type': 'application/json'
             }
         }
         try{
-            fetch(process.env.REACT_APP_MORTGAGE_EMPLOYMENT_INFORMATION, requestOptions).then( console.log("Employment information sent."));    
+            fetch(url, requestOptions).then( console.log("Employment information sent."));    
         }
         catch{
             alert("Error");
         }
     }
-
-
-    const [currentStartDate, setCurrentStartDate] = useState(new Date());
-    const [additionalStartDate, setAdditionalStartDate] = useState(new Date());
-    const [previousStartDate, setPreviousStartDate] = useState(new Date());
-    const [previousEndDate, setPreviousEndDate] = useState(new Date());
-    const [previousBusinessOwner, setPreviousBusinessOwner] = useState('');
-    const [employedByFamily, setEmployedByFamily] = useState('');
-    const [businessOwner, setBusinessOwner] = useState('');
-    const [additionalEmployedByFamily, setAdditionalEmployedByFamily] = useState('');
-    const [additionalBusinessOwner, setAdditionalBusinessOwner] = useState('');
-
-    const handleBusinessOwner = (event) => {
-        setBusinessOwner(event.target.value);
-    };
-
-    const handlePreviousBusinessOwner = (event) => {
-        setPreviousBusinessOwner(event.target.value);
-    };
-
-    const handleEmployedByFamily = (event) => {
-        setEmployedByFamily(event.target.value);
-    };
-
-    const handleAdditionalEmployedByFamily = (event) => {
-        setAdditionalEmployedByFamily(event.target.value);
-    };
-
-    const handleAdditionalBusinessOwner = (event) => {
-        setAdditionalBusinessOwner(event.target.value);
-    };
 
     return (
         <form onSubmit={onSubmit}>
@@ -654,10 +674,10 @@ export const EmploymentAndIncome = () => {
                             <FormControl sx={{py:3}}>
                                 <RadioGroup name='previousBussinesOwner' 
                                 value={formValues.previousBusinessOwner} 
-                                onChange={handlePreviousBusinessOwner}
+                                onChange={ onInputChange }
                             >
                                     <FormControlLabel value="yes"
-                                        checked={previousBusinessOwner==="yes"} 
+                                        checked={formValues.previousBusinessOwner==="yes"} 
                                         control={<Radio size='small'/>} 
                                         label="Check if you were the Business Owner or Self-Employed." />
                                 </RadioGroup>
