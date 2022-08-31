@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormControlLabel, FormGroup, FormLabel, RadioGroup, Typography } from '@mui/material';
 import { Box, InputLabel, MenuItem, Paper, Select, TextField } from '@material-ui/core';
-import Radio from '@mui/material/Radio';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 
@@ -29,6 +28,38 @@ const initialValues ={
 export const PropertyYouOwn = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [ requestType, setRequestType ] = useState('POST');
+    const [notProperty, setNotProperty] = useState(false);
+    const [paidOff, setPaidOff] = useState(false);
+
+    const url = process.env.REACT_APP_MORTGAGE_YOUR_PROPERTY_INFORMATION;
+    const onLoadingForm = async () => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        try{
+            console.log("fetching information");
+            fetch(url, requestOptions).then((response) => response.json())
+            .then((yourPropertyRecord) => {
+                const propertyData = yourPropertyRecord["your-property"];
+                setNotProperty(propertyData.notProperty);
+                setPaidOff(propertyData.paidOff);
+                console.log(propertyData);
+                setFormValues(propertyData);
+                setRequestType('PATCH');
+            });
+        }catch (error){
+            console.log ("error requesting information", error);
+        }  
+    }
+
+    useEffect(() => {
+        onLoadingForm();
+    },[]);
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -40,12 +71,15 @@ export const PropertyYouOwn = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
+        formValues.notProperty = notProperty;
+        formValues.paidOff = paidOff;
         console.log(formValues);
         const requestOptions = {
-            method: 'POST',
+            method: requestType,
             body: JSON.stringify({formValues}),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{
@@ -55,9 +89,6 @@ export const PropertyYouOwn = () => {
             alert("Error");
         }
     }
-
-    const [notProperty, setNotProperty] = useState(false);
-    const [paidOff, setPaidOff] = useState(false);
 
     const handleNotProperty = () => {
         setNotProperty(!notProperty);
