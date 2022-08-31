@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Paper } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -43,17 +43,51 @@ const initialValues = {
     formerYears: '',
     formerMonths: '',
     formerAddress: '',
-    mailinStreet: '',
-    mailinUnit: '',
-    mailinCity: '',
-    mailinState: '',
-    mailinZip: '',
-    mailinCountry: '',
+    mailingStreet: '',
+    mailingUnit: '',
+    mailingCity: '',
+    mailingState: '',
+    mailingZip: '',
+    mailingCountry: '',
 };
 
 export const PersonalInformation = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [ firstForm, setFirstForm ] = useState(true);
+    const [ requestType, setRequestType ] = useState('POST');
+    const [ dateOfBirth, setDateOfBirth ] = useState(new Date());
+
+    const url = process.env.REACT_APP_MORTGAGE_PERSONAL_INFORMATION;
+
+    const onLoadingForm = async () => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            console.log("fetching information");
+            fetch(url, requestOptions)
+            .then((response) => response.json())
+            .then((personalInformationRecord) => {
+                const personalData = personalInformationRecord["personal-information"];
+                personalData.dateOfBirth = new Date(personalData.dateOfBirth);
+                setDateOfBirth(personalData.dateOfBirth);
+                console.log(personalData);
+                setFormValues(personalData);
+                setFirstForm(false);
+                setRequestType('PATCH');
+            });
+        }catch (error){
+            console.log ("error requesting information", error);
+        }  
+    }
+
+    useEffect(() => {
+        onLoadingForm();
+    },[]);
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -65,264 +99,23 @@ export const PersonalInformation = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
+        formValues.dateOfBirth = dateOfBirth;
         console.log(formValues);
         const requestOptions = {
-            method: 'POST',
-            body: JSON.stringify({formValues}),
+            method: requestType,
+            body: JSON.stringify({formValues}, new Date()),
             headers: {
                 'Content-Type': 'application/json'
             }
         }
         try{
-            fetch(process.env.REACT_APP_MORTGAGE_PERSONAL_INFORMATION, requestOptions).then( console.log("information sent."));    
+            fetch(url, requestOptions).then( console.log("information sent."));    
         }
         catch{
             alert("Error");
         }
     }
-    
-    const [name, setName] = useState('');
-    const [alternateNames, setAleternateNames] = useState('');
-    const [sss, setSss] = useState('');
-    const [citizenship, setCitizenship] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState(new Date());
-    const [homePhone, setHomePhone] = useState('');
-    const [cellPhone, setCellPhone] = useState('');
-    const [workPhone, setWorkPhone] = useState('');
-    const [ext, setExt] = useState('');
-    const [email, setEmail] = useState('');
-    const [creditType, setCreditType] = useState('');
-    const [otherBorrower, setOtherBorrower] = useState('');
-    const [maritalStatus, setMaritalStatus] = useState('');
-    const [borrower, setBorrower] = useState('');
-    const [dependents, setDependents] = useState('');
-    const [ages, setAges] = useState('');
-    const [currentStreet, setCurrentStreet] = useState('');
-    const [currentUnit, setCurrentUnit] = useState('');
-    const [currentCity, setCurrentCity] = useState('');
-    const [currentState, setCurrentState] = useState('');
-    const [currentZip, setCurrentZip] = useState('');
-    const [currentCountry, setCurrentCountry] = useState('');
-    const [currentYears, setCurrentYears] = useState('');
-    const [currentMonths, setCurrentMonths] = useState('');
-    const [currentHousing, setCurrentHousing] = useState('');
-    const [formerStreet, setFormerStreet] = useState('');
-    const [formerUnit, setFormerUnit] = useState('');
-    const [formerCity, setFormerCity] = useState('');
-    const [formerState, setFormerState] = useState('');
-    const [formerZip, setFormerZip] = useState('');
-    const [formerCountry, setFormerCountry] = useState('');
-    const [formerYears, setFormerYears] = useState('');
-    const [formerMonths, setFormerMonths] = useState('');
-    const [formerAddress, setFormerAddress] = useState('');
-    const [mailingStreet, setMailingStreet] = useState('');
-    const [mailingUnit, setMailingUnit] = useState('');
-    const [mailingCity, setMailingCity] = useState('');
-    const [mailingState, setMailingState] = useState('');
-    const [mailingZip, setMailingZip] = useState('');
-    const [mailingCountry, setMailingCountry] = useState('');
-  
 
-    const handleName = (event) =>{
-        initialValues.name = event;
-        setName(event);
-    }   
-
-    const handleAlternateNames = (event) =>{
-        initialValues.alternateNames = event;
-        setAleternateNames(event);
-    }
-    
-    const handleSss = (event) =>{
-        initialValues.sss = event;
-        setSss(event);
-    }
-
-    const handleCitizenship = (event) =>{
-        initialValues.citizenship = event;
-        setCitizenship(event);
-    }
-
-    const handleDateOfBirth = (event) =>{
-        initialValues.dateOfBirth = event;
-        setDateOfBirth(event);
-    }
-
-    const handleHomePhone = (event) =>{
-        initialValues.homePhone = event;
-        setHomePhone(event);
-    }
-
-    const handleCellPhone = (event) =>{
-        initialValues.cellPhone = event;
-        setCellPhone(event);
-    }
-
-    const handleWorkPhone = (event) =>{
-        initialValues.workPhone = event;
-        setWorkPhone(event);
-    }
-
-    const handleExt = (event) =>{
-        initialValues.ext = event;
-        setExt(event);
-    }
-
-    const handleEmail = (event) =>{
-        initialValues.email = event;
-        setEmail(event);
-    }
-
-    const handleCreditType = (event) => {
-        initialValues.creditType = event;
-        setCreditType(event);
-    };
-
-    const handleOtherBorrower= (event) =>{
-        initialValues.otherBorrower = event;
-        setOtherBorrower(event);
-    }
-
-    const handleMaritalStatus = (event) =>{
-        initialValues.maritalStatus = event;
-        setMaritalStatus(event);
-    }
-
-    const handleBorrower = (event) =>{
-        initialValues.borrower = event;
-        setBorrower(event);
-    }
-
-    const handleDependents = (event) =>{
-        initialValues.dependents = event;
-        setDependents(event);
-    }
-
-    const handleAges = (event) =>{
-        initialValues.ages = event;
-        setAges(event);
-    }
-
-    const handleCurrentStreet = (event) =>{
-        initialValues.currentStreet = event;
-        setCurrentStreet(event);
-    }
-
-    const handleCurrentUnit = (event) =>{
-        initialValues.currentUnit = event;
-        setCurrentUnit(event);
-    }
-
-    const handleCurrentCity = (event) =>{
-        initialValues.currentCity = event;
-        setCurrentCity(event);
-    }
-
-    const handleCurrentState = (event) =>{
-        initialValues.currentState = event;
-        setCurrentState(event);
-    }
-
-    const handleCurrentZip = (event) =>{
-        initialValues.currentZip = event;
-        setCurrentZip(event);
-    }
-
-    const handleCurrentCountry= (event) =>{
-        initialValues.currentCountry = event;
-        setCurrentCountry(event);
-    }
-
-    const handleCurrentYears = (event) =>{
-        initialValues.currentYears = event;
-        setCurrentYears(event);
-    }
-
-    const handleCurrentMonths = (event) =>{
-        initialValues.currentMonths = event;
-        setCurrentMonths(event);
-    }
-
-    const handleCurrentHousing = (event) =>{
-        initialValues.currentHousing = event;
-        setCurrentHousing(event);
-    }
-
-    const handleFormerStreet = (event) =>{
-        initialValues.formerStreet = event;
-        setFormerStreet(event);
-    }
-
-    const handleFormerUnit = (event) =>{
-        initialValues.formerUnit = event;
-        setFormerUnit(event);
-    }
-
-    const handleFormerCity = (event) =>{
-        initialValues.formerCity = event;
-        setFormerCity(event);
-    }
-
-    const handleFormerState = (event) =>{
-        initialValues.formerState = event;
-        setFormerState(event);
-    }
-
-    const handleFormerZip = (event) =>{
-        initialValues.formerZip = event;
-        setFormerZip(event);
-    }
-
-    const handleFormerCountry = (event) =>{
-        initialValues.formerCountry = event;
-        setFormerCountry(event);
-    }
-
-    const handleFormerYears = (event) =>{
-        initialValues.formerYears = event;
-        setFormerYears(event);
-    }
-
-    const handleFormerMonths = (event) =>{
-        initialValues.formerMonths = event;
-        setFormerMonths(event);
-    }
-
-    const handleFormerAddress = (event) =>{
-        initialValues.formerAddress = event;
-        setFormerAddress(event);
-    }
-
-    const handleMailingStreet = (event) =>{
-        initialValues.mailingStreet = event;
-        setMailingStreet(event);
-    }
-
-    const handleMailingUnit = (event) =>{
-        initialValues.mailingUnit = event;
-        setMailingUnit(event);
-    }
-
-    const handleMailingCity = (event) =>{
-        initialValues.mailingCity = event;
-        setMailingCity(event);
-    }
-
-    const handleMailingState = (event) =>{
-        initialValues.mailingState = event;
-        setMailingState(event);
-    }
-
-    const handleMailingZip = (event) =>{
-        initialValues.mailingZip = event;
-        setMailingZip(event);
-    }
-
-    const handleMailingCountry = (event) =>{
-        initialValues.MailingCountry = event;
-        setMailingCountry(event);
-    }    
-    
     return (
         <form onSubmit={onSubmit}>
         <Box sx={{display:'flex', flexDirection:'column', gridRowGap:35}}>
