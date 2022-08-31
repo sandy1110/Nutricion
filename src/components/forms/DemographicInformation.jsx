@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -22,6 +22,38 @@ const initialValues ={
 export const DemographicInformation = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [ firstForm, setFirstForm ] = useState(true);
+    const [ requestType, setRequestType ] = useState('POST');
+
+    const url = process.env.REACT_APP_MORTGAGE_DEMOGRAPHIC_INFORMATION;
+    const onLoadingForm = async () => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        try{
+            console.log("fetching information");
+            fetch(url, requestOptions).then((response) => response.json())
+            .then((demographicRecord) => {
+                const demographicData = demographicRecord["about-this-property"];
+                setFirstForm(false);
+                setRequestType('PATCH');
+                if(demographicData){
+                    console.log(demographicData);
+                    setFormValues(demographicData);
+                }
+            });
+        }catch (error){
+            console.log ("error requesting information", error);
+        }  
+    }
+
+    useEffect(() => {
+        onLoadingForm();
+    },[]);
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -35,14 +67,15 @@ export const DemographicInformation = () => {
         event.preventDefault();
         console.log(formValues);
         const requestOptions = {
-            method: 'POST',
+            method: requestType,
             body: JSON.stringify({formValues}),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{
-            fetch(process.env.REACT_APP_MORTGAGE_DEMOGRAPHIC_INFORMATION, requestOptions).then( console.log("information sent."));    
+            fetch(url, requestOptions).then( console.log("information sent."));    
         }
         catch{
             alert("Error");
