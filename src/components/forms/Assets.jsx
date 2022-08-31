@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Paper, TextField, Typography } from '@material-ui/core';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import Button from '@mui/material/Button';
@@ -17,6 +17,35 @@ const initialValues ={
 export const Assets = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
+    const [ firstForm, setFirstForm ] = useState(true);
+    const [ requestType, setRequestType ] = useState('POST');
+
+    const url = process.env.REACT_APP_MORTGAGE_ASSETS_INFORMATION
+    const onLoadingForm = async () => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            console.log("fetching information");
+            fetch(url, requestOptions).then((response) => response.json())
+            .then((assetsRecord) => {
+                const assetsData = assetsRecord["assets"];
+                console.log(assetsData);
+                setFormValues(assetsData);
+                setFirstForm(false);
+                setRequestType('PATCH');
+            });
+        }catch (error){
+            console.log ("error requesting information", error);
+        }  
+    }
+
+    useEffect(() => {
+        onLoadingForm();
+    },[]);
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -30,14 +59,14 @@ export const Assets = () => {
         event.preventDefault();
         console.log(formValues);
         const requestOptions = {
-            method: 'POST',
+            method: requestType,
             body: JSON.stringify({formValues}),
             headers: {
                 'Content-Type': 'application/json'
             }
         }
         try{
-            fetch(process.env.REACT_APP_MORTGAGE_ASSETS_INFORMATION, requestOptions).then( console.log("Assets information sent."));    
+            fetch(url, requestOptions).then( console.log("Assets information sent."));    
         }
         catch{
             alert("Error");
