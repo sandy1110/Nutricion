@@ -25,7 +25,8 @@ export const Assets = () => {
         const requestOptions = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{
@@ -33,10 +34,12 @@ export const Assets = () => {
             fetch(url, requestOptions).then((response) => response.json())
             .then((assetsRecord) => {
                 const assetsData = assetsRecord["assets"];
-                console.log(assetsData);
-                setFormValues(assetsData);
                 setFirstForm(false);
                 setRequestType('PATCH');
+                if(assetsData){
+                    console.log(assetsData);
+                    setFormValues(assetsData);
+                }
             });
         }catch (error){
             console.log ("error requesting information", error);
@@ -62,7 +65,8 @@ export const Assets = () => {
             method: requestType,
             body: JSON.stringify({formValues}),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{

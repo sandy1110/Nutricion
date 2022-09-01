@@ -38,7 +38,7 @@ export const DemographicInformation = () => {
             console.log("fetching information");
             fetch(url, requestOptions).then((response) => response.json())
             .then((demographicRecord) => {
-                const demographicData = demographicRecord["about-this-property"];
+                const demographicData = demographicRecord["demographic-information"];
                 setFirstForm(false);
                 setRequestType('PATCH');
                 if(demographicData){
@@ -108,7 +108,7 @@ export const DemographicInformation = () => {
                                 value={formValues.ethnicity}
                                 onChange={ onInputChange }
                             >
-                                <FormControlLabel value="latino" control={<Radio size='small'/>} label="Hispanic or latino" />
+                                <FormControlLabel value="latino" checked={formValues.ethnicity==="latino"} control={<Radio size='small'/>} label="Hispanic or latino" />
                             
                                 <ul>
                                 <RadioGroup row
@@ -116,10 +116,10 @@ export const DemographicInformation = () => {
                                     value={formValues.latin}
                                     onChange={ onInputChange }
                                 >
-                                    <FormControlLabel value="mexican" control={<Radio size='small'/>} label="Mexican" />
-                                    <FormControlLabel value="puerto" control={<Radio size='small'/>} label="Puerto Rican" />
-                                    <FormControlLabel value="cuban" control={<Radio size='small'/>} label="Cuban" />
-                                    <FormControlLabel value="other" control={<Radio size='small'/>} label="Other Hispanic or Latino - Print Origin:"/>
+                                    <FormControlLabel value="mexican" checked={formValues.latin==="mexican"} control={<Radio size='small'/>} label="Mexican" />
+                                    <FormControlLabel value="puerto" checked={formValues.latin==="puerto"} control={<Radio size='small'/>} label="Puerto Rican" />
+                                    <FormControlLabel value="cuban" checked={formValues.latin==="cuban"} control={<Radio size='small'/>} label="Cuban" />
+                                    <FormControlLabel value="other" checked={formValues.latin==="other"} control={<Radio size='small'/>} label="Other Hispanic or Latino - Print Origin:"/>
                                 </RadioGroup>
                                 <TextField
                                     fullWidth
@@ -131,8 +131,8 @@ export const DemographicInformation = () => {
                                     variant="standard"
                                 />
                                 </ul>
-                                <FormControlLabel value="notLatin" control={<Radio size='small'/>} label="Not Hispanic or Latino" />
-                                <FormControlLabel value="notProvided" control={<Radio size='small'/>} label="I do not wish to provide this information" />
+                                <FormControlLabel value="notLatin" checked={formValues.ethnicity==="notLatin"} control={<Radio size='small'/>} label="Not Hispanic or Latino" />
+                                <FormControlLabel value="notProvided" checked={formValues.ethnicity==="notProvided"} control={<Radio size='small'/>} label="I do not wish to provide this information" />
                             </RadioGroup>
                             <br></br>
                             <br></br>
@@ -145,9 +145,9 @@ export const DemographicInformation = () => {
                                 value={formValues.sex}
                                 onChange={ onInputChange }
                             >
-                                <FormControlLabel value="female" control={<Radio size='small'/>} label="Female" />
-                                <FormControlLabel value="male" control={<Radio size='small'/>} label="Male" />
-                                <FormControlLabel value="notProvided" control={<Radio size='small'/>} label="I do not wish to provide this information" />
+                                <FormControlLabel value="female" checked={formValues.sex==="female"} control={<Radio size='small'/>} label="Female" />
+                                <FormControlLabel value="male" checked={formValues.sex==="male"} control={<Radio size='small'/>} label="Male" />
+                                <FormControlLabel value="notProvided" checked={formValues.sex==="notProvided"} control={<Radio size='small'/>} label="I do not wish to provide this information" />
                             </RadioGroup>
                         </Box>
                         <Box sx={{p:2, margin:2, width:"50%"}}>
@@ -160,7 +160,7 @@ export const DemographicInformation = () => {
                                 value={formValues.race}
                                 onChange={ onInputChange }
                             >
-                                <FormControlLabel value="american" control={<Radio size='small'/>} label="American Indian or Alaska Native - Print name of enrolled or principal tribe:"/>
+                                <FormControlLabel value="american" checked={formValues.race==="american"} control={<Radio size='small'/>} label="American Indian or Alaska Native - Print name of enrolled or principal tribe:"/>
                                 <TextField
                                     fullWidth
                                     label=""
@@ -169,20 +169,20 @@ export const DemographicInformation = () => {
                                     onChange={ onInputChange }
                                     variant="standard"
                                 />
-                                <FormControlLabel value="asian" control={<Radio size='small'/>} label="Asian"/>
+                                <FormControlLabel value="asian" checked={formValues.race==="asian"} control={<Radio size='small'/>} label="Asian"/>
                                 <ul>
                                 <RadioGroup row
-                                    name='other '
+                                    name='other'
                                     value={formValues.other}
                                     onChange={ onInputChange }
                                 >
-                                    <FormControlLabel value="indian" control={<Radio size='small'/>} label="Asian Indian" />
-                                    <FormControlLabel value="chinese" control={<Radio size='small'/>} label="Chinese" />
-                                    <FormControlLabel value="filipino" control={<Radio size='small'/>} label="Filipino" />
-                                    <FormControlLabel value="japanese" control={<Radio size='small'/>} label="Japanese"/>
-                                    <FormControlLabel value="korean" control={<Radio size='small'/>} label="Korean"/>
-                                    <FormControlLabel value="vietnamese" control={<Radio size='small'/>} label="Vietnamese"/>
-                                    <FormControlLabel value="other" control={<Radio size='small'/>} label="Other Asian - Print race:"/>
+                                    <FormControlLabel value="indian" checked={formValues.other==="indian"} control={<Radio size='small'/>} label="Asian Indian" />
+                                    <FormControlLabel value="chinese" checked={formValues.other==="chinese"} control={<Radio size='small'/>} label="Chinese" />
+                                    <FormControlLabel value="filipino" checked={formValues.other==="filipino"} control={<Radio size='small'/>} label="Filipino" />
+                                    <FormControlLabel value="japanese" checked={formValues.other==="japanese"} control={<Radio size='small'/>} label="Japanese"/>
+                                    <FormControlLabel value="korean" checked={formValues.other==="korean"} control={<Radio size='small'/>} label="Korean"/>
+                                    <FormControlLabel value="vietnamese" checked={formValues.other==="vietnamese"} control={<Radio size='small'/>} label="Vietnamese"/>
+                                    <FormControlLabel value="other" checked={formValues.other==="other"} control={<Radio size='small'/>} label="Other Asian - Print race:"/>
                                 </RadioGroup>
                                 <TextField
                                     fullWidth
@@ -194,18 +194,18 @@ export const DemographicInformation = () => {
                                     variant="standard"
                                 />  
                                 </ul>
-                                <FormControlLabel value="black" control={<Radio size='small'/>} label="Black or African American"/>
-                                <FormControlLabel value="hawaiian" control={<Radio size='small'/>} label="Native Hawaiian or Other Pacific Islander"/>
+                                <FormControlLabel value="black" checked={formValues.race==="black"} control={<Radio size='small'/>} label="Black or African American"/>
+                                <FormControlLabel value="hawaiian" checked={formValues.race==="hawaiian"} control={<Radio size='small'/>} label="Native Hawaiian or Other Pacific Islander"/>
                                 <ul>
                                 <RadioGroup row
                                     name='hawaiian'
                                     value={formValues.hawaiian}
                                     onChange={ onInputChange }
                                 >
-                                    <FormControlLabel value="native" control={<Radio size='small'/>} label="Native Hawaiian"/>
-                                    <FormControlLabel value="guamanian" control={<Radio size='small'/>} label="Guamanian or Chamorro"/>
-                                    <FormControlLabel value="samoan" control={<Radio size='small'/>} label="Samoan"/>
-                                    <FormControlLabel value="other" control={<Radio size='small'/>} label="Other Pacific Islander - Print Race:"/>
+                                    <FormControlLabel value="native" checked={formValues.hawaiian==="native"} control={<Radio size='small'/>} label="Native Hawaiian"/>
+                                    <FormControlLabel value="guamanian" checked={formValues.hawaiian==="guamanian"} control={<Radio size='small'/>} label="Guamanian or Chamorro"/>
+                                    <FormControlLabel value="samoan" checked={formValues.hawaiian==="samoan"} control={<Radio size='small'/>} label="Samoan"/>
+                                    <FormControlLabel value="other" checked={formValues.hawaiian==="other"} control={<Radio size='small'/>} label="Other Pacific Islander - Print Race:"/>
                                 </RadioGroup>
                                 <TextField
                                     fullWidth
@@ -217,8 +217,8 @@ export const DemographicInformation = () => {
                                     variant="standard"
                                 />
                                 </ul>
-                                <FormControlLabel value="white" control={<Radio size='small'/>} label="White"/>
-                                <FormControlLabel value="notProvided" control={<Radio size='small'/>} label="I do not wish to provide this information"/>
+                                <FormControlLabel value="white" checked={formValues.race==="white"} control={<Radio size='small'/>} label="White"/>
+                                <FormControlLabel value="notProvided" checked={formValues.race==="notProvided"} control={<Radio size='small'/>} label="I do not wish to provide this information"/>
                             </RadioGroup>                       
                         </Box>
                     </Box>

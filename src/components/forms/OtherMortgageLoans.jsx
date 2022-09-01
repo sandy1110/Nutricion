@@ -40,14 +40,15 @@ export const OtherMortgageLoans = () => {
         }
         try{
             console.log("fetching information");
-            fetch(url, requestOptions)
-            .then((response) => response.json())
+            fetch(url, requestOptions).then((response) => response.json())
             .then((otherMortgageRecord) => {
                 const otherMortgageData = otherMortgageRecord["additional-mortgage"];
-                console.log(otherMortgageData);
-                setFormValues(otherMortgageData);
                 setFirstForm(false);
                 setRequestType('PATCH');
+                if(otherMortgageData){
+                    console.log(otherMortgageData);
+                    setFormValues(otherMortgageData);
+                }
             });
         }catch (error){
             console.log ("error requesting information", error);

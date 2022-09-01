@@ -31,11 +31,11 @@ export const RentalIncome = () => {
             .then((response) => response.json())
             .then((rentalIncomeRecord) => {
                 const rentalIncomeData = rentalIncomeRecord["rental-income"];
+                setFirstForm(false);
+                setRequestType('PATCH');
                 if(rentalIncomeData){
                     console.log(rentalIncomeData);
                     setFormValues(rentalIncomeData);
-                    setFirstForm(false);
-                    setRequestType('PATCH');
                 }
             });
         }catch (error){

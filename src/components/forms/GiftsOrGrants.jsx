@@ -40,11 +40,11 @@ export const GiftsOrGrants = () => {
             fetch(url, requestOptions).then((response) => response.json())
             .then((giftsGrantsRecord) => {
                 const giftsGrantsData = giftsGrantsRecord["gifts-and-grants"];
+                setFirstForm(false);
+                setRequestType('PATCH');
                 if(giftsGrantsData){
                     console.log(giftsGrantsData);
                     setFormValues(giftsGrantsData);
-                    setFirstForm(false);
-                    setRequestType('PATCH');
                 }
             });
         }catch (error){

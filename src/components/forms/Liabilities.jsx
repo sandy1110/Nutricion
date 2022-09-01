@@ -18,6 +18,7 @@ export const Liabilities = () => {
 
     const [ formValues, setFormValues ] = useState(initialValues);
     const [ requestType, setRequestType ] = useState('POST');
+    const [ firstForm, setFirstForm ] = useState(true);
 
     const url = process.env.REACT_APP_MORTGAGE_LIABILITIES_INFORMATION;
 
@@ -25,18 +26,21 @@ export const Liabilities = () => {
         const requestOptions = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{
             console.log("fetching information");
             fetch(url, requestOptions).then((response) => response.json())
             .then((liabilitiesRecord) => {
-                setRequestType('PATCH');
                 const liabilitiesData = liabilitiesRecord["liabilities"];
-                console.log(liabilitiesData);
-                setFormValues(liabilitiesData);
+                setFirstForm(false);
                 setRequestType('PATCH');
+                if(liabilitiesData){
+                    console.log(liabilitiesData);
+                    setFormValues(liabilitiesData);
+                }
             });
         }catch (error){
             console.log ("error requesting information", error);
@@ -62,7 +66,8 @@ export const Liabilities = () => {
             method: requestType,
             body: JSON.stringify({formValues}),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{

@@ -84,27 +84,29 @@ export const EmploymentAndIncome = () => {
         const requestOptions = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{
             console.log("fetching information");
-            fetch(url, requestOptions)
-            .then((response) => response.json())
+            fetch(url, requestOptions).then((response) => response.json())
             .then((employmentRecord) => {
                 const employmentData = employmentRecord["employment-and-income"];
-                employmentData.currentStartDate = new Date(employmentData.currentStartDate);
-                employmentData.additionalStartDate = new Date(employmentData.additionalStartDate);
-                employmentData.previousStartDate = new Date(employmentData.previousStartDate);
-                employmentData.previousEndDate = new Date(employmentData.previousEndDate);
-                setCurrentStartDate(employmentData.currentStartDate);
-                setCurrentStartDate(employmentData.additionalStartDate);
-                setCurrentStartDate(employmentData.previousStartDate);
-                setCurrentStartDate(employmentData.previousEndDate);
-                console.log(employmentData);
-                setFormValues(employmentData);
                 setFirstForm(false);
                 setRequestType('PATCH');
+                if(employmentData){
+                    employmentData.currentStartDate = new Date(employmentData.currentStartDate);
+                    employmentData.additionalStartDate = new Date(employmentData.additionalStartDate);
+                    employmentData.previousStartDate = new Date(employmentData.previousStartDate);
+                    employmentData.previousEndDate = new Date(employmentData.previousEndDate);
+                    setCurrentStartDate(employmentData.currentStartDate);
+                    setCurrentStartDate(employmentData.additionalStartDate);
+                    setCurrentStartDate(employmentData.previousStartDate);
+                    setCurrentStartDate(employmentData.previousEndDate);
+                    console.log(employmentData);
+                    setFormValues(employmentData);
+                }
             });
         }catch (error){
             console.log ("error requesting information", error);
@@ -138,7 +140,8 @@ export const EmploymentAndIncome = () => {
             method: requestType,
             body: JSON.stringify({formValues}),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{
@@ -672,7 +675,7 @@ export const EmploymentAndIncome = () => {
                                 </LocalizationProvider>
                             </Box>
                             <FormControl sx={{py:3}}>
-                                <RadioGroup name='previousBussinesOwner' 
+                                <RadioGroup name='previousBusinessOwner' 
                                 value={formValues.previousBusinessOwner} 
                                 onChange={ onInputChange }
                             >

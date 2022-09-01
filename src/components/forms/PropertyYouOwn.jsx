@@ -46,11 +46,13 @@ export const PropertyYouOwn = () => {
             fetch(url, requestOptions).then((response) => response.json())
             .then((yourPropertyRecord) => {
                 const propertyData = yourPropertyRecord["your-property"];
-                setNotProperty(propertyData.notProperty);
-                setPaidOff(propertyData.paidOff);
-                console.log(propertyData);
-                setFormValues(propertyData);
                 setRequestType('PATCH');
+                if(propertyData){
+                    setNotProperty(propertyData.notProperty);
+                    setPaidOff(propertyData.paidOff);
+                    console.log(propertyData);
+                    
+                }
             });
         }catch (error){
             console.log ("error requesting information", error);

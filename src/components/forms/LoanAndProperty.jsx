@@ -43,10 +43,12 @@ export const LoanAndProperty = () => {
             .then((response) => response.json())
             .then((loanPropertyRecord) => {
                 const loanPropertyData = loanPropertyRecord["loan-and-property"];
-                console.log(loanPropertyData);
-                setFormValues(loanPropertyData);
                 setFirstForm(false);
                 setRequestType('PATCH');
+                if(loanPropertyData){
+                    console.log(loanPropertyData);
+                    setFormValues(loanPropertyData);
+                }
             });
         }catch (error){
             console.log ("error requesting information", error);

@@ -20,25 +20,29 @@ export const MilitaryService = () => {
     const [ endDate, setEndDate ] = useState(new Date());
     const [ requestType, setRequestType ] = useState('POST');
 
+    const url = process.env.REACT_APP_MORTGAGE_MILITARY_SERVICE_INFORMATION;
+
     const onLoadingForm = async () => {
         const requestOptions = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{
             console.log("fetching information");
-            fetch(process.env.REACT_APP_MORTGAGE_MILITARY_SERVICE_INFORMATION, requestOptions)
-            .then((response) => response.json())
+            fetch(url, requestOptions).then((response) => response.json())
             .then((militaryRecord) => {
                 const militaryServiceData = militaryRecord["military-service"];
-                militaryServiceData.endDate = new Date(militaryServiceData.endDate);
-                setEndDate(militaryServiceData.endDate);
-                console.log(militaryServiceData);
-                setFormValues(militaryServiceData);
                 setFirstForm(false);
                 setRequestType('PATCH');
+                if(militaryServiceData){
+                    militaryServiceData.endDate = new Date(militaryServiceData.endDate);
+                    setEndDate(militaryServiceData.endDate);
+                    console.log(militaryServiceData);
+                    setFormValues(militaryServiceData);
+                }
             });
         }catch (error){
             console.log ("error requesting information", error);
@@ -65,11 +69,12 @@ export const MilitaryService = () => {
             method: requestType,
             body: JSON.stringify({formValues}),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{
-            fetch(process.env.REACT_APP_MORTGAGE_MILITARY_SERVICE_INFORMATION, requestOptions).then( console.log("Military service information sent."));    
+            fetch(url, requestOptions).then( console.log("Military service information sent."));    
         }
         catch{
             alert("Error");

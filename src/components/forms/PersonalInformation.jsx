@@ -64,21 +64,23 @@ export const PersonalInformation = () => {
         const requestOptions = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{
             console.log("fetching information");
-            fetch(url, requestOptions)
-            .then((response) => response.json())
+            fetch(url, requestOptions).then((response) => response.json())
             .then((personalInformationRecord) => {
                 const personalData = personalInformationRecord["personal-information"];
-                personalData.dateOfBirth = new Date(personalData.dateOfBirth);
-                setDateOfBirth(personalData.dateOfBirth);
-                console.log(personalData);
-                setFormValues(personalData);
                 setFirstForm(false);
-                setRequestType('PATCH');
+                if(personalData){
+                    setRequestType('PATCH');
+                    personalData.dateOfBirth = new Date(personalData.dateOfBirth);
+                    setDateOfBirth(personalData.dateOfBirth);
+                    console.log(personalData);
+                    setFormValues(personalData);
+                }
             });
         }catch (error){
             console.log ("error requesting information", error);
@@ -105,7 +107,8 @@ export const PersonalInformation = () => {
             method: requestType,
             body: JSON.stringify({formValues}, new Date()),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
         try{

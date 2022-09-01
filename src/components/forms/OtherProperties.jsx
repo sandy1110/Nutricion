@@ -63,17 +63,18 @@ export const OtherProperties = () => {
         }
         try{
             console.log("fetching information");
-            fetch(url, requestOptions)
-            .then((response) => response.json())
+            fetch(url, requestOptions).then((response) => response.json())
             .then((additionalPropertyRecord) => {
                 const additionalPropertyData = additionalPropertyRecord["additional-property"];
-                setNotProperty(additionalPropertyData.notProperty);
-                setPaidOff(additionalPropertyData.paidOff);
-                setPaidOff1(additionalPropertyData.paidOff1);
-                console.log(additionalPropertyData);
-                setFormValues(additionalPropertyData);
                 setFirstForm(false);
                 setRequestType('PATCH');
+                if(additionalPropertyData){
+                    setNotProperty(additionalPropertyData.notProperty);
+                    setPaidOff(additionalPropertyData.paidOff);
+                    setPaidOff1(additionalPropertyData.paidOff1);
+                    console.log(additionalPropertyData);
+                    setFormValues(additionalPropertyData);
+                }
             });
         }catch (error){
             console.log ("error requesting information", error);
